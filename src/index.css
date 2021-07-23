@@ -1,3 +1,11 @@
+:root{
+    --gridGap: 15px; 
+    --navbarPadding: 20px; 
+    --clrBackground: #ffffff;
+    --clrPrimary: #0097e6; 
+    --navbarFontSize: 1.3rem; 
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,7 +15,33 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a{
+    color: var(--clrBackground); 
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.navbarContainer{
+    display:grid; 
+    grid-template-columns: auto auto; 
+    grid-column-gap: var(--gridGap); 
+    text-align: center; 
+    padding: var(--navbarPadding); 
+    color: var(--clrBackground); 
+    background-color: var(--clrPrimary); 
+    font-size: var(--navbarFontSize); 
+}
+
+.navbarIconContainer{
+    text-align: right; 
+    padding: 8px 0px; 
+}
+
+.navbarTextContainer {
+    padding-top: 2px;
+    text-align: left;
+    padding: 15px 0px;
 }

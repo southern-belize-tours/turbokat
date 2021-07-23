@@ -1,9 +1,36 @@
+//Used for router 
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+//Import Components
+import Footer from './Components/Footer.js'; 
+import Home from './Components/Home.js'; 
+import NavbarArea from './Components/NavbarArea.js'; 
+import OtherNavbarArea from './Components/OtherNavbarArea.js'; 
+
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
+    return (
+        <div> 
+            <NavbarArea /> 
+            <OtherNavbarArea/> 
+            <Router>
+                <Switch>
+                    <Route path="/"
+                           exact component={() => <Home />}
+                     /> 
+                </Switch> 
+            </Router> 
+            <Footer/> 
+        </div>
+  );
+}
+
+export default App;
+
+/*
+ *     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -17,9 +44,4 @@ function App() {
         >
           Learn React
         </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+          </header>*/ 
