@@ -6,7 +6,7 @@ import React from 'react';
 import catLogo from './../Images/General/turbokat_icon.png' 
 
 const navbarText = "A third stimulus cat is coming.";
-const navbarLinkText = "See if you're eligible"; 
+const navbarLinkText = "See if you're eligiable"; 
 const navbarLink = ""; 
 
 class NavbarArea extends React.Component {
