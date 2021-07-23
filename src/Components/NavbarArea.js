@@ -18,7 +18,9 @@ class NavbarArea extends React.Component {
     render() {
         return (
             <nav className="navbarContainer">
-                <NavbarIconContainer img={catLogo}/> 
+                <NavbarIconContainer img={catLogo}
+                                     width="40px"
+                                     height="40px"/> 
                 <NavbarTextContainer text={navbarText}
                                      navbarLinkText={navbarLinkText}
                                      link={navbarLink} /> 

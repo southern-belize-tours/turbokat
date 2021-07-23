@@ -10,11 +10,19 @@ import OtherNavbarArea from './Components/OtherNavbarArea.js';
 import logo from './logo.svg';
 import './App.css';
 
+const options = [
+    { text: "File your own taxes" },
+    { text: "File an experts taxes" },
+    { text: "Tools and resources" },
+    { text: "Support" },
+    { text: "After you File" }
+];
+
 function App() {
     return (
         <div> 
             <NavbarArea /> 
-            <OtherNavbarArea/> 
+            <OtherNavbarArea options={options}/> 
             <Router>
                 <Switch>
                     <Route path="/"
