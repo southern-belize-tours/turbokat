@@ -1,6 +1,10 @@
-//Import Components 
+import PrettyGridCaption from './PrettyGridCaption.js'; 
+import PrettyGridPunchline from './PrettyGridPunchline.js'; 
+
+//Import Components
 import React, { Component } from 'react';   
 
+import prettyImg from '../Images/Home/kat_grid.png'; 
 
 class PrettyGrid extends React.Component {
 
@@ -10,8 +14,16 @@ class PrettyGrid extends React.Component {
 
     render() {
         return (
-            <div>
-                PrettyGrid
+            <div className="prettyGrid">
+                <div>
+                    <PrettyGridCaption gridCaption={this.props.gridCaption} />
+                    <PrettyGridPunchline gridPunchline={this.props.gridPunchline} />
+                </div>
+                <div>
+                    <img src={prettyImg}
+                        className="prettyImage"
+                        alt="Turbokat makes taxes easier, but we don't really know how"/> 
+                </div>
             </div>
             );
     }

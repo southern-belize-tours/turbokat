@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\public",
     "\\src",
-    "\\src\\Components"
+    "\\src\\Components",
+    "\\src\\Images",
+    "\\src\\Images\\General"
   ],
-  "SelectedNode": "\\src\\Components\\Footer.js",
+  "SelectedNode": "\\src\\Components\\DesktopDropdownOptions.js",
   "PreviewInSolutionExplorer": false
 }

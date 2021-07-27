@@ -5,6 +5,8 @@
     --clrPrimary: #0097e6; 
     --clrSecondary: #f90909; 
     --navbarFontSize: 1.3rem; 
+    --homeBodyMargin: 8rem;
+    --defaultPadding: 1.5rem; 
 }
 
 body {
@@ -25,6 +27,20 @@ a{
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+nav {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+h1{
+    font-size: 1.5rem;
+    font-weight: 600; 
+    margin:0px;
 }
 
 .navbarContainer{
@@ -101,4 +117,90 @@ code {
     cursor: pointer;
     margin-bottom: 20px;
     margin-top: 10px;
+}
+
+.signInBtn:hover{
+    background-color: #0097e652;
+}
+
+.homeBody{
+    margin: 0px var(--homeBodyMargin)
+}
+
+.prettyGrid{
+    margin: 60px 0px; 
+    display:grid;
+    grid-template-columns: 45% 55%; 
+}
+
+.prettyGridCaption{
+    padding: var(--defaultPadding); 
+    padding-left:0px; 
+    color: var(--clrPrimary); 
+    letter-spacing: 2.5px; 
+    text-transform: uppercase; 
+}
+
+.prettyGridPunchline{
+
+}
+
+.prettyImage{
+    object-fit: cover; 
+    width:100%; 
+    max-height: 100vh; 
+    vertical-align: middle; 
+}
+
+.loginBox{
+    margin: var(--defaultPadding) 0px;
+    padding: var(--defaultPadding) calc(3*var(--defaultPadding)); 
+    display: grid; 
+    grid-template-columns: auto auto; 
+    grid-column-gap: calc(3*var(--defaultPadding)); 
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px; 
+    border-color: #c1c5c8; 
+}
+
+.logoGrid{
+    display: grid; 
+    grid-template-columns: auto auto; 
+}
+
+.logoInit{
+    padding-top: var(--defaultPadding); 
+    font-weight: bold; 
+    font-size: 2rem; 
+}
+
+.logoList div{
+    display:inline-block; 
+    padding:0px;
+    font-size: .8em; 
+}
+
+.loginContainerTextRow {
+    font-family: "AvenirNext", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #393A3D;
+    line-height: 1.1;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center; 
+}
+
+.signInForms {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-row-gap: 15px;
+    grid-column-gap: 10px;
+}
+
+.signInForms div{
+    justify-content: center;
+}
+
+.fullRow{
+    grid-column: span 3 / auto; 
 }

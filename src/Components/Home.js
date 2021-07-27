@@ -13,9 +13,11 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div>
-                <PrettyGrid /> 
-                <LoginBox /> 
+            <div className="homeBody">
+                <PrettyGrid gridCaption={this.props.gridCaption}
+                            gridPunchline={this.props.gridPunchline}/> 
+                <LoginBox turbokatFeatures={this.props.turbokatFeatures}
+                          featuresCaption={this.props.featuresCaption}/> 
                 <FilingOptions /> 
             </div>
             );

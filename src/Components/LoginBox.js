@@ -1,4 +1,6 @@
-//Import Components 
+import LoginLeftContainer from './LoginLeftContainer.js'; 
+import LoginRightContainer from './LoginRightContainer.js'; 
+//Import Components
 import React, { Component } from 'react';
 
 
@@ -10,8 +12,10 @@ class LoginBox extends React.Component {
 
     render() {
         return (
-            <div>
-                LoginBox
+            <div className="loginBox">
+                <LoginLeftContainer featuresCaption={this.props.featuresCaption}
+                    turbokatFeatures={this.props.turbokatFeatures} /> 
+                <LoginRightContainer/> 
             </div>
         );
     }
