@@ -347,3 +347,46 @@ h1{
     font-weight: 400;
     font-family: avenir,helvetica,sans-serif;
 }
+
+@media(max-width: 768px){
+    .otherNavbarContainer{
+        display:none; 
+    }
+}
+
+@media(max-width: 425px){
+
+    :root {
+        --navbarFontSize: .8rem;
+        --navbarPadding: 10px;
+        --homeBodyMargin: 1rem;
+        --defaultColumns: auto; 
+        --defaultGridGap: .5rem; 
+        --defaultPadding: .5rem; 
+    }
+
+    .signInForms{
+        display: block;
+    }
+
+    .signInForms div{
+        margin: var(--defaultPadding) 0px; 
+    }
+
+    body{
+        font-size: .7rem; 
+        max-width: 100%; 
+    }
+
+    h1{
+        font-size: 1rem;
+    }
+
+    .prettyGrid{
+        grid-template-columns: auto; 
+    }
+
+    .loginBox{
+        grid-template-columns: auto; 
+    }
+}
