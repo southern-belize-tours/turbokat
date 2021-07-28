@@ -7,6 +7,8 @@
     --navbarFontSize: 1.3rem; 
     --homeBodyMargin: 8rem;
     --defaultPadding: 1.5rem; 
+    --defaultColumns: auto auto auto; 
+    --defaultGridGap: 2rem; 
 }
 
 body {
@@ -197,10 +199,151 @@ h1{
     grid-column-gap: 10px;
 }
 
+/*
 .signInForms div{
     justify-content: center;
+}*/ 
+
+.signInForms input{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #c1c5c8;
+    width: 100%;
+    padding: 5px;
+    padding-top: 8px;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: .8em; 
 }
 
-.fullRow{
-    grid-column: span 3 / auto; 
+.fullRow {
+    grid-column: span 3 / auto;
+    display: flex;
+    padding: 10px 0px;
+}
+
+.signInBtnContainer{
+    padding:0px;
+    border-style:hidden; 
+}
+
+.signInBtn2{
+    font-size: 1.3rem; 
+    vertical-align: middle; 
+    text-align: center; 
+    color: var(--clrBackground); 
+    cursor: pointer;
+    background-color: var(--clrPrimary); 
+    border-color: var(--clrPrimary); 
+    display: flex;
+    width: 100%;
+    height: 100%; 
+    border-style: solid;
+    border-width: 0px;
+    border-radius: 5px; 
+    margin: 0px; 
+}
+
+.disclaimer {
+    font-size: .7rem;
+    font-style: italic;
+    color: #757575;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    text-align: left;
+    font-family: "AvenirNext", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    line-height: 1.5;
+    border-style: hidden;
+}
+
+.checkbox {
+    height: 20px;
+    width: 20px; 
+    margin: 0px;
+}
+
+.signInForms .checkbox{
+    width: 20px; 
+}
+
+.rememberMe {
+    font-size: 1rem;
+    padding: 5px;
+    font-weight: normal;
+    font-family: "AvenirNext", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: left;
+}
+
+.disclaimer a, .fullRow a{
+    cursor: pointer;
+    color: var(--clrPrimary); 
+}
+
+.spaceMe{
+    padding: 0px 5px; 
+}
+
+.imageGrid{
+    display:grid; 
+    grid-template-columns: var(--defaultColumns); 
+    grid-column-gap: var(--defaultGridGap);
+}
+
+.tile{
+    text-align: center;
+    border-radius: 5px; 
+}
+
+.tileTitle{
+    padding-top: 2rem; 
+    padding-bottom: 1rem;
+    color: var(--clrBackground); 
+    font-size: 1.4rem; 
+    font-weight: 500; 
+    margin: 0px; 
+}
+
+.startForFree {
+    font-size: .58em;
+    color: var(--clrPrimary); 
+    margin-bottom: 2rem;
+}
+
+.startForFree a {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.tileImg {
+    display: block;
+    width: 60%;
+    height: auto;
+    padding-left: 20%;
+    padding-right: 20%;
+    border-bottom: solid;
+    border-bottom-width: 1px;
+    border-radius: 5px;
+    border-bottom-color: #c1c5c8;
+}
+
+.footer {
+    margin-top: 70px;
+    min-height: 380px;
+    padding: 48px 0;
+    text-align: center;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient( 265deg,#00c1bf,#055393 117%);
+    font-size: 1.4rem;
+    color: #393a3d;
+    font-weight: 400;
+    font-family: avenir,helvetica,sans-serif;
 }

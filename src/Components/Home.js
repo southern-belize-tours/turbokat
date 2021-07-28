@@ -18,7 +18,7 @@ class Home extends React.Component {
                             gridPunchline={this.props.gridPunchline}/> 
                 <LoginBox turbokatFeatures={this.props.turbokatFeatures}
                           featuresCaption={this.props.featuresCaption}/> 
-                <FilingOptions /> 
+                <FilingOptions taxOptions={this.props.taxOptions}/> 
             </div>
             );
     }

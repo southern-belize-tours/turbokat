@@ -27,8 +27,7 @@ const options = [
     { text: "After you File" }
 ];
 
-let images = importAll(require.context('./Images/General/turbokatFeatures', false, /\.(png)$/))
-console.log(images); 
+let images = importAll(require.context('./Images/General/turbokatFeatures', false, /\.(png)$/)); 
 const gridCaption = "TAXES, KATRINAFIED"; 
 const gridPunchline = "Worried about your taxes? Just behave like my rabbit and hop onto it!"; 
 const featuresCaption = "One accountant. Everyones into it."; 
@@ -54,9 +53,27 @@ for (let i = 0; i < turbokatFeatures.length; ++i) {
 }
 const turbokatPunchline = ""; 
 
+let tileImages = importAll(require.context('./Images/General/taxOptions', false, /\.(png)$/)); 
+let taxOptions = [
+    {
+        optionText: "File my taxes",
+        tileColor: { background: "linear-gradient(265deg, #00c1bf, #055393 117%)"}
+    },
+    {
+        optionText: "Or I'll file your taxes",
+        tileColor: { background: "linear-gradient(33deg, #386b9e, #3888bc)" }
+    },
+    {
+        optionText: "Or don't file taxes",
+        tileColor: { background: "linear-gradient(91deg, #bc403e, 1.23%, #d2302d 99.85%)" }
+    }
+];
+console.log(tileImages); 
+for (let i = 0; i < taxOptions.length; ++i) {
+    taxOptions[i].image = tileImages["kat_acct"+ (i+1) + ".png"]; 
+}
 
 function App() {
-    console.log(turbokatFeatures); 
     return (
         <div> 
             <NavbarArea /> 
@@ -68,6 +85,7 @@ function App() {
                                                      gridPunchline={gridPunchline}
                                                      featuresCaption={featuresCaption}
                                                      turbokatFeatures={turbokatFeatures}
+                                                     taxOptions={taxOptions}
                                                      turbokatPunchline={turbokatPunchline}/>}
                      /> 
                 </Switch> 

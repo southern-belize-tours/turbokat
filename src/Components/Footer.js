@@ -10,9 +10,9 @@ class Footer extends React.Component {
 
     render() {
         return (
-            <div>
+            <nav className="footer">
                 Footer
-            </div>
+            </nav>
             );
     }
 }
