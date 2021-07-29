@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //Import Components
 import Footer from './Components/Footer.js'; 
 import Home from './Components/Home.js'; 
+import FansOnly from './Components/FansOnly.js'; 
 import NavbarArea from './Components/NavbarArea.js'; 
 import OtherNavbarArea from './Components/OtherNavbarArea.js'; 
 
@@ -22,7 +23,7 @@ function importAll(r) {
 const options = [
     { text: "File your own taxes" },
     { text: "File an expert's taxes" },
-    { text: "Look at my Rabbit" },
+    { text: "Look at my Rabbit", url: "/fansOnly"},
     { text: "Support" },
     { text: "After you File" }
 ];
@@ -68,10 +69,11 @@ let taxOptions = [
         tileColor: { background: "linear-gradient(91deg, #bc403e, 1.23%, #d2302d 99.85%)" }
     }
 ];
-console.log(tileImages); 
 for (let i = 0; i < taxOptions.length; ++i) {
     taxOptions[i].image = tileImages["kat_acct"+ (i+1) + ".png"]; 
 }
+
+const footerTitle = "Join the billions who file their taxes"; 
 
 function App() {
     return (
@@ -87,10 +89,13 @@ function App() {
                                                      turbokatFeatures={turbokatFeatures}
                                                      taxOptions={taxOptions}
                                                      turbokatPunchline={turbokatPunchline}/>}
-                     /> 
+                    /> 
+                    <Route path="/fansOnly"
+                        exact component={() => <FansOnly />}
+                    /> 
                 </Switch> 
             </Router> 
-            <Footer/> 
+            <Footer footerTitle={footerTitle}/> 
         </div>
   );
 }

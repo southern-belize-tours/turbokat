@@ -10,11 +10,14 @@ class DesktopDropdownOptions extends React.Component {
 
     render() {
         return (
-            <ul>
+            <div>
                 {this.props.options.map(option => (
-                    <li>{option.text}</li>
+                        <a className="desktopDropdownLink"
+                           href={option.url ? option.url : "/"}>
+                            {option.text}
+                        </a> 
                 ))}
-            </ul>
+            </div>
         );
     }
 }
