@@ -5,8 +5,10 @@
     "\\src",
     "\\src\\Components",
     "\\src\\Images",
-    "\\src\\Images\\General"
+    "\\src\\Images\\Fans_Only",
+    "\\src\\Images\\General\\taxOptions",
+    "\\src\\Images\\General\\turbokatFeatures"
   ],
-  "SelectedNode": "\\src\\Components\\LoginRightContainer.js",
+  "SelectedNode": "\\src\\Components\\FansOnly.js",
   "PreviewInSolutionExplorer": false
 }

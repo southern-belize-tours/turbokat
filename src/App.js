@@ -7,6 +7,7 @@ import Home from './Components/Home.js';
 import FansOnly from './Components/FansOnly.js'; 
 import NavbarArea from './Components/NavbarArea.js'; 
 import OtherNavbarArea from './Components/OtherNavbarArea.js'; 
+import MobileNavbarArea from './Components/MobileNavbarArea.js'; 
 
 import logo from './logo.svg';
 import './App.css';
@@ -79,7 +80,8 @@ function App() {
     return (
         <div> 
             <NavbarArea /> 
-            <OtherNavbarArea options={options}/> 
+            <OtherNavbarArea options={options} /> 
+            <MobileNavbarArea options={options} /> 
             <Router>
                 <Switch>
                     <Route path="/"

@@ -25,7 +25,7 @@ class FansOnly extends React.Component {
         for (let i = 0; i < this.images.length; ++i) {
             //console.log(this.images[i].default); 
         }
-        this.images.map(image => (console.log(image.default))); 
+        this.images.map(image => (console.log(images[image]))); 
     }
 
     render() {
