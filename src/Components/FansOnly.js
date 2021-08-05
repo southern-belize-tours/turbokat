@@ -34,7 +34,7 @@ class FansOnly extends React.Component {
                 Parsley Psychomantis Ron Hasslehopper Fans Only Page
                 <div>
                     {this.images.map(image => (
-                        <div> 
+                        <div className="parsleyPic"> 
                             <img src={images[image].default}
                                 height="200px"
 width="200px"                            /> 

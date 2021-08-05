@@ -517,6 +517,10 @@ h1{
     padding: 20px;
 }
 
+.parsleyPic img{
+    width:auto;
+}
+
 @media(max-width: 768px){
     .otherNavbarContainer{
         display:none; 
