@@ -22,11 +22,11 @@ function importAll(r) {
 }
 
 const options = [
-    { text: "File your own taxes" },
-    { text: "File an expert's taxes" },
+    { text: "File your own taxes", url: "/" },
+    { text: "File an expert's taxes", url: "/"  },
     { text: "Look at my Rabbit", url: "/fansOnly"},
-    { text: "Support" },
-    { text: "After you File" }
+    { text: "Support", url: "/" },
+    { text: "After you File", url: "/" }
 ];
 
 let images = importAll(require.context('./Images/General/turbokatFeatures', false, /\.(png)$/)); 
@@ -80,8 +80,8 @@ function App() {
     return (
         <div> 
             <NavbarArea /> 
-            <OtherNavbarArea options={options} /> 
-            <MobileNavbarArea options={options} /> 
+            <OtherNavbarArea options={options}/> 
+            <MobileNavbarArea options={options}/> 
             <Router>
                 <Switch>
                     <Route path="/"

@@ -15,17 +15,11 @@ class FansOnly extends React.Component {
 
     constructor(props) {
         super();
-
-        console.log(images);
         this.images = [];
         for (const [key, value] of Object.entries(images)) {
            // console.log(key, value);
            this.images.push(key);
         }
-        for (let i = 0; i < this.images.length; ++i) {
-            //console.log(this.images[i].default); 
-        }
-        this.images.map(image => (console.log(images[image]))); 
     }
 
     render() {
@@ -37,7 +31,8 @@ class FansOnly extends React.Component {
                         <div className="parsleyPic"> 
                             <img src={images[image].default}
                                 height="200px"
-width="200px"                            /> 
+                                width="200px"
+                                loading="lazy"/> 
                         </div> ))}
                 </div>
             </div> 

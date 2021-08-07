@@ -4,10 +4,7 @@
     "\\public",
     "\\src",
     "\\src\\Components",
-    "\\src\\Images",
-    "\\src\\Images\\Fans_Only",
-    "\\src\\Images\\General\\taxOptions",
-    "\\src\\Images\\General\\turbokatFeatures"
+    "\\src\\Images\\Fans_Only"
   ],
   "SelectedNode": "\\src\\Components\\FansOnly.js",
   "PreviewInSolutionExplorer": false

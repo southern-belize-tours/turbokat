@@ -1,6 +1,7 @@
 import NavbarIconContainer from './navbarIconContainer.js'; 
 import DesktopDropdownOptions from './DesktopDropdownOptions.js'; 
 import SignInBtn from './SignInBtn.js'; 
+import CursedCaptcha from './CursedCaptcha.js'; 
 //Import Components
 import React from 'react';
 
@@ -11,7 +12,16 @@ const options = [];
 class OtherNavbarArea extends React.Component {
 
     constructor(props) {
-        super();
+        super(); 
+        this.state = {
+            captchaToggle: false
+        }
+        this.captchaCallback = this.captchaCallback.bind(this); 
+    }
+
+    captchaCallback() {
+        console.log("capcaCallback from other navbar area component"); 
+        this.setState({ captchaToggle: true }); 
     }
 
     render() {
@@ -21,7 +31,8 @@ class OtherNavbarArea extends React.Component {
                                      height="60px"
                                      width="60px" /> 
                 <DesktopDropdownOptions options={this.props.options} /> 
-                <SignInBtn/> 
+                <SignInBtn captchaFunction={this.captchaCallback} /> 
+                <CursedCaptcha toggled={this.state.captchaToggle}/> 
             </nav>
         );
     }

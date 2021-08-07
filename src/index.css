@@ -521,6 +521,69 @@ h1{
     width:auto;
 }
 
+
+.cursedCaptcha.toggled {
+    background-color: #0000008a;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+    height: 100vh;
+    width:100vw; 
+    position: fixed; 
+}
+
+.cursedCaptcha.toggled .cursedCaptchaTileBoard {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: calc(.4*var(--defaultPadding)); 
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    grid-template-rows: 30% 30% 30%;
+    grid-column-gap: 2%; 
+    grid-row-gap: calc(.6*var(--defaultPadding)); 
+}
+
+.cursedCaptcha.toggled .cursedCaptchaTitle{
+    display: block; 
+    text-align: center; 
+    width: 50%; 
+    margin: 0 auto; 
+    margin-top: 5%; 
+    color: var(--clrBackground); 
+    background-color: var(--clrPrimary); 
+    padding: calc(1* var(--defaultPadding)) 0px;
+    position: relative; 
+}
+
+.cursedTile{
+    background-color: red; 
+    height: 150px; 
+    position: relative; 
+}
+
+.cursedTile:after{
+    visibility: hidden; 
+    transition: all .3s;
+    opacity: 0; 
+}
+
+.cursedTile.clicked:after{
+    visibility: visible; 
+    opacity: 1; 
+    content: ''; 
+    width: calc(100% - 8px); 
+    height: calc(100% - 8px); 
+    position: absolute; 
+    border-style: solid; 
+    border-color: green; 
+    border-width: 4px;
+}
+
+.cursedTile img{
+    height: 100%; 
+    width: 100%; 
+}
+
 @media(max-width: 768px){
     .otherNavbarContainer{
         display:none; 

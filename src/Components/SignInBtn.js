@@ -1,7 +1,6 @@
 //Import Components
 import React from 'react';
 
-
 class SignInBtn extends React.Component {
 
     constructor(props) {
@@ -10,7 +9,8 @@ class SignInBtn extends React.Component {
 
     render() {
         return (
-            <div className="signInBtn">
+            <div className="signInBtn"
+                onClick={this.props.captchaFunction }>
                 Sign In Btn
             </div>
         );
