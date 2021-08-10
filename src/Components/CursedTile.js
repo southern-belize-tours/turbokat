@@ -16,6 +16,7 @@ class CursedTile extends React.Component {
         return (
             <div className={this.state.toggled ? "cursedTile clicked" : "cursedTile"}
                 onClick={() => {
+                    this.props.clickFunction(this.props.id, !this.state.toggled); 
                     this.setState({ toggled: !this.state.toggled })
                 }}
                  style={this.props.style}>

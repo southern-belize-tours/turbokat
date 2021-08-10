@@ -523,6 +523,7 @@ h1{
 
 
 .cursedCaptcha.toggled {
+    display: block; 
     background-color: #0000008a;
     top: 0px;
     left: 0px;
@@ -536,6 +537,7 @@ h1{
     width: 50%;
     margin: 0 auto;
     margin-top: calc(.4*var(--defaultPadding)); 
+    margin-bottom: calc(.4*var(--defaultPadding)); 
     display: grid;
     grid-template-columns: 32% 32% 32%;
     grid-template-rows: 30% 30% 30%;
@@ -582,6 +584,17 @@ h1{
 .cursedTile img{
     height: 100%; 
     width: 100%; 
+}
+
+.cursedCaptcha.toggled .cursedButton {
+    display: block;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    color: var(--clrBackground);
+    background-color: var(--clrPrimary);
+    border-radius: 5px;
+    padding: calc(1* var(--defaultPadding)) 0px;
 }
 
 @media(max-width: 768px){
