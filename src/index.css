@@ -561,6 +561,7 @@ h1{
 .cursedTile{
     background-color: red; 
     height: 150px; 
+    width: 100%; 
     position: relative; 
 }
 
@@ -618,7 +619,10 @@ h1{
         border-bottom-color: #d4d7dc;
     }
 
-    .cursedCaptcha.toggled .cursedCaptchaTileBoard{
+    .cursedCaptcha.toggled .cursedCaptchaTileBoard,
+    .cursedCaptcha.toggled .cursedCaptchaTitle,
+    .cursedCaptcha.toggled .cursedButton
+    {
         width:80%; 
     }
 
@@ -639,8 +643,11 @@ h1{
         --defaultPadding: .5rem; 
     }
 
-    .cursedCaptcha.toggled .cursedCaptchaTileBoard {
-        width: 90%;
+    .cursedCaptcha.toggled .cursedCaptchaTileBoard,
+    .cursedCaptcha.toggled .cursedCaptchaTitle,
+    .cursedCaptcha.toggled .cursedButton
+    {
+        width: 95%;
     }
 
     .mobileNavbarContainer {
@@ -693,5 +700,13 @@ h1{
 
     .loginBox{
         grid-template-columns: auto; 
+    }
+
+    .cursedCaptcha.toggled .cursedCaptchaTileBoard{
+        grid-row-gap: 15px;
+    }
+
+    .cursedTile{
+        height: 130px;
     }
 }
