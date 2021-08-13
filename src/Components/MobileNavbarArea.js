@@ -31,6 +31,7 @@ class MobileNavbarArea extends React.Component {
         return (
             <nav className="mobileNavbarContainer">
                 <MobileIconContainer img={catLogo}
+                                     link={this.props.link}
                                      height={height}
                                      width={width}/> 
                 <MobileSignIn captchaFunction={this.captchaCallback}/> 

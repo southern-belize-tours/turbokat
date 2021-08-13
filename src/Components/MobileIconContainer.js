@@ -10,12 +10,13 @@ class MobileIconContainer extends React.Component {
 
     render() {
         return (
-            <div className="MobileIconContainer">
+            <a className="MobileIconContainer"
+               href={this.props.link}>
                 <img src={this.props.img}
                      alt="Turbokat Tax Cat Logo"
                      height={this.props.height}
                      width={this.props.width} /> 
-            </div>
+            </a>
         );
     }
 }

@@ -76,12 +76,15 @@ for (let i = 0; i < taxOptions.length; ++i) {
 
 const footerTitle = "Join the billions who file their taxes"; 
 
+const link = "https://instagram.com/parsley.hasslehopper/"; 
+
 function App() {
     return (
         <div> 
             <NavbarArea /> 
             <OtherNavbarArea options={options}/> 
-            <MobileNavbarArea options={options}/> 
+            <MobileNavbarArea options={options}
+                              link={link}/> 
             <Router>
                 <Switch>
                     <Route path="/"
