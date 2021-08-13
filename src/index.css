@@ -597,6 +597,10 @@ h1{
     padding: calc(1* var(--defaultPadding)) 0px;
 }
 
+.cursedCaptcha.toggled.solved{
+    display: none; 
+}
+
 @media(max-width: 768px){
     .otherNavbarContainer{
         display:none; 
@@ -611,6 +615,10 @@ h1{
         border-bottom-style: solid;
         border-bottom-width: 1px;
         border-bottom-color: #d4d7dc;
+    }
+
+    .cursedCaptcha.toggled .cursedCaptchaTileBoard{
+        width:80%; 
     }
 
     .signInBtn{
@@ -628,6 +636,10 @@ h1{
         --defaultColumns: auto; 
         --defaultGridGap: .5rem; 
         --defaultPadding: .5rem; 
+    }
+
+    .cursedCaptcha.toggled .cursedCaptchaTileBoard {
+        width: 90%;
     }
 
     .mobileNavbarContainer {

@@ -4,8 +4,11 @@
     "\\public",
     "\\src",
     "\\src\\Components",
-    "\\src\\Images\\Fans_Only"
+    "\\src\\Images",
+    "\\src\\Images\\CursedCaptcha",
+    "\\src\\Images\\CursedCaptcha\\Parsley",
+    "\\src\\Images\\CursedCaptcha\\Samsquantch"
   ],
-  "SelectedNode": "\\src\\Components\\FansOnly.js",
+  "SelectedNode": "\\src\\Images\\CursedCaptcha\\Parsley\\maxresdefault.jpg",
   "PreviewInSolutionExplorer": false
 }

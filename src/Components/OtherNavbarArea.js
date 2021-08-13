@@ -20,7 +20,6 @@ class OtherNavbarArea extends React.Component {
     }
 
     captchaCallback() {
-        console.log("capcaCallback from other navbar area component"); 
         this.setState({ captchaToggle: true }); 
     }
 

@@ -1,6 +1,7 @@
 import MobileIconContainer from './MobileIconContainer.js'; 
 import MobileSignIn from './MobileSignIn.js'; 
 import MobileDropdown from './MobileDropdown.js'; 
+import CursedCaptcha from './CursedCaptcha.js';
 //Import Components
 import React from 'react';
 
@@ -15,6 +16,14 @@ class MobileNavbarArea extends React.Component {
 
     constructor(props) {
         super();
+        this.state = {
+            captchaToggle: false
+        }
+        this.captchaCallback = this.captchaCallback.bind(this); 
+    }
+
+    captchaCallback() {
+        this.setState({ captchaToggle: true });
     }
 
     render() {
@@ -24,8 +33,9 @@ class MobileNavbarArea extends React.Component {
                 <MobileIconContainer img={catLogo}
                                      height={height}
                                      width={width}/> 
-                <MobileSignIn /> 
+                <MobileSignIn captchaFunction={this.captchaCallback}/> 
                 <MobileDropdown options={this.props.options} /> 
+                <CursedCaptcha toggled={this.state.captchaToggle} /> 
             </nav> 
         );
     }

@@ -10,7 +10,8 @@ class MobileSignIn extends React.Component {
 
     render() {
         return (
-            <div className="signInBtn">
+            <div className="signInBtn"
+                onClick={this.props.captchaFunction}>
                 Sign in
             </div>
         );
