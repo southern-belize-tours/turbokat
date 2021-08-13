@@ -46,14 +46,14 @@ let captchas = [
         name: "Parsley Ron Psychomantis Hasslehopper",
         images: importAll(require.context('../Images/CursedCaptcha/Parsley', false, /\.(jpg)$/)),
         solution: [
-            { correct: true },
             { correct: false },
             { correct: false },
             { correct: true },
             { correct: true },
+            { correct: true },
+            { correct: true },
+            { correct: true },
             { correct: false },
-            { correct: true },
-            { correct: true },
             { correct: false }
         ]
     }

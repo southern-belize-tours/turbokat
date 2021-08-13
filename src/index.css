@@ -521,6 +521,7 @@ h1{
     width:auto;
 }
 
+.cursedCaptcha{display:none;}
 
 .cursedCaptcha.toggled {
     display: block; 
