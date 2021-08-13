@@ -7,7 +7,7 @@ import catLogo from './../Images/General/turbokat_icon.png'
 
 const navbarText = "A third stimulus cat is coming.";
 const navbarLinkText = "See if you're eligiable"; 
-const navbarLink = ""; 
+const navbarLink = "https://instagram.com/parsley.hasslehopper/"; 
 
 class NavbarArea extends React.Component {
 
