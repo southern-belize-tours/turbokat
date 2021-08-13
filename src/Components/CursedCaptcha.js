@@ -85,12 +85,13 @@ class CursedCaptcha extends React.Component {
         this.tileCallbackFunction = this.tileCallbackFunction.bind(this); 
         this.tiles = [];
 
-
+        let captchaIndex = Math.floor(Math.random() * captchas.length); 
         this.state = {
             solved: false, 
             tileMappings: [],
-            captchaIndex: 0, 
+            captchaIndex: captchaIndex, 
         }
+
         //sets all tiles to unselected in state processing 
         let tempMappings = [];
         for (let i = 0; i < captchas[this.state.captchaIndex].solution.length; ++i)tempMappings.push(false); 
