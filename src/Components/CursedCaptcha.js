@@ -56,6 +56,21 @@ let captchas = [
             { correct: false },
             { correct: false }
         ]
+    },
+    {
+        name: "GI Joe Momma Exotic",
+        images: importAll(require.context('../Images/CursedCaptcha/Joe', false, /\.(jpg)$/)),
+        solution: [
+            { correct: true },
+            { correct: true },
+            { correct: true },
+            { correct: false },
+            { correct: false },
+            { correct: false },
+            { correct: false },
+            { correct: false  },
+            { correct: false  }
+        ]
     }
 ];
 
