@@ -603,6 +603,128 @@ h1{
     display: none; 
 }
 
+.bullet {
+    background-color: rgb(234,133,21);
+    width: 1rem; 
+    height: 1rem; 
+    border-radius: .5rem; 
+    margin-left: .5rem; 
+    margin-right: .5rem; 
+}
+
+.housewarmingGrid{ 
+    margin: 2rem 0; 
+    padding: 2rem; 
+    height: 35rem; 
+    display: grid; 
+    grid-template-columns: 50% 50%;
+    margin-bottom: 30rem; 
+}
+
+.housewarmingGridTile{
+    display:inline-block; 
+    height: 30rem;
+    overflow: hidden; 
+    position: relative; 
+    cursor: pointer; 
+}
+
+.housewarmingGridTileChild {
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+
+}
+
+.housewarmingGridTile.long {
+
+}
+
+.housewarmingGridTile.down{
+    margin-bottom: 0rem; 
+}
+
+.housewarmingGridTileTitle{
+    margin-left: 1.5rem;
+    color: #ffffff;
+    font-size: 2rem; 
+    font-weight: 500; 
+}
+
+.housewarmingGridTile:hover .housewarmingGridTileChild,
+.housewarmingGridTile:focus .housewarmingGridTileChild {
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.housewarmingGridTile:hover .housewarmingGridTileChild:before, 
+.housewarmingGridTile:focus .housewarmingGridTileChild:before{
+    display:block; 
+}
+
+.housewarmingGridTileChild:before {
+    content: "";
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(52,73,94,0.75);
+}
+
+.housewarmingGridTileContent {
+    position: absolute; 
+    top: 40px;
+    z-index: 2;
+}
+
+.housewarmingGridTile:hover .housewarmingGridTileChild.housewarmingGridTileContent 
+.housewarmingGridTile:focus .housewarmingGridTileContent {
+    color: red;
+    
+}
+
+.lineupContainer {
+    border-radius: 1.5rem;
+}
+
+.lineupContentBox {
+    width: 45%;
+    margin-left: 35%; 
+    margin-right: 20%; 
+    color: rgb(234,133,21);
+    padding: 2rem 0rem;
+}
+
+.lineupBoxTitle{
+    font-size: 3.5rem; 
+    font-weight: 600; 
+}
+
+.lineupBox {
+    background: hsl(0 0% 0%/.9) 100%;
+    border-radius: 1rem;
+    color: #ffffff;
+    font-size: 2rem;
+    padding: 2rem;
+    margin-top: 1rem;
+}
+
+.lineupBox div{
+    display: inline-block; 
+}
+
 @media(max-width: 768px){
     .otherNavbarContainer{
         display:none; 

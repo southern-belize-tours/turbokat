@@ -8,6 +8,7 @@ import FansOnly from './Components/FansOnly.js';
 import NavbarArea from './Components/NavbarArea.js'; 
 import OtherNavbarArea from './Components/OtherNavbarArea.js'; 
 import MobileNavbarArea from './Components/MobileNavbarArea.js'; 
+import Housewarming from './Components/Housewarming.js'; 
 
 import logo from './logo.svg';
 import './App.css';
@@ -97,6 +98,9 @@ function App() {
                     /> 
                     <Route path="/fansOnly"
                         exact component={() => <FansOnly />}
+                    /> 
+                    <Route path="/events/house-warming-party"
+                        exact component={() => <Housewarming />}
                     /> 
                 </Switch> 
             </Router> 

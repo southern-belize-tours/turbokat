@@ -5,10 +5,8 @@
     "\\src",
     "\\src\\Components",
     "\\src\\Images",
-    "\\src\\Images\\CursedCaptcha",
-    "\\src\\Images\\CursedCaptcha\\Parsley",
-    "\\src\\Images\\CursedCaptcha\\Samsquantch"
+    "\\src\\Images\\CursedCaptcha"
   ],
-  "SelectedNode": "\\src\\Images\\CursedCaptcha\\Parsley\\maxresdefault.jpg",
+  "SelectedNode": "\\src\\Components\\PhoneWidget.js",
   "PreviewInSolutionExplorer": false
 }

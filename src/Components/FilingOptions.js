@@ -1,11 +1,11 @@
-//Import Components 
+import Tile from './Tile.js'; 
+//Import Components
 import React, { Component } from 'react';
 
 
 class FilingOptions extends React.Component {
 
     constructor(props) {
-        console.log(props.taxOptions); 
         super();
     }
 
@@ -15,20 +15,10 @@ class FilingOptions extends React.Component {
             <div className="imageGrid">
                 {
                     this.props.taxOptions.map(option => (
-                        <div style={option.tileColor}
-                             className="tile">
-                            <h3 className="tileTitle">
-                                {option.optionText}
-                            </h3>
-                            <div className="startForFree">
-                                <a>Start for Free</a> 
-                            </div>
-                            <div>
-                                <img className="tileImg"
-                                    src={option.image.default}
-                                    alt={option.optionText}/> 
-                            </div> 
-                        </div>
+                        <Tile title={option.optionText}
+                              color = {option.tileColor}
+                              imgSrc = {option.image.default}
+                              imgAlt = {option.optionText}/> 
                     ))
                 }
             </div>
@@ -39,3 +29,18 @@ class FilingOptions extends React.Component {
 export default FilingOptions;
 
 //{ { background: `${option.tileColor}` } }
+
+/*<div style={option.tileColor}
+                             className="tile">
+                            <h3 className="tileTitle">
+                                {option.optionText}
+                            </h3>
+                            <div className="startForFree">
+                                <a>Start for Free</a>
+                            </div>
+                            <div>
+                                <img className="tileImg"
+                                    src={option.image.default}
+                                    alt={option.optionText}/>
+                            </div>
+                        </div>*/
