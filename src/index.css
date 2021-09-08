@@ -752,6 +752,20 @@ h1{
         padding: 10px 0px; 
         margin: 0px; 
     }
+
+    .lineupContentBox{
+        width: 65%;
+        margin-left: 25%; 
+        margin-right: 10%; 
+    }
+    .housewarmingGrid {
+        grid-template-columns: auto;
+        height: auto;
+        margin-bottom: 2rem;
+    }
+    .ineupBox{
+        padding: 1.5rem; 
+    }
 }
 
 @media(max-width: 425px){
@@ -830,5 +844,24 @@ h1{
 
     .cursedTile{
         height: 130px;
+    }
+
+    .lineupContentBox{
+        width: 75%;
+        margin-left: 20%;
+        margin-right: 5%; 
+    }
+
+    .lineupBoxTitle{
+        font-size: 2rem; 
+    }
+
+    .lineupBox{
+        padding: 1rem; 
+        font-size: 1.5rem; 
+    }
+
+    .housewarmingGridTileContent{
+        font-size: 1.5rem; 
     }
 }
