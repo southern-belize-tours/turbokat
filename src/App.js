@@ -96,7 +96,7 @@ for (let i = 0; i < taxOptions.length; ++i) {
 
 const footerTitle = "Join the billions who file their taxes"; 
 
-const link = "https://instagram.com/parsley.hasslehopper/"; 
+const link = "https://www.instagram.com/parsley.hasselhopper/"; 
 
 function App() {
     return (
