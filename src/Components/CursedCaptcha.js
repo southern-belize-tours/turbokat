@@ -2,6 +2,8 @@ import CursedCaptchaTileBoard from './CursedCaptchaTileBoard.js';
 import CursedCaptchaTitle from './CursedCaptchaTitle.js'; 
 import CursedButtonPanel from './CursedButtonPanel.js'; 
 import CursedTile from './CursedTile.js'; 
+import CursedCaptchaFailMessage from './CursedCaptchaFailMessage.js';
+
 //Import Components
 import React from 'react';
 
@@ -74,7 +76,6 @@ let captchas = [
     }
 ];
 
-console.log(captchas[1].images); 
 
 class CursedCaptcha extends React.Component {
 
@@ -87,9 +88,11 @@ class CursedCaptcha extends React.Component {
 
         let captchaIndex = Math.floor(Math.random() * captchas.length); 
         this.state = {
-            solved: false, 
+            solved: false,
+            failed: false,
             tileMappings: [],
-            captchaIndex: captchaIndex, 
+            captchaIndex: captchaIndex,
+            numTries: 0
         }
 
         //sets all tiles to unselected in state processing 
@@ -123,6 +126,13 @@ class CursedCaptcha extends React.Component {
 
 
     changeCaptcha() {
+        // Increment the number of attempts
+        let currNumTries = this.state.numTries++;
+        this.setState({numTries: currNumTries})
+        if (this.state.numTries > 3) {
+            this.setState({failed: true})
+        }
+
         let tileMappings = []; 
         let captchaIndex = this.state.captchaIndex; 
         let x = captchaIndex; 
@@ -134,7 +144,7 @@ class CursedCaptcha extends React.Component {
         let idc = captchaIndex; 
         this.state.captchaIndex = idc; 
         this.setState({ captchaIndex: idc }); 
-        this.initializeTiles(this.state.captchaIndex); 
+        this.initializeTiles(this.state.captchaIndex);
     }
 
 
@@ -182,23 +192,28 @@ class CursedCaptcha extends React.Component {
             if (captchas[this.state.captchaIndex].solution[i].correct != tempMappings[i]) ret = false; 
         }
         if (!ret) {
-            this.changeCaptcha(); 
+            this.changeCaptcha();
         }
         this.setState({ solved: ret }); 
     }
 
     render() {
         return (
-            <div className={this.props.toggled && this.state.solved ? "cursedCaptcha toggled solved" :
-                            this.props.toggled ? "cursedCaptcha toggled" : 
-                            "cursedCaptcha"}>
-                <CursedCaptchaTitle title={captchas[this.state.captchaIndex].name}/> 
-                <div className="cursedCaptchaTileBoard">
-                    {this.tiles}
-                </div> 
-                <CursedButtonPanel clickFunction={this.buttonCallbackFunction} /> 
-                <div className="cursedCaptchaTileBoard">{this.state.solved}</div> 
-            </div>
+            <>
+            {
+                this.props.toggled && this.state.failed ?
+                    <CursedCaptchaFailMessage/> :
+                    <div className={this.props.toggled && this.state.solved ? "cursedCaptcha toggled solved" :
+                    this.props.toggled ? "cursedCaptcha toggled" : 
+                    "cursedCaptcha"}>
+        <CursedCaptchaTitle title={captchas[this.state.captchaIndex].name}/> 
+        <div className="cursedCaptchaTileBoard">
+            {this.tiles}
+        </div> 
+        <CursedButtonPanel clickFunction={this.buttonCallbackFunction} /> 
+        <div className="cursedCaptchaTileBoard">{this.state.solved}</div> 
+    </div>
+            }</>
         );
     }
 }

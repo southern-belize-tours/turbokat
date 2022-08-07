@@ -1,4 +1,4 @@
-import PhoneWidget from './PhoneWidget.js'; 
+import PhoneWidget from './phoneWidget/PhoneWidget.js'; 
 //Import Components
 import React, { Component } from 'react';
 
@@ -20,12 +20,14 @@ class Tile extends React.Component {
                 <div className="startForFree">
                     Start for Free 
                 </div> 
-                <PhoneWidget/> 
-                <div>
+                <PhoneWidget imgSrc = {this.props.imgSrc}
+                             imgAlt = {this.props.imgAlt}
+                             prompt = {this.props.prompt}/> 
+                { false ? <div>
                     <img className="tileImg"
                          src={this.props.imgSrc}
-                         alt={this.props.imgAlt}/> 
-                </div> 
+                         alt={this.props.imgAlt}/>
+                </div> : <></> }
             </div>
         );
     }

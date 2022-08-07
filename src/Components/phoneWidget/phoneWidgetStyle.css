@@ -1,0 +1,148 @@
+
+
+.phoneWidget {
+    display: block;
+
+    border-bottom: solid;
+    border-bottom-width: 1px;
+    border-radius: 5px;
+    border-bottom-color: #c1c5c8;
+
+    position: relative; 
+
+    background-color: green;
+
+    height: 22rem;
+}
+
+.phone {
+    height: 100%;
+    width: 60%;
+    padding-left: 20%;
+    padding-right: 20%;
+
+    background-color: grey;
+}
+
+.phoneTop{
+    background-color: #393a3d;
+    height: 22%;
+
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 3px;
+    border-bottom-width: 0px;
+    border-top-left-radius: 3.5rem;
+    border-top-right-radius: 3.5rem;
+}
+
+.phoneBody {
+    height: 80%;
+    background-color: #ffffff;
+    position: relative;
+}
+
+.phoneCamera{
+    background-color: red;
+    display: flex;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+.phoneScreen{
+    background-color: yellow;
+    height: 80%;
+    position: relative;
+    overflow: hidden;
+}
+
+.phoneImg{
+    height: 100%;
+    min-width: 100%;
+    position: relative;
+}
+
+.phoneOptions {
+    height: 20%;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.phoneOption {
+    position: relative;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    transition: all .2s;
+    font-size: 1.2rem;
+}
+
+.phoneOption::after{
+    position: absolute;
+    height: 1.2rem;
+    width: 2rem;
+    transform: rotate(-45deg);
+    top: -.8rem;
+    left: 20%;
+    content: '';
+    cursor: pointer;
+    transition: all .3s;
+    border-color: var(--clrPrimary);
+    border-width: 0px;
+    border-left-width: 5px;
+    border-bottom-width: 5px;
+    border-style: solid;
+    opacity: 0;
+}
+
+.phoneOption.selected::after{
+    opacity: 1;
+}
+
+.phoneOption::before{
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    top: 0px;
+    left: 20%;
+    content: '';
+    cursor: pointer;
+    border-color: var(--clrPrimary);
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 50%;
+    transition: all .3s;
+}
+
+.phoneOption:hover::before{
+    background-color: #c1c5c8
+}
+
+.tlPhoneBtn, .blPhoneBtn {
+    position: absolute;
+    width: 4px;
+    left: -4px;
+    background-color: #ffffff;
+    height: 15%;
+}
+
+.tlPhoneBtn {
+    top: 10%;
+    cursor: pointer;
+}
+
+.tlPhoneBtn:hover {
+    background-color: #ffffffcb;
+}
+
+.blPhoneBtn {
+    top: 30%;
+}
+
+.trPhoneBtn {
+    right: -4px;
+    position: absolute;
+    width: 4px;
+    background-color: #ffffff;
+    top: 10%;
+    height: 30%;
+}

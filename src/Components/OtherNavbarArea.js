@@ -29,8 +29,10 @@ class OtherNavbarArea extends React.Component {
                 <NavbarIconContainer img={catLogo}
                                      height="60px"
                                      width="60px" /> 
-                <DesktopDropdownOptions options={this.props.options} /> 
-                <SignInBtn captchaFunction={this.captchaCallback} /> 
+                <DesktopDropdownOptions options={this.props.options} />
+                <div className = "signInBtnContainer">
+                    <SignInBtn captchaFunction={this.captchaCallback} />
+                </div>
                 <CursedCaptcha toggled={this.state.captchaToggle}/> 
             </nav>
         );

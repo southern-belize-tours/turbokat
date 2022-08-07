@@ -1,0 +1,23 @@
+.thinMint {
+    background: #7e5342;
+    position: relative;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #533626;
+    overflow: hidden;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.thinMint:hover {
+    transform: scale(1.03) rotate(90deg);
+}
+
+.centerDot, .thinMintDot {
+    position: absolute;
+    /*top: 50%;
+    left: 50%;*/
+    background: #533626;
+    border-radius: 50%;
+}

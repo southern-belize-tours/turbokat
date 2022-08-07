@@ -1,0 +1,29 @@
+.dosido {
+    background: #e1a84ffc;
+    position: relative;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #561c08;
+    overflow: hidden;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.dosido:hover {
+    transform: scale(1.03) rotate(90deg);
+}
+
+.centerDiamond, .dosdioDot {
+    position: absolute;
+    /*top: 50%;
+    left: 50%;*/
+    background: #533626;
+    transform: scaleY(1.7) rotate(45deg);
+}
+
+.centerDiamond {
+    background: #c27e17;
+    border: #533626;
+    border-style: solid;
+}

@@ -10,12 +10,13 @@ class NavbarIconContainer extends React.Component {
 
     render() {
         return (
-            <div className="navbarIconContainer">
+            <a className="navbarIconContainer"
+                 href="/">
                 <img src={this.props.img}
                     alt="Turbokat Tax Cat Logo"
                     height={this.props.height}
                     width={this.props.width}/> 
-            </div>
+            </a>
         );
     }
 }

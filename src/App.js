@@ -9,6 +9,9 @@ import NavbarArea from './Components/NavbarArea.js';
 import OtherNavbarArea from './Components/OtherNavbarArea.js'; 
 import MobileNavbarArea from './Components/MobileNavbarArea.js'; 
 import Housewarming from './Components/Housewarming.js'; 
+import News from './Components/News.js'; 
+import SecretButton from './Components/secretButton/SecretButton.js';
+import Sandbox from './Components/sandbox/Sandbox.js';
 
 import logo from './logo.svg';
 import './App.css';
@@ -22,17 +25,30 @@ function importAll(r) {
     return ret;
 }
 
+const punchlines = [
+    "You think taxes take long? In just a few seconds we'll help you get into-it",
+    "Turbo-charge your ability to file",
+    "W-2s got you confused? They're really quite Intuit-ive",
+    "We lobby your government to repeal tax laws so that you have to pay for our software!"
+];
+
+function generatePunchline() {
+    let punchline = Math.floor(Math.random() * punchlines.length)
+    return punchlines[punchline]
+}
+
 const options = [
     { text: "File your own taxes", url: "/" },
     { text: "File an expert's taxes", url: "/"  },
     { text: "Look at my Rabbit", url: "/fansOnly"},
+    { text: "Latest News", url: "/latestNews"},
     { text: "Support", url: "/" },
     { text: "After you File", url: "/" }
 ];
 
 let images = importAll(require.context('./Images/General/turbokatFeatures', false, /\.(png)$/)); 
 const gridCaption = "TAXES, KATRINAFIED"; 
-const gridPunchline = "Worried about your taxes? Just behave like my rabbit and hop onto it!"; 
+const gridPunchline = generatePunchline();
 const featuresCaption = "One accountant. Everyones into it."; 
 let turbokatFeatures = [
     {
@@ -59,14 +75,17 @@ const turbokatPunchline = "";
 let tileImages = importAll(require.context('./Images/General/taxOptions', false, /\.(png)$/)); 
 let taxOptions = [
     {
+        prompt: "Are you ready to get this bread?",
         optionText: "File my taxes",
         tileColor: { background: "linear-gradient(265deg, #00c1bf, #055393 117%)"}
     },
     {
+        prompt: "Let's buy Katrina some cookies",
         optionText: "Or I'll file your taxes",
         tileColor: { background: "linear-gradient(33deg, #386b9e, #3888bc)" }
     },
     {
+        prompt: "Taxes are fun for everyone",
         optionText: "Or don't file taxes",
         tileColor: { background: "linear-gradient(91deg, #bc403e, 1.23%, #d2302d 99.85%)" }
     }
@@ -99,9 +118,18 @@ function App() {
                     <Route path="/fansOnly"
                         exact component={() => <FansOnly />}
                     /> 
+                    <Route path="/latestNews"
+                        exact component = {()=> <News />}
+                    /> 
                     <Route path="/events/house-warming-party"
                         exact component={() => <Housewarming />}
                     /> 
+                    <Route path="/secret_button"
+                           exact component={()=> <SecretButton />}
+                    />
+                    <Route path="/sandbox"
+                           exact component = { () => <Sandbox /> }
+                    />
                 </Switch> 
             </Router> 
             <Footer footerTitle={footerTitle}/> 
@@ -110,20 +138,3 @@ function App() {
 }
 
 export default App;
-
-/*
- *     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-          </header>*/ 

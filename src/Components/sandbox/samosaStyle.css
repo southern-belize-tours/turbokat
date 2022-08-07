@@ -1,0 +1,118 @@
+.samosa {
+    background: #d48a1d;
+    position: relative;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #884822;
+    overflow: hidden;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.samosa:hover {
+    transform: scale(1.03) rotate(90deg);
+}
+
+.centerHole.centerHoleCircle:nth-child() {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+}
+
+.centerHoleCircleContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.centerHoleCircle {
+    border-radius: 50%;
+    width: 20%;
+    height: 20%;
+    background-color: white;
+    position: absolute;
+}
+
+.centerHoleCircle:nth-child(1) {
+    top:-8%;
+    left: 40%;
+}
+
+.centerHoleCircle:nth-child(2) {
+    top:0;
+    left: 62%;
+}
+
+.centerHoleCircle:nth-child(3) {
+    top: 15%;
+    left: 79%;
+}
+
+.centerHoleCircle:nth-child(4) {
+    top: 37%;
+    left: 86%;
+}
+
+.centerHoleCircle:nth-child(5) {
+    top: 59%;
+    left: 82%;
+}
+
+.centerHoleCircle:nth-child(6) {
+    top: 77%;
+    left: 68%;
+}
+
+.centerHoleCircle:nth-child(7) {
+    top: 85%;
+    left: 49%;
+}
+
+.centerHoleCircle:nth-child(8) {
+    top: 84%;
+    left: 28%;
+}
+
+.centerHoleCircle:nth-child(9) {
+    top: 74%;
+    left: 9%;
+}
+
+.centerHoleCircle:nth-child(10) {
+    top: 58%;
+    left: -1%;
+}
+
+.centerHoleCircle:nth-child(11) {
+    top: 40%;
+    left: -5%;
+}
+
+.centerHoleCircle:nth-child(12) {
+    top: 19%;
+    left: -2%;
+}
+
+.centerHoleCircle:nth-child(13) {
+    top: 60%;
+    left: 60%;
+}
+
+.centerHoleCircle:nth-child(13) {
+    top: 3%;
+    left: 12%;
+}
+
+.centerHoleCircle:nth-child(14) {
+    top: -3%;
+    left: 24%;
+}
+
+.centerHole {
+    position: absolute;
+    border: #884822;
+    border-style: solid;
+    border-radius: 50%;
+    background: white;
+}
