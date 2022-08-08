@@ -17,10 +17,7 @@ class LoginLeftContainer extends React.Component {
                         {this.props.turbokatFeatures.map(feature => (
                             <div> 
                                 <span>{feature.featureName}</span>
-                                <img height="20px"
-                                     width="20px"
-                                     src={feature.featureImage.default}
-                                     alt={feature.featureAlt}/> 
+                                <span>{feature.featureComponent}</span>
                             </div> 
                           ))}
                     </div>                 
