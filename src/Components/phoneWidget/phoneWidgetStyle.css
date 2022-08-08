@@ -2,17 +2,12 @@
 
 .phoneWidget {
     display: block;
-
     border-bottom: solid;
     border-bottom-width: 1px;
     border-radius: 5px;
     border-bottom-color: #c1c5c8;
-
     position: relative; 
-
-    background-color: green;
-
-    height: 22rem;
+    height: 25rem;
 }
 
 .phone {
