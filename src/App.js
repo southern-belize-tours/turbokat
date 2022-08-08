@@ -14,6 +14,7 @@ import SecretButton from './Components/secretButton/SecretButton.js';
 import Sandbox from './Components/sandbox/Sandbox.js';
 import Dosido from "./Components/sandbox/Dosido.js";
 import ThinMint from "./Components/sandbox/ThinMint.js";
+import Samosa from "./Components/sandbox/Samosa.js"
 
 import logo from './logo.svg';
 import './App.css';
@@ -57,18 +58,19 @@ let turbokatFeatures = [
         featureName: "Do-Si-Dos",
         featureImageName: "dosido",
         featureAlt: "Buy Katrina some Do-Si-Dos",
-        featureComponent: Dosido
+        featureComponent: <Dosido height = "3" width = "3" numDots = "7"/>
     },
     {
         featureName: "Samoas",
         featureImageName: "samoa",
-        featureAlt: "Buy Katrina some Samoas"
+        featureAlt: "Buy Katrina some Samoas",
+        featureComponent: <Samosa height = "3" width = "3"/>
     },
     {
         featureName: "Thin Mints",
         featureImageName: "thinMint", 
         featureAlt: "Buy Katrina some ThinMints",
-        featureComponent: ThinMint
+        featureComponent: <ThinMint height = "3" width = "3" numDots = "7"/>
     }
 ]; 
 for (let i = 0; i < turbokatFeatures.length; ++i) {
