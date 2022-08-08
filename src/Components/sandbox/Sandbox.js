@@ -4,11 +4,17 @@ import ThinMint from './ThinMint.js';
 import Dosido from './Dosido.js';
 import Samosa from './Samosa.js';
 
+import Cow from './Cow.js';
+
 const thinMintHeight = 40;
 const thinMintWidth = 40;
 const thinMintDots = 7;
 
 const dosidoDots = 10;
+
+const cowHeight = thinMintHeight;
+const cowWidth = thinMintWidth;
+
 
 class Sandbox extends React.Component {
 
@@ -34,6 +40,11 @@ class Sandbox extends React.Component {
                 <Samosa numDots = {dosidoDots}
                         height = {thinMintHeight}
                         width = {thinMintWidth}/>
+                <div>
+                    Cow below
+                </div>
+                <Cow height = {cowHeight}
+                     width = {cowWidth}/>
             </div>
         );
     }

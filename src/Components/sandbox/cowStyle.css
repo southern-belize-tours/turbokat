@@ -1,0 +1,106 @@
+.cowContainer {
+    border: solid red 2px;
+
+    position: relative;
+}
+
+.cowHead { 
+    position: absolute;
+    height: 70%;
+    width: 50%;
+    top: 20%;
+    left: 25%;
+    border: solid black 5px;
+    border-top-left-radius: 45%;
+    border-top-right-radius: 45%;
+    z-index: 1;
+}
+
+.cowHead::before, .cowHead::after {
+    content: '';
+    position: absolute;
+    border: solid black 5px;
+    width: 37%;
+    height: 10%;
+    border-radius: 50%;
+    top: 30%;
+}
+
+.cowHead::before {
+    left: -40%;
+}
+
+.cowHead::after {
+    right: -40%;
+}
+
+.cowEyes {
+    position: absolute;
+    height: 12%;
+    width: 100%;
+    top: 38%;
+}
+
+.cowEye {
+    position: absolute;
+    border-radius: 50%;
+    background-color: black;
+    height: 100%;
+    width: 20%;
+}
+
+.leftEye {
+    left: 15%;
+}
+
+.rightEye {
+    right: 15%;
+}
+
+.cowSnoot {
+    position: absolute;
+    border-top: solid black 5px;
+    bottom: 0px;
+    width: 100%;
+    height: 25%;
+}
+
+.cowSnootHole {
+    top: 15%;
+    position: absolute;
+    background-color: black;
+    height: 45%;
+    width: 10%;
+}
+
+.leftSnoot {
+    left: 32%
+}
+
+.rightSnoot {
+    right: 32%;
+}
+
+.cowHornTop {
+    position: absolute;
+    width: 160%;
+    left: -30%;
+    height: 50%;
+    top: -45%;
+    border-bottom: solid black 5px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    z-index: 0;
+}
+
+.cowHornBottom {
+    position: absolute;
+    width: 160%;
+    left: -30%;
+    height: 90%;
+    top: -66%;
+    border-bottom: solid black 5px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    z-index: 0;
+}

@@ -51,7 +51,7 @@
 
 .phoneScreen{
     background-color: yellow;
-    height: 80%;
+    height: 75%;
     position: relative;
     overflow: hidden;
 }
@@ -63,8 +63,7 @@
 }
 
 .phoneOptions {
-    height: 20%;
-    font-size: 1.5rem;
+    font-size: .8rem;
     font-weight: 600;
 }
 
@@ -73,7 +72,7 @@
     margin-top: .5rem;
     margin-bottom: .5rem;
     transition: all .2s;
-    font-size: 1.2rem;
+    font-size: .7rem;
 }
 
 .phoneOption::after{
