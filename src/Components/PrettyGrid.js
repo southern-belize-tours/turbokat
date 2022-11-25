@@ -15,7 +15,7 @@ class PrettyGrid extends React.Component {
     render() {
         return (
             <div className="prettyGrid">
-                <div>
+                <div class="prettyGridText">
                     <PrettyGridCaption gridCaption={this.props.gridCaption} />
                     <PrettyGridPunchline gridPunchline={this.props.gridPunchline} />
                 </div>

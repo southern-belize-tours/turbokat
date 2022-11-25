@@ -1,8 +1,14 @@
+// MUI
+import Dialog from '@mui/material/Dialog';
+import { DialogTitle, DialogActions, DialogContent, DialogContentText } from '@mui/material';
+
 import CursedCaptchaTileBoard from './CursedCaptchaTileBoard.js'; 
 import CursedCaptchaTitle from './CursedCaptchaTitle.js'; 
 import CursedButtonPanel from './CursedButtonPanel.js'; 
 import CursedTile from './CursedTile.js'; 
 import CursedCaptchaFailMessage from './CursedCaptchaFailMessage.js';
+import Button from '@mui/material/Button';
+
 
 //Import Components
 import React from 'react';
@@ -76,7 +82,6 @@ let captchas = [
     }
 ];
 
-
 class CursedCaptcha extends React.Component {
 
     constructor(props) {
@@ -92,7 +97,8 @@ class CursedCaptcha extends React.Component {
             failed: false,
             tileMappings: [],
             captchaIndex: captchaIndex,
-            numTries: 0
+            numTries: 0,
+            correctGuess: 0 // -1 incorrect 0 no guess 1 correct
         }
 
         //sets all tiles to unselected in state processing 
@@ -114,12 +120,13 @@ class CursedCaptcha extends React.Component {
                 ++i;
                 continue; 
             }
-            let style = { backgroundImage: `url(${dict[key].default})` }; 
+            let style = { backgroundImage: `url(${dict[key].default})` };
             this.tiles.push(<CursedTile clickFunction={this.tileCallbackFunction}
-                                        correct={captchas[this.state.captchaIndex].correct}
-                                        id={i}
-                                        toggled={this.state.tileMappings[i]}
-                                        style={style} />);
+                img = {dict[key].default}
+                correct={captchas[this.state.captchaIndex].correct}
+                id={i}
+                toggled={this.state.tileMappings[i]}>
+                </CursedTile>);
             ++i; 
         }
     }
@@ -165,9 +172,9 @@ class CursedCaptcha extends React.Component {
             correct={captchas[this.state.captchaIndex].correct}
             id={tileId}
             toggled={this.state.tileMappings[tileId]}
-            style={this.tiles[tileId].props.style} />;
+            img={this.tiles[tileId].props.img} />;
         this.tiles.splice(tileId, 1, tile); 
-        this.state.tileMappings = tempMappings; 
+        this.state.tileMappings = tempMappings;
         this.setState({ tileMappings: tempMappings });
     }
 
@@ -194,26 +201,80 @@ class CursedCaptcha extends React.Component {
         if (!ret) {
             this.changeCaptcha();
         }
-        this.setState({ solved: ret }); 
+        // this.setState({ solved: ret });
+        this.setTransitionTimeout(ret);
+    }
+
+    /* Calls state change timeout functions based on the success of solving the captcha
+    */
+    setTransitionTimeout(success) {
+        let successOutcome = -1;
+        if (success) {
+            successOutcome = 1;
+        }
+        this.setState({correctGuess: successOutcome})
+        // let timeout = Math.floor(Math.random()*2000);
+        setTimeout(() => {
+            this.setState({correctGuess: 0});
+        }, 500)
     }
 
     render() {
         return (
-            <>
-            {
-                this.props.toggled && this.state.failed ?
-                    <CursedCaptchaFailMessage/> :
-                    <div className={this.props.toggled && this.state.solved ? "cursedCaptcha toggled solved" :
-                    this.props.toggled ? "cursedCaptcha toggled" : 
-                    "cursedCaptcha"}>
-        <CursedCaptchaTitle title={captchas[this.state.captchaIndex].name}/> 
-        <div className="cursedCaptchaTileBoard">
-            {this.tiles}
-        </div> 
-        <CursedButtonPanel clickFunction={this.buttonCallbackFunction} /> 
-        <div className="cursedCaptchaTileBoard">{this.state.solved}</div> 
-    </div>
-            }</>
+    //         <>
+    //         {
+    //             this.props.toggled && this.state.failed ?
+    //                 <CursedCaptchaFailMessage/> :
+    //                 <div className={this.props.toggled && this.state.solved ? "cursedCaptcha toggled solved" :
+    //                 this.props.toggled ? "cursedCaptcha toggled" : 
+    //                 "cursedCaptcha"}>
+    //     <CursedCaptchaTitle title={captchas[this.state.captchaIndex].name}/> 
+    //     <div className="cursedCaptchaTileBoard">
+    //         {this.tiles}
+    //     </div> 
+    //     <CursedButtonPanel clickFunction={this.buttonCallbackFunction} /> 
+    //     <div className="cursedCaptchaTileBoard">{this.state.solved}</div> 
+    // </div>
+    //         }</>
+
+            <Dialog open={this.props.toggled}>
+              <DialogTitle>
+                {this.state.correctGuess == 0 ? 
+                    <>
+                    <div><span>Select all images with a </span>
+                    <span className = "bold">{captchas[this.state.captchaIndex].name}.</span>
+                    </div>
+                    <div>Click verify once there are none left.</div></>
+                 : <></>
+                }
+
+              </DialogTitle>
+              <DialogContent>
+                    {this.state.correctGuess== 1 ?
+                        <div className="solvedBox">Correct</div>
+                    :this.state.correctGuess== -1 ?
+                        <div className="badGuessBox">Incorrect</div>
+                    :
+                        <div className="cursedCaptchaTileBoard">{this.tiles}</div>
+                    }
+                </DialogContent>
+                {this.state.correctGuess == 0 ? 
+                    <DialogActions>
+                    <Button variant="contained"
+                        onClick={this.buttonCallbackFunction}>
+                            Verify
+                    </Button>
+                    <Button variant="contained"
+                        onClick={()=>{this.props.captchaFunction(false)}}>
+                            Give Up
+                        </Button>
+                      {/* <Button onClick={handleClose}>Disagree</Button>
+                      <Button onClick={handleClose} autoFocus>
+                        Agree
+                      </Button> */}
+                    </DialogActions>
+                : <></>}
+            </Dialog>
         );
     }
 }

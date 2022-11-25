@@ -15,7 +15,7 @@ class LoginLeftContainer extends React.Component {
                     <div className="logoInit">Kat Likes</div>
                     <div className="logoList">
                         {this.props.turbokatFeatures.map(feature => (
-                            <div> 
+                            <div className = "logoListItem"> 
                                 <span>{feature.featureName}</span>
                                 <span>{feature.featureComponent}</span>
                             </div> 

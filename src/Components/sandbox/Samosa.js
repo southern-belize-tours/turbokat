@@ -48,6 +48,7 @@ class Dosido extends React.Component {
 
         return (
             <div
+                onClick = {() => {this.props.onClick()}}
                 className = "samosa"
                 style = {{
                     borderWidth: borderWidth + "px",

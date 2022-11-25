@@ -1,6 +1,8 @@
 //Used for router 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import BreakfastDiningIcon from '@mui/icons-material/BreakfastDining';
+
 //Import Components
 import Footer from './Components/Footer.js'; 
 import Home from './Components/Home.js'; 
@@ -42,12 +44,16 @@ function generatePunchline() {
 
 const options = [
     { text: "File your own taxes", url: "/" },
+    { text: "View my Rabbit's Insta", url: "https://www.instagram.com/parsley.hasselhopper/"},
     { text: "File an expert's taxes", url: "/"  },
     { text: "Look at my Rabbit", url: "/fansOnly"},
     { text: "Latest News", url: "/latestNews"},
-    { text: "Support", url: "/" },
-    { text: "After you File", url: "/" }
+    { text: "Donate Choccy Chips", url: "https://www.paypal.com/donate/?hosted_button_id=V3GYH73CW9HN6"}
 ];
+
+function usesCookies() {
+    alert("This website uses cookies")
+}
 
 let images = importAll(require.context('./Images/General/turbokatFeatures', false, /\.(png)$/)); 
 const gridCaption = "TAXES, KATRINAFIED"; 
@@ -58,19 +64,19 @@ let turbokatFeatures = [
         featureName: "Do-Si-Dos",
         featureImageName: "dosido",
         featureAlt: "Buy Katrina some Do-Si-Dos",
-        featureComponent: <Dosido height = "3" width = "3" numDots = "7"/>
+        featureComponent: <Dosido height = "3" width = "3" numDots = "7" onClick = {usesCookies}/>
     },
     {
         featureName: "Samoas",
         featureImageName: "samoa",
         featureAlt: "Buy Katrina some Samoas",
-        featureComponent: <Samosa height = "3" width = "3"/>
+        featureComponent: <Samosa height = "3" width = "3" onClick = {usesCookies}/>
     },
     {
         featureName: "Thin Mints",
         featureImageName: "thinMint", 
         featureAlt: "Buy Katrina some ThinMints",
-        featureComponent: <ThinMint height = "3" width = "3" numDots = "7"/>
+        featureComponent: <ThinMint height = "3" width = "3" numDots = "7" onClick = {usesCookies}/>
     }
 ]; 
 for (let i = 0; i < turbokatFeatures.length; ++i) {
@@ -81,7 +87,7 @@ const turbokatPunchline = "";
 let tileImages = importAll(require.context('./Images/General/taxOptions', false, /\.(png)$/)); 
 let taxOptions = [
     {
-        prompt: "Are you ready to get this bread?",
+        prompt: <>Are you ready to get this <BreakfastDiningIcon/>?</>,
         optionText: "File my taxes",
         tileColor: { background: "linear-gradient(265deg, #00c1bf, #055393 117%)"}
     },

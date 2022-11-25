@@ -6,8 +6,9 @@
     border-bottom-width: 1px;
     border-radius: 5px;
     border-bottom-color: #c1c5c8;
-    position: relative; 
+    position: relative;
     height: 25rem;
+    overflow: hidden;
 }
 
 .phone {
@@ -21,8 +22,7 @@
 
 .phoneTop{
     background-color: #393a3d;
-    height: 22%;
-
+    height: 3rem;
     border-style: solid;
     border-color: #ffffff;
     border-width: 3px;
@@ -48,7 +48,25 @@
     background-color: yellow;
     height: 75%;
     position: relative;
-    overflow: hidden;
+    display: flex;
+}
+
+.phoneScreen::after, .phoneScreen::before{
+    display: block;
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 100%;
+    top: 0;
+    background: white;
+}
+
+.phoneScreen::after{
+    right:0px;
+}
+
+.phoneScreen::before{
+    left:0px;
 }
 
 .phoneImg{
@@ -60,14 +78,34 @@
 .phoneOptions {
     font-size: .8rem;
     font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    gap: var(--defaultPadding);
+    padding: var(--defaultPadding);
+}
+
+.phoneOptions .MuiCheckbox-root {
+    padding: 0px !important;
 }
 
 .phoneOption {
     position: relative;
-    margin-top: .5rem;
-    margin-bottom: .5rem;
     transition: all .2s;
     font-size: .7rem;
+}
+
+.phoneOptionCheckbox {
+    display: flex;
+    align-items: center;
+}
+
+.optionPrompt {
+    display: flex;
+    align-items: center;
+}
+
+.optionPrompt .MuiSvgIcon-root {
+    color: #b5642b;
 }
 
 .phoneOption::after{
@@ -141,8 +179,11 @@
     height: 30%;
 }
 
-@media(max-width: 425px) {
+@media(max-width: 768px) {
     .phoneWidget {
-        height: 14rem;
+        height: auto;
     }
+}
+
+@media(max-width: 425px) {
 }

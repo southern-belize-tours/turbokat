@@ -12,9 +12,8 @@ class CursedTile extends React.Component {
             <div className={this.props.toggled ? "cursedTile clicked" : "cursedTile"}
                 onClick={() => {
                     this.props.clickFunction(this.props.id); 
-                }}
-                 style={this.props.style}>
-                
+                }}>
+                <img src = {this.props.img}></img>
             </div>
         );
     }

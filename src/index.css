@@ -9,7 +9,85 @@
     --defaultPadding: 1.5rem; 
     --defaultColumns: auto auto auto; 
     --defaultGridGap: 2rem; 
-    --defaultTextColor:#393A3D ; 
+    --defaultTextColor:#393A3D ;
+}
+
+.MuiDialogContent-root {
+    font-size: 1em !important;
+}
+
+.charityItem, .charityItem a{
+    color: var(--defaultTextColor);
+}
+
+.MuiBox-root {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.flex {
+    display: flex !important;
+}
+
+.flex.max {
+    flex: 1 1 auto;
+}
+
+.MuiDialogActions-root {
+    display: flex !important;
+    justify-content: space-around !important;
+}
+
+.formFields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--defaultPadding);
+    gap: 1em;
+}
+
+.formLine {
+    display: flex;
+    flex-direction: row;
+    gap: var(--defaultPadding);
+}
+
+.MuiDialogContent-root {
+    overflow-x: hidden !important;
+}
+
+.centerButtons { 
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.solvedBox, .badGuessBox {
+    color: white;
+    font-weight: bolder;
+    font-size: 2em;
+    text-align: center;
+    padding: var(--defaultPadding);
+}
+
+.solvedBox {
+    background-color: darkgreen;
+}
+
+.badGuessBox {
+    background-color: #d51a1a;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.cursedCaptchaTileBoard {
+    display: grid;
+    gap: var(--defaultPadding);
+    grid-template-columns: auto auto auto;
+}
+
+.logoList {
+    display: flex;
 }
 
 body {
@@ -46,35 +124,46 @@ h1{
     margin:0px;
 }
 
+.otherNavbarContainer .signInBtnContainer {
+    justify-content: end;
+}
+
 .navbarContainer{
-    display:grid; 
-    grid-template-columns: auto auto; 
-    grid-column-gap: var(--gridGap); 
-    text-align: center; 
-    padding: var(--navbarPadding); 
-    color: var(--clrBackground); 
-    background-color: var(--clrPrimary); 
-    font-size: var(--navbarFontSize); 
+    text-align: center;
+    padding: var(--navbarPadding);
+    color: var(--clrBackground);
+    background-color: var(--clrPrimary);
+    font-size: var(--navbarFontSize);
+    display: flex;
+    align-items: center;
+    gap: var(--defaultPadding);
+}
+
+.navbarItems {
+    display: flex;
+    height: 100%;
+    gap: var(--defaultPadding);
 }
 
 .navbarIconContainer{
-    text-align: right; 
-    padding: 8px 0px; 
+    text-align: right;
+    flex: 1 1 auto;
+    display: flex;
 }
 
 .navbarTextContainer {
-    padding-top: 2px;
     text-align: left;
-    padding: 15px 0px;
+    flex: 1 1 auto;
 }
 
 .otherNavbarContainer{
-    background-color: var(--clrBackground); 
     border-bottom: 1px solid #d4d7dc;
-    display: grid;
-    grid-template-columns: 5% 83% 12%; 
-    padding: 10px 40px; 
-    padding-bottom: 0px; 
+    display: flex;
+    gap: var(--defaultPadding);
+    align-items: center;
+    height: 4rem;
+    position: relative;
+    padding: 0 var(--defaultPadding);
 }
 
 .otherNavbarContainer div{
@@ -82,31 +171,30 @@ h1{
 }
 
 .otherNavbarContainer div a{
-    margin-left: 40px;
-    padding: 0px;
-    padding-bottom: 0px;
     font-size: 19px;
-    display: inline-block;
     cursor: pointer;
-    position: relative; 
-    vertical-align: middle; 
-    height: 100%; 
-    padding-top:25px; 
+    position: relative;
+    vertical-align: middle;
+    height: 100%;
+    display: flex;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
 }
 
 .otherNavbarContainer div a:after{
-    content:""; 
-    opacity: 0; 
-    border-bottom: 8px solid var(--clrSecondary); 
-    width: 100%; 
-    position: absolute; 
-    left: 0px; 
-    bottom: 25px; 
-    transition: opacity .5s; 
+    content: "";
+    width: 0%;
+    border-bottom: 4px solid var(--clrSecondary);
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transition: all .3s;
 }
 
 .otherNavbarContainer div a:hover:after{
-    opacity:1; 
+    width: 100%;
+    left: 0;
 }
 
 .signInBtn {
@@ -121,6 +209,8 @@ h1{
     margin-bottom: 20px;
     margin-top: 10px;
     text-align: center;
+    display: flex;
+    align-items: center;
 }
 
 .signInBtn:hover{
@@ -133,7 +223,11 @@ h1{
 }
 
 .homeBody{
-    margin: 0px var(--homeBodyMargin)
+    margin: 0px var(--homeBodyMargin);
+    display: flex;
+    padding: var(--defaultPadding) 0;
+    flex-direction: column;
+    gap: var(--defaultPadding);
 }
 
 .prettyGrid{
@@ -150,8 +244,8 @@ h1{
     text-transform: uppercase; 
 }
 
-.prettyGridPunchline{
-
+.mobileSignInContainer {
+    display: flex;
 }
 
 .prettyImage{
@@ -162,26 +256,31 @@ h1{
 }
 
 .loginBox{
-    margin: var(--defaultPadding) 0px;
-    padding: var(--defaultPadding) calc(3*var(--defaultPadding)); 
-    display: grid; 
-    grid-template-columns: auto auto; 
-    grid-column-gap: calc(3*var(--defaultPadding)); 
+    padding: var(--defaultPadding);
     border-style: solid;
     border-width: 1px;
-    border-radius: 5px; 
-    border-color: #c1c5c8; 
+    border-radius: 5px;
+    border-color: #c1c5c8;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--defaultPadding);
+}
+
+p{
+    margin: var(--defaultPadding) 0;
 }
 
 .logoGrid{
-    display: grid; 
-    grid-template-columns: auto auto; 
+    display: flex;
+    gap: var(--defaultPadding);
+    align-items: center;
 }
 
 .logoInit{
     padding-top: var(--defaultPadding); 
     font-weight: bold; 
     font-size: 2rem; 
+    flex: 0 0 auto;
 }
 
 .logoList div{
@@ -196,14 +295,12 @@ h1{
     line-height: 1.1;
     font-size: 1.5rem;
     font-weight: bold;
-    text-align: center; 
 }
 
 .signInForms {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-row-gap: 15px;
-    grid-column-gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--defaultPadding);
 }
 
 /*
@@ -224,15 +321,21 @@ h1{
     font-size: .8em; 
 }
 
+.forgot {
+    justify-content: space-between;
+}
+
 .fullRow {
-    grid-column: span 3 / auto;
     display: flex;
-    padding: 10px 0px;
+    align-items: center;
+    gap: var(--defaultPadding);
 }
 
 .signInBtnContainer{
-    padding:0px;
-    border-style:hidden; 
+    padding: 0px;
+    border-style: hidden;
+    flex: 1 1 auto;
+    display: flex;
 }
 
 .signInBtn2{
@@ -283,7 +386,6 @@ h1{
 
 .rememberMe {
     font-size: 1rem;
-    padding: 5px;
     font-weight: normal;
     font-family: "AvenirNext", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: left;
@@ -299,19 +401,20 @@ h1{
 }
 
 .imageGrid{
-    display:grid; 
-    grid-template-columns: var(--defaultColumns); 
-    grid-column-gap: var(--defaultGridGap);
+    display: flex;
+    flex-direction: row;
+    gap: var(--defaultPadding);
+    flex-wrap: wrap;
 }
 
 .tile{
     text-align: center;
-    border-radius: 5px; 
+    border-radius: 5px;
+    flex: 1 1 auto;
 }
 
 .tileTitle{
-    padding-top: 2rem; 
-    padding-bottom: 1rem;
+    padding: var(--defaultPadding) 0;
     color: var(--clrBackground); 
     font-size: 1.4rem; 
     font-weight: 500; 
@@ -320,8 +423,8 @@ h1{
 
 .startForFree {
     font-size: .58em;
-    color: var(--clrPrimary); 
-    margin-bottom: 2rem;
+    color: var(--clrPrimary);
+    margin-bottom: var(--defaultPadding);
 }
 
 .startForFree a {
@@ -342,7 +445,6 @@ h1{
 }
 
 .footer {
-    margin-top: 70px;
     min-height: 380px;
     padding: 48px 0;
     text-align: center;
@@ -422,8 +524,6 @@ h1{
 
 
 .hamburger {
-    /*padding-left: 5px;
-    padding-bottom: 10px; */ 
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 10% 10% 10%;
@@ -435,9 +535,10 @@ h1{
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-
     grid-template-rows: 20% 20% 20%;
-    align-content: space-evenly; 
+    align-content: space-evenly;
+    width: 2rem;
+    z-index: 2;
 }
 
 .left, .mid, .right {
@@ -564,9 +665,8 @@ h1{
 }
 
 .cursedTile{
-    background-color: red; 
-    height: 150px; 
-    width: 100%; 
+    height: 150px;
+    width: 150px;
     position: relative; 
 }
 
@@ -586,6 +686,7 @@ h1{
     border-style: solid; 
     border-color: green; 
     border-width: 4px;
+    left: 0px;
 }
 
 .cursedTile img{
@@ -731,19 +832,51 @@ h1{
 }
 
 @media(max-width: 768px){
+
+    .MuiDialogTitle-root, .MuiDialogContent-root {
+        padding-left: var(--defaultPadding) !important;
+        padding-right: var(--defaultPadding) !important;
+    }
+
+    .MuiDialogContent-root {
+        padding-bottom: var(--defaultPadding) !important;
+    }
+
+    .cursedTile {
+        width: 100px;
+        height: 100px;
+    }
+
     .otherNavbarContainer{
         display:none; 
     }
 
+    .homeBody {
+        margin: 0 var(--defaultPadding);
+    }
+
+    .prettyGrid{
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+        gap: var(--defaultPadding);
+    }
+
+    .hamburgerContainer {
+        flex: 1 1 auto;
+        display: flex;
+        justify-content: flex-end;
+    }
+
     .mobileNavbarContainer {
-        padding: var(--defaultPadding) ;
-        display: grid;
-        grid-column-gap: var(--defaultPadding); 
-        grid-template-columns: 70% auto auto;
         background-color: var(--clrBackground);
         border-bottom-style: solid;
         border-bottom-width: 1px;
         border-bottom-color: #d4d7dc;
+        display: flex;
+        flex-direction: row;
+        padding: var(--defaultPadding);
+        gap: var(--defaultPadding);
     }
 
     .cursedCaptcha.toggled .cursedCaptchaTileBoard,
@@ -754,8 +887,8 @@ h1{
     }
 
     .signInBtn{
-        padding: 10px 0px; 
-        margin: 0px; 
+        margin: 0px;
+        padding: var(--defaultPadding);
     }
 
     .lineupContentBox{
@@ -792,9 +925,6 @@ h1{
     }
 
     .mobileNavbarContainer {
-        grid-template-columns: 45% 45% auto;
-        grid-column-gap: 0px; 
-        padding: calc(2*var(--defaultPadding)) 5px;
     }
 
     .imageGrid{
@@ -818,14 +948,6 @@ h1{
         font-size: 1.2rem; 
     }
 
-    .signInForms{
-        display: block;
-    }
-
-    .signInForms div{
-        margin: var(--defaultPadding) 0px; 
-    }
-
     body{
         font-size: .7rem; 
         max-width: 100%; 
@@ -845,10 +967,6 @@ h1{
 
     .cursedCaptcha.toggled .cursedCaptchaTileBoard{
         grid-row-gap: 15px;
-    }
-
-    .cursedTile{
-        height: 130px;
     }
 
     .lineupContentBox{

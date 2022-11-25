@@ -1,8 +1,11 @@
 //Import Components
 import React, { Component } from 'react';
 
-import './phoneWidgetStyle.css';
+// MUI Components
+import Checkbox from '@mui/material/Checkbox';
 
+// Stylesheets
+import './phoneWidgetStyle.css';
 
 class PhoneOptions extends React.Component {
 
@@ -62,17 +65,27 @@ class PhoneOptions extends React.Component {
                 <div className = "optionPrompt">
                     {this.props.prompt}
                 </div>
-                <div className = {this.state.yesSelected ? "phoneOption selected" : "phoneOption"}
-                     onClick = {() => {this.toggleSelected(true)}}>
-                    Yes
+                <div className = "phoneOptionCheckbox">
+                    <Checkbox/> Yes
                 </div>
                 { this.state.noAvailable ?
+                    <div className = "phoneOptionCheckbox">
+                        <Checkbox/> No
+                    </div>
+                : <></>
+                }
+
+                {/* <div className = {this.state.yesSelected ? "phoneOption selected" : "phoneOption"}
+                     onClick = {() => {this.toggleSelected(true)}}>
+                    Yes
+                </div> */}
+                {/* { this.state.noAvailable ?
                     <div className = {this.state.yesSelected ? "phoneOption" : "phoneOption selected"}
                          onClick = {() => {this.toggleSelected(false)}}>
                         No
                     </div>
                     : null
-                }
+                } */}
             </div>
         );
     }

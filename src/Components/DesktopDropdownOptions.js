@@ -10,7 +10,7 @@ class DesktopDropdownOptions extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className = "navbarItems">
                 {this.props.options.map(option => (
                         <a className="desktopDropdownLink"
                            href={option.url ? option.url : "/"}>

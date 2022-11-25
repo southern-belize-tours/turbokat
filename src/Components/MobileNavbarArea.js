@@ -22,8 +22,8 @@ class MobileNavbarArea extends React.Component {
         this.captchaCallback = this.captchaCallback.bind(this); 
     }
 
-    captchaCallback() {
-        this.setState({ captchaToggle: true });
+    captchaCallback(res) {
+        this.setState({ captchaToggle: res });
     }
 
     render() {
@@ -34,9 +34,9 @@ class MobileNavbarArea extends React.Component {
                                      link={this.props.link}
                                      height={height}
                                      width={width}/> 
-                <MobileSignIn captchaFunction={this.captchaCallback}/> 
                 <MobileDropdown options={this.props.options} /> 
-                <CursedCaptcha toggled={this.state.captchaToggle} /> 
+                <MobileSignIn captchaFunction={this.captchaCallback}/> 
+                <CursedCaptcha toggled={this.state.captchaToggle} captchaFunction={this.captchaCallback}/> 
             </nav> 
         );
     }

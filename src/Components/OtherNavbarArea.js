@@ -5,6 +5,7 @@ import CursedCaptcha from './CursedCaptcha.js';
 //Import Components
 import React from 'react';
 
+// Images
 import catLogo from './../Images/General/turbokat_icon.png' 
 
 const options = []; 
@@ -33,7 +34,7 @@ class OtherNavbarArea extends React.Component {
                 <div className = "signInBtnContainer">
                     <SignInBtn captchaFunction={this.captchaCallback} />
                 </div>
-                <CursedCaptcha toggled={this.state.captchaToggle}/> 
+                <CursedCaptcha toggled={this.state.captchaToggle}/>
             </nav>
         );
     }
