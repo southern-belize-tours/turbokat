@@ -10,6 +10,13 @@
     --defaultColumns: auto auto auto;
     --defaultGridGap: 2rem; 
     --defaultTextColor:#393A3D;
+    --tileWidth: 5rem;
+    --exampleTileWidth: calc(var(--tileWidth) * .3); 
+    --defaultBorderRadius: 1rem; 
+    --defaultMargin: 2rem; 
+    --defaultFontSize: 1.05rem; 
+    --largeFontSize: 1.4rem; 
+    --smallFontSize: .8rem; 
 }
 
 .dialogItems {

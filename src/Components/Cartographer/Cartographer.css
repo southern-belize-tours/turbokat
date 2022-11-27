@@ -1,28 +1,3 @@
-:root{
-    --tileWidth: 5rem; 
-    --exampleTileWidth: calc(var(--tileWidth) * .3); 
-    --defaultBorderRadius: 1rem; 
-    --defaultPadding: 1rem; 
-    --defaultMargin: 2rem; 
-    --defaultFontSize: 1.05rem; 
-    --largeFontSize: 1.4rem; 
-    --smallFontSize: .8rem; 
-    /* --clrPrimary: #fc4c02; */
-    --clrSecondary: #3d4146;  
-    /* --clrBackground: #d0d3d4; */
-    --rh__neutral-bg3: rgb(227,233,237);
-    --rh__neutral-bg2: rgb(245,248,250);
-    --rh__neutral-bg1: rgb(255,255,255);
-
-    /* --rh__neutral-bg1: rgb(207, 207, 207); */
-
-}
-
-*{
-    font-size: var(--defaultFontSize); 
-    font-weight: 500; 
-}
-
 .exampleTileLabelContainer {
     display: flex;
     gap: var(--defaultPadding);
@@ -66,7 +41,7 @@
 
 .cartographerContainer.overlayed{
     max-height: 100vh;
-    max-width: 100vw; 
+    max-width: 100vw;
 }
 
 
@@ -84,7 +59,7 @@
     height: calc(9.3 * var(--tileWidth));
     margin-left: var(--defaultMargin); 
     width: calc(9.3 * var(--tileWidth));
-    grid-template-columns: auto auto auto auto auto auto auto auto auto;/* auto auto auto;*/ 
+    grid-template-columns: auto auto auto auto auto auto auto auto auto;
 }
 
 .cartographerGrid.selectingShape .blankTile:hover{
@@ -254,7 +229,7 @@
 }
 
 .cartographerShowArrowContainer:hover >.showMoreText{
-    font-size: calc( 1.1 * var(--defaultFontSize)); 
+    font-size: calc( 1.1 * var(--defaultFontSize));
 }
 
 .cartographerShowArrowContainer:hover >.showArrowContainer{
@@ -318,11 +293,9 @@
 }
 
 .shapeContainer.small.spaced{
-    /* grid-column-gap: 2rem; */
-    /* grid-template-columns: var(--exampleTileWidth) var(--exampleTileWidth) var(--exampleTileWidth) var(--exampleTileWidth) var(--exampleTileWidth); */
     justify-content: space-between;
      display: inline-block; 
-    width: calc(6 * (2rem +var(--exampleTileWidth)));
+    width: calc(6 * (2rem + var(--exampleTileWidth)));
 }
 
 .tileTextureContainer{
@@ -357,12 +330,10 @@
     position: absolute;
     border-color: var(--clrSecondary);
     border-style: solid;
-    /* z-index: 5; */
     overflow: hidden;
     border-radius: 2.5rem;
     padding: 5px; 
     border-width: 2px; 
-    /* top: -10%; */
     left: -1.5rem;
     top: -1.2rem;
     transition: all .3s ease-in-out; 
@@ -374,12 +345,10 @@
     position: absolute;
     border-color: var(--clrSecondary);
     border-style: solid;
-    /* z-index: 5; */
     overflow: hidden;
     border-radius: 2.5rem;
     padding: 5px; 
     border-width: 2px; 
-    /* top: -10%; */
     left: 4.5rem;
     top: -1.2rem;
     transition: all .3s ease-in-out; 
@@ -521,7 +490,6 @@
 
 .shapeRotateContainer.small::before,
 .textureContainer .shapeContainer.small.spaced .blankExampleTile::before {
-    /*30 30*/ 
     top: 44%;
     left: 14%;
     height: calc(1 * var(--exampleTileWidth));
@@ -997,7 +965,6 @@
     width: 100%;
     top: 0%;
     left: 0%;
-    /* border-width: 4px; */
     border-radius: 50%;
     position: relative;
 }
@@ -1081,11 +1048,11 @@
 }
 
 @media(max-width: 1400px){
-    :root{
+    /* :root{
         --defaultFontSize: 1.2rem; 
         --tileWidth: 3.5rem; 
         --defaultPadding: .75rem;
-    }
+    } */
 
     .contractsContainer{
         grid-template-columns: 100%;
@@ -1109,13 +1076,13 @@
 }
 
 @media(max-width: 425px){
-    :root{
+    /* :root{
         --tileWidth: 2.5rem; 
         --defaultPadding: .5rem; 
         --largeFontSize: .9rem;
         --defaultFontSize: .8rem; 
         --defaultMargin: 1rem; 
-    }
+    } */
 
     .cartographerGrid{
         height: calc(9.6 * var(--tileWidth));
