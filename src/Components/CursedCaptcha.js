@@ -7,6 +7,8 @@ import CursedCaptchaTitle from './CursedCaptchaTitle.js';
 import CursedButtonPanel from './CursedButtonPanel.js'; 
 import CursedTile from './CursedTile.js'; 
 import CursedCaptchaFailMessage from './CursedCaptchaFailMessage.js';
+import CatSpinner from './CatSpinner/CatSpinner.js';
+
 import Button from '@mui/material/Button';
 
 
@@ -98,6 +100,7 @@ class CursedCaptcha extends React.Component {
             tileMappings: [],
             captchaIndex: captchaIndex,
             numTries: 0,
+            loading: false,
             correctGuess: 0 // -1 incorrect 0 no guess 1 correct
         }
 
@@ -212,11 +215,14 @@ class CursedCaptcha extends React.Component {
         if (success) {
             successOutcome = 1;
         }
-        this.setState({correctGuess: successOutcome})
+        this.setState({correctGuess: successOutcome, loading: true})
+        setTimeout(() => {
+            this.setState({loading: false});
+        }, 2000);
         // let timeout = Math.floor(Math.random()*2000);
         setTimeout(() => {
             this.setState({correctGuess: 0});
-        }, 500)
+        }, 2500)
     }
 
     render() {
@@ -250,7 +256,9 @@ class CursedCaptcha extends React.Component {
 
               </DialogTitle>
               <DialogContent>
-                    {this.state.correctGuess== 1 ?
+                    {this.state.loading ?
+                        <CatSpinner/>
+                    :this.state.correctGuess== 1 ?
                         <div className="solvedBox">Correct</div>
                     :this.state.correctGuess== -1 ?
                         <div className="badGuessBox">Incorrect</div>

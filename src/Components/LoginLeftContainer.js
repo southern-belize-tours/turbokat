@@ -1,6 +1,9 @@
 //Import Components
 import React from 'react';
 
+// MUI Components
+import Tooltip from '@mui/material/Tooltip';
+
 
 class LoginLeftContainer extends React.Component {
 
@@ -10,15 +13,17 @@ class LoginLeftContainer extends React.Component {
 
     render() {
         return (
-            <div> 
+            <div className = "aboutKat">
                 <div className="logoGrid">
                     <div className="logoInit">Kat Likes</div>
                     <div className="logoList">
                         {this.props.turbokatFeatures.map(feature => (
-                            <div className = "logoListItem"> 
-                                <span>{feature.featureName}</span>
-                                <span>{feature.featureComponent}</span>
-                            </div> 
+                            <Tooltip title="This website uses cookies">
+                                <div className = "logoListItem">Mints
+                                    <span>{feature.featureName}</span>
+                                    <span>{feature.featureComponent}</span>
+                                </div>
+                            </Tooltip>
                           ))}
                     </div>                 
                 </div>

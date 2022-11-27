@@ -47,6 +47,7 @@ class ThinMint extends React.Component {
 
         return (
             <div
+                onClick = {() => {this.props.onClick();}}
                 className = "thinMint"
                 style = {{
                     borderWidth: borderWidth + "px",

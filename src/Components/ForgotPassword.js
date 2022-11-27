@@ -13,10 +13,22 @@ import Select from '@mui/material/Select';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
+// WebGL components
+import { Unity, useUnityContext } from "react-unity-webgl";
+
 // Custom Components
 import CatSpinner from './CatSpinner/CatSpinner.js';
 import SeriesNetwork from './SeriesNetwork/SeriesNetwork.js';
+import CentisenpaiHead from './Centisenpai/CentisenpaiHead.js';
 
+
+// Declare unity provider
+// const { unityProvider } = useUnityContext({
+//     loaderUrl: "build/myunityapp.loader.js",
+//     dataUrl: "build/myunityapp.data",
+//     frameworkUrl: "build/myunityapp.framework.js",
+//     codeUrl: "build/myunityapp.wasm",
+//   });
 
 class ForgotPassword extends React.Component {
 
@@ -47,6 +59,7 @@ class ForgotPassword extends React.Component {
             foundEmail: true,
             passwords: passwordArray
         }
+
     }
 
     addPassword() {
@@ -85,15 +98,21 @@ class ForgotPassword extends React.Component {
     render() {
         return(
             <Dialog open={this.props.openDialog}
+                className={this.state.authenticationFactor === 1 && this.state.forgotId == false && this.state.passwords.length > 4 ?
+                    "centisenpai"
+                    : ""}
                 onClose={()=>{this.props.closeDialogFunctionCallback()}}>
+              { this.state.authenticationFactor === 1 && this.state.forgotId == false && this.state.passwords.length > 4 ? 
+                <CentisenpaiHead></CentisenpaiHead>
+                : <></>}
               <DialogTitle>Forgot User ID/Password</DialogTitle>
               <DialogContent>
                   <DialogContentText id="alert-dialog-description">
                     {this.state.loading ?
                         <CatSpinner/>
                     : this.state.authenticationFactor == 0 ? 
-                       <div>
-                            <div>
+                       <div className="dialogItems">
+                            <div className="dialogTextContent">
                                 Don't worry - turbokat.org uses the highest security measures to ensure your account is safe.
                             </div>
                             <FormControl fullWidth>

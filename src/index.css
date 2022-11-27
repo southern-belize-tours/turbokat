@@ -7,9 +7,19 @@
     --navbarFontSize: 1.3rem; 
     --homeBodyMargin: 8rem;
     --defaultPadding: 1.5rem; 
-    --defaultColumns: auto auto auto; 
+    --defaultColumns: auto auto auto;
     --defaultGridGap: 2rem; 
-    --defaultTextColor:#393A3D ;
+    --defaultTextColor:#393A3D;
+}
+
+.dialogItems {
+    display: flex;
+    flex-direction: column;
+    gap: var(--defaultPadding);
+}
+
+.dialogTextContent {
+    line-height: 1em;
 }
 
 .MuiDialogContent-root {
@@ -66,6 +76,12 @@
     font-size: 2em;
     text-align: center;
     padding: var(--defaultPadding);
+    min-height: 10em;
+    min-width:10em;
+    overflow:hidden;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .solvedBox {
@@ -266,6 +282,25 @@ h1{
     gap: var(--defaultPadding);
 }
 
+.centisenpai .MuiPaper-root {
+    overflow: visible;
+    background: var(--centisenpaiBodyColor);
+}
+
+.centisenpai .MuiPaper-root .MuiDialogContent-root {
+    overflow-x: visible !important;
+    padding: 0px;
+}
+
+.centisenpai .formFields .formFields {
+    position: absolute;
+    background-color:red;
+}
+
+.centisenpai .MuiPaper-root .formLine {
+    width: 100%;
+}
+
 p{
     margin: var(--defaultPadding) 0;
 }
@@ -284,9 +319,11 @@ p{
 }
 
 .logoList div{
-    display:inline-block; 
-    padding:0px;
-    font-size: .8em; 
+    padding: 0px;
+    display: flex;
+    font-size: .8em;
+    align-items: center;
+    gap: 0.4em;
 }
 
 .loginContainerTextRow {
@@ -297,16 +334,16 @@ p{
     font-weight: bold;
 }
 
+.aboutKat {
+    flex: 1 1 45%;
+}
+
 .signInForms {
     display: flex;
     flex-direction: column;
     gap: var(--defaultPadding);
+    flex: 1 1 45%;
 }
-
-/*
-.signInForms div{
-    justify-content: center;
-}*/ 
 
 .signInForms input{
     border-style: solid;
@@ -319,10 +356,6 @@ p{
     margin: 0;
     box-sizing: border-box;
     font-size: .8em; 
-}
-
-.forgot {
-    justify-content: space-between;
 }
 
 .fullRow {
@@ -667,7 +700,8 @@ p{
 .cursedTile{
     height: 150px;
     width: 150px;
-    position: relative; 
+    position: relative;
+    cursor: pointer;
 }
 
 .cursedTile:after{

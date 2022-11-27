@@ -7,7 +7,6 @@
     border-radius: 5px;
     border-bottom-color: #c1c5c8;
     position: relative;
-    height: 25rem;
     overflow: hidden;
 }
 
@@ -32,7 +31,6 @@
 }
 
 .phoneBody {
-    height: 80%;
     background-color: #ffffff;
     position: relative;
 }

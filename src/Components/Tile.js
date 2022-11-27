@@ -1,6 +1,6 @@
 import PhoneWidget from './phoneWidget/PhoneWidget.js'; 
 //Import Components
-import React, { Component } from 'react';
+import React from 'react';
 
 
 class Tile extends React.Component {

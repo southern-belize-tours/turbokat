@@ -17,6 +17,7 @@ import Sandbox from './Components/sandbox/Sandbox.js';
 import Dosido from "./Components/sandbox/Dosido.js";
 import ThinMint from "./Components/sandbox/ThinMint.js";
 import Samosa from "./Components/sandbox/Samosa.js"
+import Cartographer from './Components/Cartographer/Cartographer.js';
 
 import logo from './logo.svg';
 import './App.css';
@@ -47,6 +48,7 @@ const options = [
     { text: "View my Rabbit's Insta", url: "https://www.instagram.com/parsley.hasselhopper/"},
     { text: "File an expert's taxes", url: "/"  },
     { text: "Look at my Rabbit", url: "/fansOnly"},
+    { text: "Play a Game", url: "/cartographer"},
     { text: "Latest News", url: "/latestNews"},
     { text: "Donate Choccy Chips", url: "https://www.paypal.com/donate/?hosted_button_id=V3GYH73CW9HN6"}
 ];
@@ -135,14 +137,17 @@ function App() {
                     /> 
                     <Route path="/events/house-warming-party"
                         exact component={() => <Housewarming />}
-                    /> 
+                    />
                     <Route path="/secret_button"
                            exact component={()=> <SecretButton />}
                     />
                     <Route path="/sandbox"
                            exact component = { () => <Sandbox /> }
                     />
-                </Switch> 
+                    <Route path="/cartographer"
+                        exact component = {()=> <Cartographer />}
+                    />
+                </Switch>
             </Router> 
             <Footer footerTitle={footerTitle}/> 
         </div>
