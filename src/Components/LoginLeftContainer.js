@@ -19,7 +19,7 @@ class LoginLeftContainer extends React.Component {
                     <div className="logoList">
                         {this.props.turbokatFeatures.map(feature => (
                             <Tooltip title="This website uses cookies">
-                                <div className = "logoListItem">Mints
+                                <div className = "logoListItem">
                                     <span>{feature.featureName}</span>
                                     <span>{feature.featureComponent}</span>
                                 </div>
