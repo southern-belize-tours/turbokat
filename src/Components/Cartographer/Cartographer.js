@@ -17,32 +17,6 @@ import availableContracts from './Utilities/availableContracts.js';
 
 const gridSize = 9; 
 const numContractorTiles = 4;
-const numContracts = 2; 
-
-const overrunShape =     {
-    name: "Agile Engineering", 
-    /*
-     * 3 = cloud computing = yellow
-     * 4 = data analytics = blue
-     * 5 = IO Systems = green
-     * 6 = Power Supplies = brown
-     * 7 = Defects = purple 
-     * 8 = Contractor
-     * 10 = Feature 
-     */ 
-    availableTextures: [3,4,5,6,7],
-    //Let 1 represent a typical tile the shape occupies and 2 represent the cursor vertex.
-    //The grid is an array of 2D arrays giving shape options.
-    //@TODO possibly implement a 3rd grid option where the Project Manager picks and it is suboptimal
-    grid: [[
-        [0, 0, 0, 0],
-        [0, 1, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-    ]],
-    gridRewards: [-2,-2], 
-    storyPoints: 2
-};
 
 const qaShape =     {
     name: "Final Correction", 
@@ -77,11 +51,11 @@ class Coordinate {
     }
 
     cmp(coord){
-        if(coord == null || 
-           coord.x == null || 
-           coord.y == null)
+        if(coord === null ||
+           coord.x === null ||
+           coord.y === null)
            return false; 
-        return this.x == coord.x && this.y == coord.y; 
+        return this.x === coord.x && this.y === coord.y;
     }
 }
 
@@ -90,23 +64,23 @@ function doDefects(tiles){
     let tempArr = tiles;
     for(let i=0;i<tiles.length;++i){
         for(let j=0;j<tiles[i].length;++j){
-            if(tempArr[i][j].type%10==7){
-                if(tempArr[i-1] && tempArr[i-1][j].type%10==0)
+            if(tempArr[i][j].type%10 === 7) {
+                if(tempArr[i-1] && tempArr[i-1][j].type%10 === 0)
                 {
                     count+=1; 
                     tempArr[i-1][j].type = 8; 
                 }
-                if(tempArr[i+1] && tempArr[i+1][j].type%10==0)
+                if(tempArr[i+1] && tempArr[i+1][j].type%10 === 0)
                 {
                     count+=1;
                     tempArr[i+1][j].type = 8;
                 }
-                if(tempArr[i][j-1] && tempArr[i][j-1].type%10==0)
+                if(tempArr[i][j-1] && tempArr[i][j-1].type%10 === 0)
                 {
                     count+=1;
                     tempArr[i][j-1].type = 8; 
                 }
-                if(tempArr[i][j+1] && tempArr[i][j+1].type%10==0)
+                if(tempArr[i][j+1] && tempArr[i][j+1].type%10 === 0)
                 {
                     count+=1; 
                     tempArr[i][j+1].type = 8;
@@ -116,20 +90,20 @@ function doDefects(tiles){
     }
     for(let i=0;i<tiles.length;++i){
         for(let j=0;j<tiles[i].length;++j){
-            if(tiles[i][j].type%10==7){
-                if((tiles[i-1] && tiles[i-1][j].type%10==0)     || 
-                   (tiles[i+1] && tiles[i+1][j].type%10==0)     ||
-                   (tiles[i][j-1] && tiles[i][j-1].type%10==0)  ||
-                   (tiles[i][j+1] && tiles[i][j+1].type%10==0)) 
+            if(tiles[i][j].type%10 === 7) {
+                if((tiles[i-1] && tiles[i-1][j].type%10 === 0)     ||
+                   (tiles[i+1] && tiles[i+1][j].type%10 === 0)     ||
+                   (tiles[i][j-1] && tiles[i][j-1].type%10 === 0)  ||
+                   (tiles[i][j+1] && tiles[i][j+1].type%10 === 0))
                 {
                     let chanceOfCorruption = Math.floor(Math.random()*5)
-                    if(chanceOfCorruption==1 && tiles[i-1]) tiles[i-1][j].type=7; 
-                    if(chanceOfCorruption==2 && tiles[i+1]) tiles[i+1][j].type=7; 
-                    if(chanceOfCorruption==3 && tiles[i][j-1]) tiles[i][j-1].type=7;
-                    if(chanceOfCorruption==4 && tiles[i][j+1]) tiles[i][j+1].type=7; 
+                    if(chanceOfCorruption === 1 && tiles[i-1]) tiles[i-1][j].type=7;
+                    if(chanceOfCorruption === 2 && tiles[i+1]) tiles[i+1][j].type=7;
+                    if(chanceOfCorruption === 3 && tiles[i][j-1]) tiles[i][j-1].type=7;
+                    if(chanceOfCorruption === 4 && tiles[i][j+1]) tiles[i][j+1].type=7;
                 }
             }
-            else if(tiles[i][j].type%10==8)tiles[i][j].type=0; 
+            else if (tiles[i][j].type%10 === 8)tiles[i][j].type=0;
         }
     }
     return count*-1; 
@@ -151,7 +125,6 @@ class Cartographer extends React.Component{
             }
             tileArr.push(tileRow); 
         }
-        let temp = [];
         this.state = {
             processingSprint: false, 
             time: {}, seconds: 70,
@@ -194,10 +167,7 @@ class Cartographer extends React.Component{
         for(let i=0;i<tempArr.length;++i){
             for(let j=0;j<tempArr[i].length;++j){
                 let tempTile = tempArr[i][j];
-                let type = tempTile.type; 
-                let x = tempTile.xIndex; 
-                let y = tempTile.yIndex;
-                //{xIndex: i, yIndex: j, type: 0, onHover: null}
+                let type = tempTile.type;
                 tempArr[i][j] = {xIndex: i, yIndex: j, type: type, onHover: this.tileHoverFunction, clickFunction: this.tileClickFunction};//<Tile type = {type} xIndex = {x} yIndex = {y} onHover = {this.tileHoverFunction}/> 
             }
         }
@@ -212,10 +182,10 @@ class Cartographer extends React.Component{
     }
 
     processSprintSeconds(){
-        if(this.state.sprint==0)return 70; 
-        else if(this.state.sprint==1)return 60; 
-        else if(this.state.sprint==2)return 50; 
-        else if(this.state.sprint==3)return 40; 
+        if(this.state.sprint === 0)return 70;
+        else if(this.state.sprint === 1)return 60;
+        else if(this.state.sprint === 2)return 50;
+        else if(this.state.sprint === 3)return 40;
         return 40; 
     }
 
@@ -228,7 +198,6 @@ class Cartographer extends React.Component{
                 tileArr[i][j].type=0; 
             }
         }
-        let temp = [];
         this.setState({
             processingSprint: false, 
             time: {}, seconds: 70,
@@ -260,9 +229,6 @@ class Cartographer extends React.Component{
             for(let j=0;j<tempArr[i].length;++j){
                 let tempTile = tempArr[i][j];
                 let type = tempTile.type; 
-                let x = tempTile.xIndex; 
-                let y = tempTile.yIndex;
-                //{xIndex: i, yIndex: j, type: 0, onHover: null}
                 tempArr[i][j] = {xIndex: i, yIndex: j, type: type, onHover: this.tileHoverFunction, clickFunction: this.tileClickFunction};//<Tile type = {type} xIndex = {x} yIndex = {y} onHover = {this.tileHoverFunction}/> 
             }
         }
@@ -309,13 +275,13 @@ class Cartographer extends React.Component{
     }
 
     startTimer() {
-        if (this.timer == 0 && this.state.seconds > 0) {
+        if (this.timer === 0 && this.state.seconds > 0) {
           this.timer = setInterval(this.countDown, 1000);
         } 
     }
 
     stopTimer() { 
-        if (this.timer!=0 && this.state.seconds > 0){
+        if (this.timer !== 0 && this.state.seconds > 0) {
             clearInterval(this.timer); 
         }
     }
@@ -331,17 +297,16 @@ class Cartographer extends React.Component{
         } 
       // Remove one second, set state so a re-render happens.
       let seconds = this.state.seconds - 1;
-      if(seconds==0){
+      if (seconds === 0) {
         (this.shapesMissed[this.shapesMissed.length-1]++)
           if(this.state.currShape.availableTextures.includes(7)){
               this.state.chosenShape = this.state.currShape.grid[0];
               this.state.chosenTexture = 7;  
-              this.state.selectingShape = true; 
+              this.state.selectingShape = true;
               let tX = Math.floor(Math.random()*gridSize); 
               let tY = Math.floor(Math.random()*gridSize); 
               let idc = true;//this.computeTileCollisions(tX, tY); 
-              let idcTwo = null; 
-              while(idc==true)
+              while(idc === true)
               {
                 if(this.tileHoverFunction(null, tX, tY))
                 {
@@ -378,7 +343,7 @@ class Cartographer extends React.Component{
           else{
             let tempSeconds=this.processSprintSeconds(); 
             this.setState({currShape: shapes[temp],
-                qaAction: this.state.processingSprint==true? true: false, 
+                qaAction: this.state.processingSprint === true ? true: false,
                 budgetOverrun: false,
                 selectingShape: false, 
                 storyPoints: this.state.storyPoints + this.state.currShape.storyPoints,
@@ -465,7 +430,7 @@ class Cartographer extends React.Component{
 
     selectShape(shape, texture){
         let reward = this.state.points; 
-        if(this.state.currShape.grid[0]==shape)reward += this.state.currShape.gridRewards[0]; 
+        if(this.state.currShape.grid[0] === shape)reward += this.state.currShape.gridRewards[0];
         else reward += this.state.currShape.gridRewards[1]; 
         let currPoints = reward - this.state.points; 
         this.setState({
@@ -487,7 +452,7 @@ class Cartographer extends React.Component{
                 {
                     if((x+i >= this.state.tiles.length || x+i < 0) || 
                        (y+j >= this.state.tiles[0].length || y+j < 0) || 
-                       (this.state.tiles[x+i][y+j].type!=0 && this.state.tiles[x+i][y+j].type!=10)) 
+                       (this.state.tiles[x+i][y+j].type !== 0 && this.state.tiles[x+i][y+j].type !== 10))
                     {
                        if(ret.length && !(ret[0]==="-1")){
                            let t = ret[0];
@@ -505,18 +470,17 @@ class Cartographer extends React.Component{
     }
 
     tileClickFunction(x, y,e){
-        if(e.target.className.indexOf("hoverBad")!=-1)
+        if(e.target.className.indexOf("hoverBad") !== -1)
         {
             if(!this.state.processingSprint || this.state.qaAction)return
             else if(this.state.selectingShape)
             {
                 let tempArr = [...this.state.tiles]; 
-                if(tempArr[x][y].type==9 || tempArr[x][y].type==0)return; 
+                if(tempArr[x][y].type === 9 || tempArr[x][y].type === 0)return;
                 else console.log(tempArr[x][y].type);
                 let tempTileProps = {xIndex: x, yIndex: y, type: 0, onHover: this.tileHoverFunction, clickFunction: this.tileClickFunction, additionalClasses: ""};
-                tempArr[x][y]=tempTileProps; 
-
-                let temp = this.chooseShape(); 
+                tempArr[x][y]=tempTileProps;
+                let temp = this.chooseShape();
                 this.bonusPoints[this.bonusPoints.length-1]+=this.state.currPoints; 
                 let tempSeconds = this.processSprintSeconds(); 
                 this.setState({currShape: shapes[temp],
@@ -540,7 +504,7 @@ class Cartographer extends React.Component{
                     {
                         let tempTileProps = {xIndex: i, 
                             yIndex: j, 
-                            type: tempArr[i][j].type == 10 ? this.state.chosenTexture+10 : this.state.chosenTexture,
+                            type: tempArr[i][j].type === 10 ? this.state.chosenTexture+10 : this.state.chosenTexture,
                             onHover: this.tileHoverFunction,
                             clickFunction: this.tileClickFunction, 
                             additionalClasses: ""};
@@ -566,10 +530,8 @@ class Cartographer extends React.Component{
                     sprint: s, 
                     points: this.p[this.p.length-1].reduce((a,b)=>a+b)+this.state.points, 
                     sprintReview: true,
-                    qaAction: this.state.processingSprint==true? true: false, 
+                    qaAction: this.state.processingSprint === true? true: false,
                     processingSprint: true})
-                //setTimeout(()=>{this.setState({processingSprint: false})}, 10000)
-                //this.stopTimer(); 
             }
             else 
             {
@@ -603,9 +565,9 @@ class Cartographer extends React.Component{
         let shapeXOrigin = -1;
         let shapeYOrigin = -1; 
         for(let i=0;i<tempShape.length;++i){
-            if(shapeXOrigin!=-1 && shapeYOrigin != -1)break; 
+            if(shapeXOrigin !== -1 && shapeYOrigin !== -1)break;
             for(let j=0;j<tempShape[i].length;++j){
-                if(tempShape[i][j] == 1){
+                if(tempShape[i][j] === 1){
                     shapeXOrigin = i; 
                     shapeYOrigin = j; 
                     break; 
@@ -613,7 +575,7 @@ class Cartographer extends React.Component{
             }
         }
         let res = (this.computeTileCollisions(x-shapeXOrigin, y-shapeYOrigin)); 
-        if(res!=false){
+        if(res !== false){
             this.setState({hoverTiles: [...res]})
             let tempArr = [...this.state.tiles]; 
             for(let i=0;i<tempArr.length;++i){
@@ -647,14 +609,14 @@ class Cartographer extends React.Component{
                 let c3 = <div className = {`storyTile ${((i<=this.state.sprint && j<this.state.storyPoints) || i<this.state.sprint) ? "grey" : ""}`}></div>;
                 c2.push(c3); 
             }
-            let component = <div className = {`sprintTile ${i==this.state.sprint ? "orange" : ""}`}>
+            let component = <div className = {`sprintTile ${i===this.state.sprint ? "orange" : ""}`}>
                 {c2}
                 <div>Sprint {i+1}</div>
             </div>;
             sprintComponents.push(component); 
         }
         let arr = []; 
-        this.state.tiles.map(row => {row.map(tile =>
+        this.state.tiles.foreach(row => {row.foreach(tile =>
             { 
             let temp = <Tile onHover = {tile.onHover}
                   key = {parseInt(tile.xIndex)+","+parseInt(tile.yIndex)}
@@ -733,7 +695,7 @@ class Cartographer extends React.Component{
                                             Deltas and Roadblocks: 
                                         </div>
                                         <div className = "contractBoxDescription">
-                                            {this.p[this.p.length-1][this.p[this.p.length-1].length-1] !=0 ? 
+                                            {this.p[this.p.length-1][this.p[this.p.length-1].length-1] !==0 ?
                                                 <div className = "valueBox">
                                                     Points Lost from Defects:  
                                                     <span className = "valueLabel">
@@ -741,12 +703,12 @@ class Cartographer extends React.Component{
                                                     </span>
                                                 </div>
                                             :null}
-                                            {this.shapesMissed.length>1 && this.shapesMissed[this.shapesMissed.length-2]!=0 ? 
-                                                <div className = "valueBox">Features Your Team Failed to Place: 
+                                            {this.shapesMissed.length>1 && this.shapesMissed[this.shapesMissed.length-2]!==0 ?
+                                                <div className = "valueBox">Features Your Team Failed to Place:
                                                     <span className = "valueLabel">{this.shapesMissed[this.shapesMissed.length-2]}</span></div>
-                                            :this.p[this.p.length-1][this.p[this.p.length-1].length-1] ==0 ? 
+                                            : this.p[this.p.length-1][this.p[this.p.length-1].length-1] === 0 ?
                                                 <div>No Deltas nor Roadblocks for this sprint!</div>
-                                            :null}
+                                            : null}
                                         </div> 
                                     </div>
                                     <div className = "contractBox" style = {{gridColumn: "1/3", textAlign: "center", fontSize: "var(--largeFontSize)"}}>
@@ -802,7 +764,7 @@ class Cartographer extends React.Component{
                                             Deltas and Roadblocks: 
                                         </div>
                                         <div className = "contractBoxDescription">
-                                            {this.p[sprint][this.p[sprint].length-1] !=0 ? 
+                                            {this.p[sprint][this.p[sprint].length-1] !== 0 ?
                                                 <div className = "valueBox">
                                                     Points Lost from Defects:  
                                                     <span className = "valueLabel">
@@ -810,12 +772,12 @@ class Cartographer extends React.Component{
                                                     </span>
                                                 </div>
                                             :null}
-                                            {this.shapesMissed.length>1 && this.shapesMissed[sprint]!=0 ? 
+                                            {this.shapesMissed.length>1 && this.shapesMissed[sprint] !== 0 ?
                                                 <div className = "valueBox">Features Your Team Failed to Place: 
                                                     <span className = "valueLabel">{this.shapesMissed[sprint]}</span></div>
-                                            :this.p[sprint][this.p[sprint].length-1] ==0 ? 
+                                            : this.p[sprint][this.p[sprint].length-1] === 0 ?
                                                 <div>No Deltas nor Roadblocks for this sprint!</div>
-                                            :null}
+                                            : null}
                                         </div> 
                                     </div>
                                 </div> 

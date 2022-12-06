@@ -1,5 +1,5 @@
 // Import Components
-import React, { Component } from 'react';
+import React from 'react';
 
 class CursedCaptchaFailMessage extends React.Component {
 

@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
-import ContractBox from './ContractBox';
+import React from 'react';
 import ExampleTile from './ExampleTile.js';
-
 
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Typography from '@mui/material/Typography';
 
 class ContractsContainer extends React.Component{
     
@@ -61,9 +58,9 @@ class ContractsContainer extends React.Component{
                                                     { 
                                                         contract.exampleGrid.map(exampleGridRow =>(
                                                             exampleGridRow.map(tile =>(
-                                                                <ExampleTile type = {tile == 1 ? "contractorTile" : tile == 2 ? "neutral" 
-                                                                                   : tile == 3 ? "dataAnalytics" : tile == 4 ? "ccServer" 
-                                                                                   : tile == 5 ? "ioSystems" : tile == 6 ? "powerSupply" : "" }
+                                                                <ExampleTile type = {tile === 1 ? "contractorTile" : tile === 2 ? "neutral" 
+                                                                                   : tile === 3 ? "dataAnalytics" : tile === 4 ? "ccServer" 
+                                                                                   : tile === 5 ? "ioSystems" : tile === 6 ? "powerSupply" : "" }
                                                                               feature = {tile >= 10 ? true : false}/> 
                                                             ))
                                                         )) 

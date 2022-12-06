@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 // import PressRelease from './PressRelease.js'; 
 
 import businessImage from '../Images/business.jpg'
@@ -42,10 +42,10 @@ class News extends React.Component{
 						<div className = "date">{titleContent.logistics.place}</div> 
 						<div className = "logistic">{titleContent.logistics.other}</div>
 					</div> 
-					<img src = {businessImage}></img>
+					<img src = {businessImage} alt="big big business"></img>
 					<div className = "newsTextContainer">
 					<div className = "fakePanelContainer">
-						<img className = "fakePanel" src={fakePanel}></img>
+						<img className = "fakePanel" src={fakePanel} alt="fake panel"></img>
 					</div> 
 					<div className = "newsText">
 						<p>

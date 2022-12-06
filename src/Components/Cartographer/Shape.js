@@ -1,23 +1,21 @@
-import React, { Component } from 'react';   
-import { clustersNextToThreeTerrains } from './Utilities/cartographerUtils';
+import React from 'react';   
 
 import './Cartographer.css'; 
 
 import ExampleTile from './ExampleTile.js'; 
 import RotateButton from './RotateButton.js'; 
 import FlipButton from './FlipButton.js'; 
-import Tile from './Tile.js';
 
-const transpose = matrix => {
-    for (let row = 0; row < matrix.length; row++) {
-      for (let column = 0; column < row; column++) {
-        let temp = matrix[row][column]
-        matrix[row][column] = matrix[column][row]
-        matrix[column][row] = temp
-      }
-    }
-    return matrix;
-}
+// const transpose = matrix => {
+//     for (let row = 0; row < matrix.length; row++) {
+//       for (let column = 0; column < row; column++) {
+//         let temp = matrix[row][column]
+//         matrix[row][column] = matrix[column][row]
+//         matrix[column][row] = temp
+//       }
+//     }
+//     return matrix;
+// }
 
 const rotate = temp => {
     return temp.map((row, i) =>
@@ -31,7 +29,7 @@ const flip = temp => {
     );
 };
 
-const reverse = matrix =>  matrix.map(row => row.reverse());
+// const reverse = matrix =>  matrix.map(row => row.reverse());
 
 class Shape extends React.Component{
     
@@ -146,7 +144,7 @@ class Shape extends React.Component{
     render(){
         return(
             <div> 
-                <div className = "contractsContainerTitle">{this.props.shape.availableTextures.length == 1 && this.props.shape.availableTextures[0] == 7 ? "Defect Shape: " : "Sprint Shape: "} {this.props.shape.name}</div>
+                <div className = "contractsContainerTitle">{this.props.shape.availableTextures.length === 1 && this.props.shape.availableTextures[0] === 7 ? "Defect Shape: " : "Sprint Shape: "} {this.props.shape.name}</div>
                 <div className = "contractBoxSprints">
                         <div className = "smallText">Story Points</div>
                         <div className = "contractBoxSprintContainer">{this.props.shape.storyPoints }</div>
@@ -155,12 +153,12 @@ class Shape extends React.Component{
                 <div className = "contractBoxName">{!this.state.textureChosen ? "Select Texture For Shape on Right" : 
                                                     !this.state.shapeChosen ? "Select Configuration" : 
                                                      this.state.shapeChosen && this.state.textureChosen ? "Select Rotation:" : ""}
-                                                    {(this.props.shape.availableTextures.length == 1 && this.props.shape.availableTextures[0] == 7) || this.props.shape.name==="Final Correction"? 
+                                                    {(this.props.shape.availableTextures.length === 1 && this.props.shape.availableTextures[0] === 7) || this.props.shape.name === "Final Correction"? 
                                                     " (QA Lead)" : " (PEM)"}
                 </div>
                 <div className = "shapeOptions"> 
                 {
-                    this.state.textureChosen == false ? 
+                    this.state.textureChosen === false ?
                     <div className = "textureContainer">
                             <div className = "shapeContainer small spaced"> 
                                 {this.props.shape.availableTextures.map(texture =>(
@@ -173,7 +171,7 @@ class Shape extends React.Component{
                             <div className = "shapeContainer small"> 
                             {this.state.chosenShape.map(row => (
                                 row.map(tile => (
-                                    tile == 0 ? <ExampleTile/> : 
+                                    tile === 0 ? <ExampleTile/> :
                                     <ExampleTile type = {"neutral"}/> 
                                 ))
                             ))}
@@ -181,13 +179,13 @@ class Shape extends React.Component{
                     </div> 
                     : 
                     this.state.shapeChosen && this.state.textureChosen ? 
-                    <div className = {`shapeRotateContainer small ${this.state.rotation == 90 ? " ninetyDeg" :  this.state.rotation == 180 ? " eightyDeg" :
-                    this.state.rotation==270 ? " seventyDeg" : ""} ${this.state.flip ? "flip" : "gfds"}`}>
+                    <div className = {`shapeRotateContainer small ${this.state.rotation === 90 ? " ninetyDeg" :  this.state.rotation === 180 ? " eightyDeg" :
+                    this.state.rotation === 270 ? " seventyDeg" : ""} ${this.state.flip ? "flip" : "gfds"}`}>
                         <div className = "rotateCircleInner">
                             <div className = "shapeContainer small"> 
                             {this.state.chosenShape.map(row => (
                                 row.map(tile => (
-                                    tile == 0 ? <ExampleTile/> : 
+                                    tile === 0 ? <ExampleTile/> : 
                                     <ExampleTile type = {this.state.texture == null ? "neutral" : this.state.texture}
                                     border={this.props.shape.name==="Final Correction" ? true : false}/> 
                                 ))
@@ -197,8 +195,8 @@ class Shape extends React.Component{
                     </div> 
                     :
                     this.props.shape.grid.map((shapeOption, idx) => (
-                    <div className = {`shapeRotateContainer option small ${this.state.rotation == 90 ? " ninetyDeg" : this.state.rotation == 180 ? " eightyDeg" :
-                     this.state.rotation==270 ? " seventyDeg" : ""}`}
+                    <div className = {`shapeRotateContainer option small ${this.state.rotation === 90 ? " ninetyDeg" : this.state.rotation === 180 ? " eightyDeg" :
+                     this.state.rotation === 270 ? " seventyDeg" : ""}`}
                          onClick = {(event) => {
                              this.setState({
                                  points: this.props.shape.gridRewards[idx], 
@@ -210,19 +208,21 @@ class Shape extends React.Component{
                             <div className = "shapeContainer small"> 
                                 {shapeOption.map(row =>(
                                     row.map(tile =>(
-                                        tile == 0 ? <ExampleTile/> :
+                                        tile === 0 ? <ExampleTile/> :
                                         <ExampleTile type = {
                                             this.state.texture == null ? "neutral" : this.state.texture}/>
                                     ))
                                 ))}
                             </div>
                         </div> 
-                        {this.props.shape.gridRewards[idx]==1 ? <div className = "pointsContainer">+ {this.props.shape.gridRewards[idx]} Contract {this.props.shape.gridRewards[idx] > 1 ? "Points" : "Point"}</div> : null}
+                        {this.props.shape.gridRewards[idx] === 1 ?
+                            <div className = "pointsContainer">+ {this.props.shape.gridRewards[idx]} Contract {this.props.shape.gridRewards[idx] > 1 ? "Points" : "Point"}</div> : null}
                     </div> 
                 ))}
                 </div>
                 {
-                    this.state.shapeChosen == true && this.state.textureChosen == true ? 
+                    this.state.shapeChosen === true &&
+                    this.state.textureChosen === true ?
                         <>
                         <RotateButton rotateState = {this.state.rotation} 
                                       clickFunction = {this.rotateButtonCallback}/>
@@ -232,7 +232,8 @@ class Shape extends React.Component{
                     : null
                 }
                 <div className = "shapeButtonGrid">
-                    {this.state.textureChosen == true && this.props.shape.availableTextures.length > 1 ? 
+                    {this.state.textureChosen === true &&
+                     this.props.shape.availableTextures.length > 1 ?
                            <div className = "shapeButton"
                            onClick = {()=>{
                                this.backToTexture(); 
@@ -240,7 +241,8 @@ class Shape extends React.Component{
                           Back to Texture
                       </div>  
                     :
-                    this.state.shapeChosen == true && this.props.shape.grid.length > 1 ?
+                    this.state.shapeChosen === true &&
+                    this.props.shape.grid.length > 1 ?
                         <div className = "shapeButton"
                              onClick = {()=>{
                                  this.backToConfiguration(); 
@@ -248,7 +250,8 @@ class Shape extends React.Component{
                             Back to Configuration
                         </div> 
                         : null}
-                    {this.state.textureChosen == true && this.state.shapeChosen == true  ? 
+                    {this.state.textureChosen === true &&
+                     this.state.shapeChosen === true  ?
                         <div className = "shapeButton"
                              onClick = {()=>{
                                  this.selectShape(); 

@@ -13,12 +13,8 @@ import Select from '@mui/material/Select';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
-// WebGL components
-import { Unity, useUnityContext } from "react-unity-webgl";
-
 // Custom Components
 import CatSpinner from './CatSpinner/CatSpinner.js';
-import SeriesNetwork from './SeriesNetwork/SeriesNetwork.js';
 import CentisenpaiHead from './Centisenpai/CentisenpaiHead.js';
 
 
@@ -79,7 +75,7 @@ class ForgotPassword extends React.Component {
         // Logic to randomly fail pulling up their email
         if(this.state.authenticationFactor === 1) {
             let correctEmail = Math.floor(Math.random()*2);
-            if( correctEmail == 0) {
+            if( correctEmail === 0) {
                 this.setState({authenticationFactor: nextAuthentication, foundEmail: true, loading: true})
             } else {
                 this.setState({foundEmail: false, loading: true})
@@ -98,11 +94,11 @@ class ForgotPassword extends React.Component {
     render() {
         return(
             <Dialog open={this.props.openDialog}
-                className={this.state.authenticationFactor === 1 && this.state.forgotId == false && this.state.passwords.length > 4 ?
+                className={this.state.authenticationFactor === 1 && this.state.forgotId === false && this.state.passwords.length > 4 ?
                     "centisenpai"
                     : ""}
                 onClose={()=>{this.props.closeDialogFunctionCallback()}}>
-              { this.state.authenticationFactor === 1 && this.state.forgotId == false && this.state.passwords.length > 4 ? 
+              { this.state.authenticationFactor === 1 && this.state.forgotId === false && this.state.passwords.length > 4 ? 
                 <CentisenpaiHead></CentisenpaiHead>
                 : <></>}
               <DialogTitle>Forgot User ID/Password</DialogTitle>
@@ -110,7 +106,7 @@ class ForgotPassword extends React.Component {
                   <DialogContentText id="alert-dialog-description">
                     {this.state.loading ?
                         <CatSpinner/>
-                    : this.state.authenticationFactor == 0 ? 
+                    : this.state.authenticationFactor === 0 ?
                        <div className="dialogItems">
                             <div className="dialogTextContent">
                                 Don't worry - turbokat.org uses the highest security measures to ensure your account is safe.
@@ -129,10 +125,10 @@ class ForgotPassword extends React.Component {
                                 </Select>
                               </FormControl>
                        </div>
-                    : this.state.authenticationFactor == 1 ?
-                        this.state.forgotId == true ?
+                    : this.state.authenticationFactor === 1 ?
+                        this.state.forgotId === true ?
                             <div className = "formFields">
-                                {this.state.foundEmail == true ?
+                                {this.state.foundEmail === true ?
                                 <div>
                                     Please enter the email address associated with your account
                                 </div>
@@ -153,7 +149,7 @@ class ForgotPassword extends React.Component {
                                     {this.state.passwords}
                                 </div>
                             </div>
-                    : this.state.authenticationFactor == 2 ?
+                    : this.state.authenticationFactor === 2 ?
                         <div className = "formFields">
                             <div>
                                 Great! We have been able to retrieve your information.
@@ -168,7 +164,6 @@ packet is damaged, it is lost along the entire network and must be retransmitted
 node. How many packets Nk
  should we expect to send?
                             </div>
-                            <SeriesNetwork/>
                              <TextField id="securityAnswer" label="Answer" multiline
                                 rows={4}variant="outlined" />
                         </div>

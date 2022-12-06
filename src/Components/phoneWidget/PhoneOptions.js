@@ -1,5 +1,5 @@
 //Import Components
-import React, { Component } from 'react';
+import React from 'react';
 
 // MUI Components
 import Checkbox from '@mui/material/Checkbox';
@@ -66,11 +66,13 @@ class PhoneOptions extends React.Component {
                     {this.props.prompt}
                 </div>
                 <div className = "phoneOptionCheckbox">
-                    <Checkbox/> Yes
+                    <Checkbox checked = {this.state.yesSelected === true}
+                        onChange = {() => {this.toggleSelected(true)}}/> Yes
                 </div>
                 { this.state.noAvailable ?
                     <div className = "phoneOptionCheckbox">
-                        <Checkbox/> No
+                        <Checkbox checked = {this.state.yesSelected === false}
+                            onChange = {() => {this.toggleSelected(false)}}/> No
                     </div>
                 : <></>
                 }

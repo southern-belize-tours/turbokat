@@ -9,8 +9,8 @@ class HousewarmingGrid extends React.Component {
         for (let i = 0; i < props.tiles.length; ++i) {
             let currStyle = { backgroundImage: `url(${props.tiles[i].img})` }; 
             let currTile = <div
-                className={i == 0 ? "housewarmingGridTile down" : 
-                          i == 3 ? "housewarmingGridTile" : 
+                className={i === 0 ? "housewarmingGridTile down" : 
+                          i === 3 ? "housewarmingGridTile" : 
                         "housewarmingGridTile long"}>
 
                 <div className="housewarmingGridTileChild" style={currStyle}>

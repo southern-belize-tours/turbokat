@@ -8,8 +8,6 @@ import React from 'react';
 // Images
 import catLogo from './../Images/General/turbokat_icon.png' 
 
-const options = []; 
-
 class OtherNavbarArea extends React.Component {
 
     constructor(props) {
@@ -20,8 +18,11 @@ class OtherNavbarArea extends React.Component {
         this.captchaCallback = this.captchaCallback.bind(this); 
     }
 
-    captchaCallback() {
-        this.setState({ captchaToggle: true }); 
+    captchaCallback(open) {
+        if (open === null) {
+            open = true;
+        }
+        this.setState({ captchaToggle: open }); 
     }
 
     render() {
@@ -32,9 +33,10 @@ class OtherNavbarArea extends React.Component {
                                      width="60px" /> 
                 <DesktopDropdownOptions options={this.props.options} />
                 <div className = "signInBtnContainer">
-                    <SignInBtn captchaFunction={this.captchaCallback} />
+                    <SignInBtn captchaFunction={this.captchaCallback}/>
                 </div>
-                <CursedCaptcha toggled={this.state.captchaToggle}/>
+                <CursedCaptcha captchaFunction = {this.captchaCallback}
+                    toggled={this.state.captchaToggle}/>
             </nav>
         );
     }

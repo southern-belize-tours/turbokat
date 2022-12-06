@@ -10,11 +10,14 @@ class RotateButton extends React.Component{
     render(){
         return(
             <div className = "rotateButtonPositioner">
-            <div className = {this.props.rotateState == 90 ? "rotateButtonContainer ninetyDeg"
-                            : this.props.rotateState == 180 ? "rotateButtonContainer eightyDeg" 
-                            : this.props.rotateState == 270 ? "rotateButtonContainer seventyDeg"
-                            : "rotateButtonContainer"} 
-                 onClick = {() => {
+            <div className = {this.props.rotateState === 90 ?
+                    "rotateButtonContainer ninetyDeg"
+                : this.props.rotateState === 180 ? 
+                    "rotateButtonContainer eightyDeg" 
+                : this.props.rotateState === 270 ?
+                    "rotateButtonContainer seventyDeg"
+                : "rotateButtonContainer"} 
+                onClick = {() => {
                     this.props.clickFunction(); 
                 }}>
                 <div className = "rotateCircleInner">

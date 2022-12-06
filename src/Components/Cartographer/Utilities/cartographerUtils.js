@@ -30,17 +30,17 @@ function nextTo(x, y, z){
 
 //Takes in the array, the tile type it is searching for, and a minimum cluster size. 
 function countClusters(skyMap, type, evaluationFunction, evalCriteria, clusterSizes, adjacentMountains) {
-    if (skyMap[0]==null) {
+    if (skyMap[0]===null) {
       return 0;
     }
-    if(adjacentMountains==null)
+    if(adjacentMountains===null)
         adjacentMountains = []; 
     let height = skyMap.length;
     let width = skyMap[0].length;
     let clouds = 0;
     for (let i = 0; i < height; i++) {
       for (let j = 0; j < width; j++) {
-        if (skyMap[i][j]%10 == type) {
+        if (skyMap[i][j]%10 === type) {
           let adjacentTextures = []; 
           adjacentMountains.push([]); 
           let retVal = Math.max(1, walkInClouds(i, j, skyMap, type, adjacentTextures, adjacentMountains[adjacentMountains.length-1]));
@@ -68,7 +68,7 @@ function countClusters(skyMap, type, evaluationFunction, evalCriteria, clusterSi
     let ret = 0//curr; 
     //Sky [i-1] is the previous row. Sky[i-1][j] is the above tile. 
    
-    if (+(sky[i - 1] && sky[i - 1][j]%10==type)) {
+    if (+(sky[i - 1] && sky[i - 1][j]%10===type)) {
       sky[i - 1][j]=0;
       ret+=walkInClouds(i - 1, j, sky, type, adjacentTextures, adjacentMountains);
       ++ret; 
@@ -76,50 +76,50 @@ function countClusters(skyMap, type, evaluationFunction, evalCriteria, clusterSi
     else if(sky[i-1]/* && !adjacentTextures.includes(sky[i-1][j]%10)*/)
     {
         adjacentTextures.push(sky[i-1][j]%10); 
-        if(sky[i-1][j]%10==9){
+        if(sky[i-1][j]%10===9){
             if(!adjacentMountains.includes(parseInt(i-1)+","+parseInt(j)))adjacentMountains.push(parseInt(i-1)+","+parseInt(j)); 
         }
     }
-    else if(sky[i-1]==null && !adjacentTextures.includes(-1))adjacentTextures.push(-1); 
+    else if(sky[i-1]===null && !adjacentTextures.includes(-1))adjacentTextures.push(-1); 
   
-    if (+(sky[i][j + 1] && sky[i][j+1]%10==type)) {
+    if (+(sky[i][j + 1] && sky[i][j+1]%10===type)) {
       sky[i][j + 1]=0;
       ret+=walkInClouds(i, j + 1, sky, type, adjacentTextures, adjacentMountains);
       ++ret;  
     }else if(sky[i][j+1]/* && !adjacentTextures.includes(sky[i][j+1]%10)*/)
     {
         adjacentTextures.push(sky[i][j+1]%10);
-        if(sky[i][j+1]%10==9){
+        if(sky[i][j+1]%10===9){
             if(!adjacentMountains.includes(parseInt(i)+","+parseInt(j+1)))adjacentMountains.push(parseInt(i)+","+parseInt(j+1)); 
         }
     }
-    else if(sky[i][j+1]==null && !adjacentTextures.includes(-1))adjacentTextures.push(-1);  
+    else if(sky[i][j+1]===null && !adjacentTextures.includes(-1))adjacentTextures.push(-1);  
   
-    if (+(sky[i + 1] && sky[i + 1][j]%10==type)) {
+    if (+(sky[i + 1] && sky[i + 1][j]%10===type)) {
       sky[i + 1][j]=0;
       ret+=walkInClouds(i + 1, j, sky, type, adjacentTextures, adjacentMountains);
       ++ret; 
     }else if(sky[i+1]/* && !adjacentTextures.includes(sky[i+1][j]%10)*/)
     {
         adjacentTextures.push(sky[i+1][j]%10); 
-        if(sky[i+1][j]%10==9){
+        if(sky[i+1][j]%10===9){
             if(!adjacentMountains.includes(parseInt(i+1)+","+parseInt(j)))adjacentMountains.push(parseInt(i+1)+","+parseInt(j)); 
         }
     }
-    else if(sky[i+1]==null && !adjacentTextures.includes(-1))adjacentTextures.push(-1); 
+    else if(sky[i+1]===null && !adjacentTextures.includes(-1))adjacentTextures.push(-1); 
   
-    if (+(sky[i][j - 1] && sky[i][j-1]%10==type)) {
+    if (+(sky[i][j - 1] && sky[i][j-1]%10===type)) {
       sky[i][j - 1]=0;
       ret+=walkInClouds(i, j - 1, sky, type, adjacentTextures, adjacentMountains);
       ++ret; 
     }else if(sky[i][j-1]/* && !adjacentTextures.includes(sky[i][j-1]%10)*/)
     {
         adjacentTextures.push(sky[i][j-1]%10);
-        if(sky[i][j-1]%10==9){
+        if(sky[i][j-1]%10===9){
             if(!adjacentMountains.includes(parseInt(i)+","+parseInt(j-1)))adjacentMountains.push(parseInt(i)+","+parseInt(j-1)); 
         }
     }
-    else if(sky[i][j-1]==null && !adjacentTextures.includes(-1))adjacentTextures.push(-1); 
+    else if(sky[i][j-1]===null && !adjacentTextures.includes(-1))adjacentTextures.push(-1); 
     //if(!+left && !+up && !+right && !+down)++ret; 
     return ret;
 }
@@ -129,7 +129,7 @@ export function bottomAndLeftDiagonals(tiles){
     for(let i=tiles.length-1;i>=0;--i){
         let res=true; 
         for(let j=0;j<tiles[i].length-i;++j){
-            if(tiles[j][i+j].type%10==0){
+            if(tiles[j][i+j].type%10===0){
                 res = false; 
                 break;
             }
@@ -145,9 +145,9 @@ export function rowsAndColumns(tiles){
         let res = true; 
         let res2 = true; 
         for(let j=0;j<tiles[i].length;++j){
-            if(tiles[i][j].type%10==0)
+            if(tiles[i][j].type%10===0)
                 res = false; 
-            if(tiles[j][i].type%10==0)
+            if(tiles[j][i].type%10===0)
                 res2 = false; 
         }
         if(res)points+=3; 
@@ -161,14 +161,14 @@ export function hasHoles(tiles){
     let points = 0; 
     for(let i=0;i<tiles.length;++i){
         for(let j=0;j<tiles[i].length;++j){
-            if(tiles[i][j].type%10==0)
+            if(tiles[i][j].type%10===0)
             {
                 //Note we don't mod% these because we are searching if any of the surrounding tiles are
                 //empty then they get no points. Else it's an edge or SOMETHING interesting. Also 10 counts. 
-                if(!((i>=1 && (tiles[i-1][j].type%10==0)) ||
-                      (j>=1 && (tiles[i][j-1].type%10==0)) ||
-                      (i<tiles.length-1 && (tiles[i+1][j].type%10==0)) || 
-                      (j<tiles[i].length-1 && (tiles[i][j+1].type%10==0))))
+                if(!((i>=1 && (tiles[i-1][j].type%10===0)) ||
+                      (j>=1 && (tiles[i][j-1].type%10===0)) ||
+                      (i<tiles.length-1 && (tiles[i+1][j].type%10===0)) || 
+                      (j<tiles[i].length-1 && (tiles[i][j+1].type%10===0))))
                 {
                     points+=2; 
                 }
@@ -183,7 +183,7 @@ export function squareEdge(tiles){
     for(let i=0;i<tiles.length;++i){
         tempArr.push([]); 
         for(let j=0;j<tiles[i].length;++j){
-            tempArr[i].push(tiles[i][j].type%10==0? 0 : 1); 
+            tempArr[i].push(tiles[i][j].type%10===0? 0 : 1); 
         }
     }
     let i, j, S; 
@@ -197,7 +197,7 @@ export function squareEdge(tiles){
             S[ y ].push(0);
         }
     }
-        let max_of_s, max_i, max_j; 
+        let max_of_s;
         
         /* Set first column of S[][]*/
         for(i = 0; i < R; i++) 
@@ -212,7 +212,7 @@ export function squareEdge(tiles){
         { 
             for(j = 1; j < C; j++) 
             { 
-                if(M[i][j] == 1) 
+                if(M[i][j] === 1) 
                     S[i][j] = Math.min(S[i][j-1],Math.min( S[i-1][j], 
                                     S[i-1][j-1])) + 1; 
                 else
@@ -220,18 +220,16 @@ export function squareEdge(tiles){
             } 
         } 
 
-        max_of_s = S[0][0]; max_i = 0; max_j = 0; 
-        for(i = 0; i < R; i++) 
+        max_of_s = S[0][0];
+        for(i = 0; i < R; i++)
         { 
-            for(j = 0; j < C; j++) 
+            for(j = 0; j < C; j++)
             { 
                 if(max_of_s < S[i][j]) 
                 { 
                     max_of_s = S[i][j]; 
-                    max_i = i; 
-                    max_j = j; 
                 } 
-            }             
+            }
         } 
         return 3*max_of_s; 
 
@@ -241,7 +239,7 @@ export function squareEdge(tiles){
                 let square = true; 
                 for(let l=i;l<tempArr.length-k+1;++l){
                     for(let m=j;m<tempArr.length-k+1;++m){
-                        if(tempArr[l][m]%10==0){
+                        if(tempArr[l][m]%10===0){
                             square=false;
                             break;
                         } 
@@ -266,11 +264,11 @@ export function nearFeatures(tiles){
     for(let i=0;i<tiles.length;++i){
         for(let j=0;j<tiles[i].length;++j){
             if(tiles[i][j].type>=10){
-                if(tiles[i][j].type==13)points+=3; 
-                if(i>=1 && tiles[i-1][j].type==4)points++; 
-                if(j>=1 && tiles[i][j-1].type==4)points++; 
-                if(i<tiles.length-1 && tiles[i+1][j].type==4)points++; 
-                if(j<tiles[i].length-1 && tiles[i][j+1].type==4)points++; 
+                if(tiles[i][j].type===13)points+=3; 
+                if(i>=1 && tiles[i-1][j].type===4)points++; 
+                if(j>=1 && tiles[i][j-1].type===4)points++; 
+                if(i<tiles.length-1 && tiles[i+1][j].type===4)points++; 
+                if(j<tiles[i].length-1 && tiles[i][j+1].type===4)points++; 
             }
         }
     }
@@ -281,17 +279,17 @@ export function adjacency(tiles){
     let points = 0; 
     for(let i=0;i<tiles.length;++i){
         for(let j=0;j<tiles[i].length;++j){
-            if(tiles[i][j].type%10==4){
-                if(i>=1 && tiles[i-1][j].type%10==3)points++; 
-                else if(j>=1 && tiles[i][j-1].type%10==3)points++; 
-                else if(i<tiles.length-1 && tiles[i+1][j].type%10==3)points++; 
-                else if(j<tiles[i].length-1 && tiles[i][j+1].type%10==3)points++; 
+            if(tiles[i][j].type%10===4){
+                if(i>=1 && tiles[i-1][j].type%10===3)points++; 
+                else if(j>=1 && tiles[i][j-1].type%10===3)points++; 
+                else if(i<tiles.length-1 && tiles[i+1][j].type%10===3)points++; 
+                else if(j<tiles[i].length-1 && tiles[i][j+1].type%10===3)points++; 
             }
-            else if(tiles[i][j].type%10==3){
-                if(i>=1 && tiles[i-1][j].type%10==4)points++; 
-                else if(j>=1 && tiles[i][j-1].type%10==4)points++; 
-                else if(i<tiles.length-1 && tiles[i+1][j].type%10==4)points++; 
-                else if(j<tiles[i].length-1 && tiles[i][j+1].type%10==4)points++; 
+            else if(tiles[i][j].type%10===3){
+                if(i>=1 && tiles[i-1][j].type%10===4)points++; 
+                else if(j>=1 && tiles[i][j-1].type%10===4)points++; 
+                else if(i<tiles.length-1 && tiles[i+1][j].type%10===4)points++; 
+                else if(j<tiles[i].length-1 && tiles[i][j+1].type%10===4)points++; 
             }
         }
     }
@@ -310,23 +308,23 @@ export function nearContractorSystems(x){
     }
     for(let i=0;i<tiles.length;++i){
         for(let j=0;j<tiles[i].length;++j){
-            if(tiles[i][j]%10==9){
-                if(i>=1 && (tiles[i-1][j]%10==3 || tiles[i-1][j]%10==4))
+            if(tiles[i][j]%10===9){
+                if(i>=1 && (tiles[i-1][j]%10===3 || tiles[i-1][j]%10===4))
                 {
                     points+=2; 
                     tiles[i-1][j]=0; 
                 }
-                if(j>=1 && (tiles[i][j-1]%10==3 || tiles[i][j-1]%10==4))
+                if(j>=1 && (tiles[i][j-1]%10===3 || tiles[i][j-1]%10===4))
                 {
                     points+=2; 
                     tiles[i][j-1]=0; 
                 }
-                if(i<tiles.length-1 && (tiles[i+1][j]%10==3 || tiles[i+1][j]%10==4))
+                if(i<tiles.length-1 && (tiles[i+1][j]%10===3 || tiles[i+1][j]%10===4))
                 {
                     points+=2; 
                     tiles[i+1][j]=0; 
                 }
-                if(j<tiles[i].length-1 && (tiles[i][j+1]%10==3 || tiles[i][j+1]%10==4))
+                if(j<tiles[i].length-1 && (tiles[i][j+1]%10===3 || tiles[i][j+1]%10===4))
                 {
                     points+=2; 
                     tiles[i][j+1]=0;
@@ -348,21 +346,21 @@ export function notAdjacencyNorEdge(tiles){
             tempArr[i].push(tiles[i][j].type); 
         }
     }
-    let clusterSizes = []; 
     let temp = countClusters(tempArr, 3, notNextToList, [4,-1]);
     temp += countClusters(tempArr, 4, notNextToList, [3,-1]);
     return temp*2; 
 }
+
 //Earn 1 point for each I/O system with all 4 edges surrounded by occuppied tiles, contractor black boxes, or edges.
 export function surrounded(tiles){
     let points = 0; 
     for(let i=0;i<tiles.length;++i){
         for(let j=0;j<tiles[i].length;++j){
-            if(tiles[i][j].type%10==5){
-                if(!((i>0 && tiles[i-1][j].type%10==0) || 
-                   (i<tiles.length01 && tiles[i+1][j].type%10==0) || 
-                   (j>0 && tiles[i][j-1].types%10==0) ||
-                   (j<tiles[i].length-1 && tiles[i][j+1].type%10==0)))points++;
+            if(tiles[i][j].type%10===5){
+                if(!((i>0 && tiles[i-1][j].type%10===0) || 
+                   (i<tiles.length01 && tiles[i+1][j].type%10===0) || 
+                   (j>0 && tiles[i][j-1].types%10===0) ||
+                   (j<tiles[i].length-1 && tiles[i][j+1].type%10===0)))points++;
             }
         }
     }
@@ -396,8 +394,8 @@ export function columnsContainingIOSystems(tiles){
         let row = false; 
         let col = false; 
         for(let j=0;j<tiles.length;++j){
-            if(tiles[i][j].type%10 == 5)row = true; 
-            if(tiles[j][i].type%10 == 5)col = true; 
+            if(tiles[i][j].type%10 === 5)row = true; 
+            if(tiles[j][i].type%10 === 5)col = true; 
         }
         if(row)++points;
         if(col)++points; 
@@ -409,15 +407,15 @@ export function columnsContainingIOSystems(tiles){
 //"Earn 1 point for each tile space along the edges occuppied by an I/O system = 5"
 export function outputSystems(tiles){
     //Add the four edges together first so that we don't double-count for the O(n) loop
-    let points = (tiles[0][0].type%10==5 ? 1 : 0) + 
-                 (tiles[0][tiles[0].length-1].type%10==5 ? 1 : 0) + 
-                 (tiles[tiles.length-1][0].type%10==5 ? 1 : 0) + 
-                 (tiles[tiles.length-1][tiles[tiles.length-1].length-1].type%10==5 ? 1 : 0); 
+    let points = (tiles[0][0].type%10===5 ? 1 : 0) + 
+                 (tiles[0][tiles[0].length-1].type%10===5 ? 1 : 0) + 
+                 (tiles[tiles.length-1][0].type%10===5 ? 1 : 0) + 
+                 (tiles[tiles.length-1][tiles[tiles.length-1].length-1].type%10===5 ? 1 : 0); 
     for(let i=1;i<tiles.length-1;++i){
-        if(tiles[i][0].type%10==5)++points;
-        if(tiles[i][tiles.length-1].type%10==5)++points; 
-        if(tiles[0][i].type%10==5)++points;
-        if(tiles[tiles.length-1][i].type%10==5)++points; 
+        if(tiles[i][0].type%10===5)++points;
+        if(tiles[i][tiles.length-1].type%10===5)++points; 
+        if(tiles[0][i].type%10===5)++points;
+        if(tiles[tiles.length-1][i].type%10===5)++points; 
     }
     return points;  
 }

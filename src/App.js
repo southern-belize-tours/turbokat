@@ -19,14 +19,12 @@ import ThinMint from "./Components/sandbox/ThinMint.js";
 import Samosa from "./Components/sandbox/Samosa.js"
 import Cartographer from './Components/Cartographer/Cartographer.js';
 
-import logo from './logo.svg';
 import './App.css';
-
 
 function importAll(r) {
     let ret = [];
     let i = 0;
-    r.keys().map((item, index) => { ret[item.replace('./', '')] = r(item); ++i });
+    r.keys().map((item,) => { ret[item.replace('./', '')] = r(item); ++i });
     ret["numKeys"] = i;
     return ret;
 }

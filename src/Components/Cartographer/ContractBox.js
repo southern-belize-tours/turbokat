@@ -1,6 +1,6 @@
-import React, { Component } from 'react';   
+import React from 'react';
 
-import ExampleTile from './ExampleTile.js'; 
+import ExampleTile from './ExampleTile.js';
 
 class ContractBox extends React.Component{
 
@@ -40,9 +40,9 @@ class ContractBox extends React.Component{
                             { 
                                 this.props.exampleGrid.map(exampleGridRow =>(
                                     exampleGridRow.map(tile =>(
-                                        <ExampleTile type = {tile == 1 ? "contractorTile" : tile == 2 ? "neutral" 
-                                                           : tile == 3 ? "dataAnalytics" : tile == 4 ? "ccServer" 
-                                                           : tile == 5 ? "ioSystems" : tile == 6 ? "powerSupply" : "" }
+                                        <ExampleTile type = {tile === 1 ? "contractorTile" : tile === 2 ? "neutral" 
+                                                           : tile === 3 ? "dataAnalytics" : tile === 4 ? "ccServer" 
+                                                           : tile === 5 ? "ioSystems" : tile === 6 ? "powerSupply" : "" }
                                                       feature = {tile >= 10 ? true : false}/> 
                                     ))
                                 )) 

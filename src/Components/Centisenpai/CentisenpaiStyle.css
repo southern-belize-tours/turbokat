@@ -26,6 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .centisenpaiFace {
@@ -130,7 +131,7 @@
     border-radius: 4rem;
 }
 
-.centisenpaiClaw.right::before { 
+.centisenpaiClaw.right::before {
     content: '';
     height: 94px;
     position: absolute;
@@ -142,11 +143,73 @@
     border: solid 1px #4d606f;
 }
 
+.centisenpaiMouth.left {
+    border: solid black 2px;
+    background: white;
+    height: 10px;
+    position: absolute;
+    width: 11px;
+    top: 58px;
+    left: 24px;
+    border-top: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 7px;
+    transform: rotate(45deg);
+}
+
+.centisenpaiMouth.right {
+    border: solid black 2px;
+    background: white;
+    height: 10px;
+    position: absolute;
+    width: 11px;
+    top: 58px;
+    right: 24px;
+    border-top: none;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 7px;
+    transform: rotate(-45deg);
+}
+
+.centisenpaiMouth.top {
+    border-top: solid black 2px;
+    width: 18px;
+    left: 31px;
+    top: 56px;
+    position: absolute;
+}
+
+.centisenpaiMouth.top::after{
+    background: black;
+    width: 27px;
+    top: 3px;
+    height: 1px;
+    left: -4px;
+    content: '';
+    position: absolute;
+    z-index: 2;
+    animation: mouth-chomping 1s 1s infinite;
+}
+
+.antennaSegment {
+    background-color: var(--centisenpaiBodyColor);
+    width: 2px;
+    position: absolute;
+    width: 10px;
+}
+
 .centisenpai .MuiPaper-root .formLine {
-    animation: segment-animation 2.5s 1s infinite;
-    -webkit-animation: segment-animation 2.5s 1s infinite;
+    /* animation: segment-animation 2.5s 1s infinite; */
+    /* -webkit-animation: segment-animation 2.5s 1s infinite; */
         -webkit-animation-timing-function: cubic-bezier(0.2, 0, 0.09, 1);
     animation-timing-function: cubic-bezier(0.2, 0, 0.09, 1);
+}
+
+@keyframes mouth-chomping{
+    50% {
+        height: 4px;
+        top: 2px;
+    }
 }
 
 @keyframes segment-animation {

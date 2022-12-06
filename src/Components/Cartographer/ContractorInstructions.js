@@ -11,12 +11,8 @@ import AcUnitIcon from '@mui/icons-material/AcUnit';
 import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import AirIcon from '@mui/icons-material/Air';
-import Box from '@mui/material/Box';
 
-// Custom Components
-import CartographerStartButton from './CartographerStartButton.js';
-
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+autoPlay(SwipeableViews);
 
 /* Instructions TODO list: 
  * 1) Potentially talk about getting points for contractor black boxes. 
@@ -29,37 +25,6 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
  * 8) Figure out who gets to place the defect tiles
  * 9) Consider the potential of defect tiles corrupting adjacent tiles. 
  */
-const instructions = [
-    <div className = "instructionBullet">
-        You are part of a team competing with several other competitive contractors to secure a systems contract from a demanding customer.
-    </div>
-];
-
-{/* <div className = "instructionBullet">
-        <div className = "instructionGridTitle">Determine Your Roles</div> 
-            <div>
-            <div className = "definitionTitle">
-                PM
-                <div className = "definition">
-                    The PM is responsible for planning the requirements, hosting the activity on their monitor, and making actions on behalf of their team.
-                    The PM can also make the decision to "overrun the budget", allowing the team to choose a flexible, single square of any type, but costing the team 2 contract points each time this is done. 
-                </div>      
-            </div>    
-            <div className = "definitionTitle">
-                PEM
-                <div className = "definition">
-                    The PEM is responsible for making any choices for selecting different feature types and shape configurations. 
-                </div>      
-            </div> 
-            <div className = "definitionTitle">
-                QA Lead
-                <div className = "definition">
-                    The QA Lead is responsible for mitigating losses from defects by placing the defect tiles. 
-                    At the end of each sprint, the QA Lead also has the ability to correct one defect by removing any non-blackbox tile on the board. 
-                </div>      
-            </div>                    
-    </div>
-</div>, */}
 
 const instructionReelContent = [
 <div className = "instructionBullet">
@@ -266,7 +231,7 @@ class ContractorInstructions extends React.Component{
                 this.setState({instructionIndex: newIdx});
             }}
             disabled={
-                this.state.instructionIndex == maxSteps - 1
+                this.state.instructionIndex === maxSteps - 1
             }
           >
             Next

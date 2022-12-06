@@ -1,6 +1,6 @@
 import Tile from './Tile.js'; 
 //Import Components
-import React, { Component } from 'react';
+import React from 'react';
 
 
 class FilingOptions extends React.Component {

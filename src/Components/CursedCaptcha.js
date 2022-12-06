@@ -1,12 +1,8 @@
 // MUI
 import Dialog from '@mui/material/Dialog';
-import { DialogTitle, DialogActions, DialogContent, DialogContentText } from '@mui/material';
+import { DialogTitle, DialogActions, DialogContent } from '@mui/material';
 
-import CursedCaptchaTileBoard from './CursedCaptchaTileBoard.js'; 
-import CursedCaptchaTitle from './CursedCaptchaTitle.js'; 
-import CursedButtonPanel from './CursedButtonPanel.js'; 
 import CursedTile from './CursedTile.js'; 
-import CursedCaptchaFailMessage from './CursedCaptchaFailMessage.js';
 import CatSpinner from './CatSpinner/CatSpinner.js';
 
 import Button from '@mui/material/Button';
@@ -22,19 +18,6 @@ function importAll(r) {
     ret["numKeys"] = i;
     return ret;
 }
-
-let samsquantchImages = importAll(require.context('../Images/CursedCaptcha/Samsquantch', false, /\.(jpg)$/)); 
-let samsquantchSolution = [
-    { correct: true },
-    {correct: false},
-    {correct: false},
-    {correct: true },
-    {correct: true },
-    {correct: false},
-    {correct: true },
-    {correct: true },
-    { correct: false },
-]; 
 
 let captchas = [
     {
@@ -110,7 +93,7 @@ class CursedCaptcha extends React.Component {
         this.state.tileMappings = tempMappings; 
         this.setState({ tileMappings: tempMappings })
         //initializes the tiles on the current captcha 
-        this.initializeTiles(this.state.captchaIndex); 
+        this.initializeTiles(this.state.captchaIndex);
     }
 
 
@@ -118,12 +101,11 @@ class CursedCaptcha extends React.Component {
         this.tiles = []; 
         let dict = captchas[this.state.captchaIndex].images; 
         let i = 0; 
-        for (const [key, value] of Object.entries(dict)) {
+        for (const [key, ] of Object.entries(dict)) {
             if (!dict[key].default) {
                 ++i;
                 continue; 
             }
-            let style = { backgroundImage: `url(${dict[key].default})` };
             this.tiles.push(<CursedTile clickFunction={this.tileCallbackFunction}
                 img = {dict[key].default}
                 correct={captchas[this.state.captchaIndex].correct}
@@ -137,7 +119,7 @@ class CursedCaptcha extends React.Component {
 
     changeCaptcha() {
         // Increment the number of attempts
-        let currNumTries = this.state.numTries++;
+        let currNumTries = this.state.numTries + 1;
         this.setState({numTries: currNumTries})
         if (this.state.numTries > 3) {
             this.setState({failed: true})
@@ -146,13 +128,11 @@ class CursedCaptcha extends React.Component {
         let tileMappings = []; 
         let captchaIndex = this.state.captchaIndex; 
         let x = captchaIndex; 
-        while(captchaIndex==x)
+        while(captchaIndex === x)
             captchaIndex = Math.floor(Math.random() * captchas.length);
         for (let i = 0; i < captchas[captchaIndex].solution.length; ++i)tileMappings.push(false); 
-        this.state.tileMappings = tileMappings; 
         this.setState({ solved: false, tileMappings: tileMappings, captchaIndex: captchaIndex });
         let idc = captchaIndex; 
-        this.state.captchaIndex = idc; 
         this.setState({ captchaIndex: idc }); 
         this.initializeTiles(this.state.captchaIndex);
     }
@@ -177,7 +157,6 @@ class CursedCaptcha extends React.Component {
             toggled={this.state.tileMappings[tileId]}
             img={this.tiles[tileId].props.img} />;
         this.tiles.splice(tileId, 1, tile); 
-        this.state.tileMappings = tempMappings;
         this.setState({ tileMappings: tempMappings });
     }
 
@@ -199,7 +178,7 @@ class CursedCaptcha extends React.Component {
         let tempMappings = this.state.tileMappings; 
         for (let i = 0; i < captchas[this.state.captchaIndex].solution.length; ++i)
         {
-            if (captchas[this.state.captchaIndex].solution[i].correct != tempMappings[i]) ret = false; 
+            if (captchas[this.state.captchaIndex].solution[i].correct !== tempMappings[i]) ret = false; 
         }
         if (!ret) {
             this.changeCaptcha();
@@ -245,7 +224,7 @@ class CursedCaptcha extends React.Component {
 
             <Dialog open={this.props.toggled}>
               <DialogTitle>
-                {this.state.correctGuess == 0 ? 
+                {this.state.correctGuess === 0 ? 
                     <>
                     <div><span>Select all images with a </span>
                     <span className = "bold">{captchas[this.state.captchaIndex].name}.</span>
@@ -258,28 +237,25 @@ class CursedCaptcha extends React.Component {
               <DialogContent>
                     {this.state.loading ?
                         <CatSpinner/>
-                    :this.state.correctGuess== 1 ?
+                    :this.state.correctGuess === 1 ?
                         <div className="solvedBox">Correct</div>
-                    :this.state.correctGuess== -1 ?
+                    :this.state.correctGuess === -1 ?
                         <div className="badGuessBox">Incorrect</div>
                     :
                         <div className="cursedCaptchaTileBoard">{this.tiles}</div>
                     }
                 </DialogContent>
-                {this.state.correctGuess == 0 ? 
+                {this.state.correctGuess === 0 ? 
                     <DialogActions>
                     <Button variant="contained"
                         onClick={this.buttonCallbackFunction}>
                             Verify
                     </Button>
                     <Button variant="contained"
-                        onClick={()=>{this.props.captchaFunction(false)}}>
+                        onClick={()=>{
+                            this.props.captchaFunction(false);}}>
                             Give Up
                         </Button>
-                      {/* <Button onClick={handleClose}>Disagree</Button>
-                      <Button onClick={handleClose} autoFocus>
-                        Agree
-                      </Button> */}
                     </DialogActions>
                 : <></>}
             </Dialog>

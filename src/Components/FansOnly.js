@@ -20,8 +20,7 @@ class FansOnly extends React.Component {
     constructor(props) {
         super();
         this.images = [];
-        for (const [key, value] of Object.entries(images)) {
-           // console.log(key, value);
+        for (const [key,] of Object.entries(images)) {
            this.images.push(key);
         }
     }
@@ -37,9 +36,8 @@ class FansOnly extends React.Component {
                     {this.images.map((item) => (
                       <ImageListItem key={item}>
                         <img
+                          alt="The beautiful bunnuy Parsley Psychomantis Hasslehopper"
                           src={`${images[item].default}?w=248&fit=crop&auto=format`}
-                        //   srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                        //   alt={item.title}
                           loading="lazy"
                         />
                       </ImageListItem>
@@ -47,13 +45,6 @@ class FansOnly extends React.Component {
                   </ImageList>
                 </Box>
                 <div>
-                    {/* {this.images.map(image => (
-                        <div className="parsleyPic"> 
-                            <img src={images[image].default}
-                                height="200px"
-                                width="200px"
-                                loading="lazy"/> 
-                        </div> ))} */}
                 </div>
             </div> 
         );

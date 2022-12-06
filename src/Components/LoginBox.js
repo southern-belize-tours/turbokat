@@ -1,7 +1,7 @@
 import LoginLeftContainer from './LoginLeftContainer.js'; 
 import LoginRightContainer from './LoginRightContainer.js'; 
 //Import Components
-import React, { Component } from 'react';
+import React from 'react';
 
 
 class LoginBox extends React.Component {

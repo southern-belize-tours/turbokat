@@ -13,15 +13,10 @@ class CursedTile extends React.Component {
                 onClick={() => {
                     this.props.clickFunction(this.props.id); 
                 }}>
-                <img src = {this.props.img}></img>
+                <img alt="cursed captcha tile" src = {this.props.img}></img>
             </div>
         );
     }
 }
 
 export default CursedTile;
-
-
-/*                <div className="cursedTile"
-                onClick={() => {}}
-                                 style={style}>*/

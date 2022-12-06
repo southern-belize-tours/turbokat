@@ -10,8 +10,6 @@ import catLogo from './../Images/General/turbokat_icon.png'
 let height = "35px";
 let width = "35px"; 
 
-const options = [];
-
 class MobileNavbarArea extends React.Component {
 
     constructor(props) {

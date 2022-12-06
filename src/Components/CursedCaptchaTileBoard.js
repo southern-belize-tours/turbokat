@@ -8,9 +8,9 @@ class CursedCaptchaTileBoard extends React.Component {
         super();
         this.tileClickFunction = this.tileClickFunction.bind(this); 
         this.tiles = [];
-        for (const [key, value] of Object.entries(props.images)) {
-            if (!props.images[key].default) continue; 
-            let style = { backgroundImage: `url(${props.images[key].default})` }; 
+        for (const [key, ] of Object.entries(props.images)) {
+            if (!props.images[key].default) continue;
+            let style = { backgroundImage: `url(${props.images[key].default})` };
             this.tiles.push(<CursedTile clickFunction = {this.tileClickFunction} style={style}/>); 
         }
     }
@@ -29,8 +29,3 @@ class CursedCaptchaTileBoard extends React.Component {
 }
 
 export default CursedCaptchaTileBoard;
-
-
-/*                <div className="cursedTile"
-                onClick={() => {}}
-                                 style={style}>*/ 

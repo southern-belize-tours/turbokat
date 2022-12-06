@@ -1,10 +1,10 @@
 
-import React, { Component } from 'react';   
+import React from 'react';   
 
 
 class CartographerStartButton extends React.Component{
 
-    constructor(){
+    constructor(props){
         super(); 
 
     }

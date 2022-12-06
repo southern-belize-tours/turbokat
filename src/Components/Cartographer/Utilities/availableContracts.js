@@ -10,7 +10,6 @@ import {secondLargestCluster,
     notAdjacencyNorEdge, 
     nearContractorSystems, 
     adjacency,
-    nearFeatures,
     squareEdge, 
     rowsAndColumns,
     bottomAndLeftDiagonals} from './cartographerUtils.js';

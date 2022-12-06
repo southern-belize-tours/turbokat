@@ -2,7 +2,7 @@ import PrettyGridCaption from './PrettyGridCaption.js';
 import PrettyGridPunchline from './PrettyGridPunchline.js'; 
 
 //Import Components
-import React, { Component } from 'react';   
+import React from 'react';   
 
 import prettyImg from '../Images/Home/kat_grid.png'; 
 
