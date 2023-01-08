@@ -1,10 +1,19 @@
-import React from 'react';   
+import React from 'react';
 
-import './Cartographer.css'; 
+import './Cartographer.css';
 
-import ExampleTile from './ExampleTile.js'; 
-import RotateButton from './RotateButton.js'; 
-import FlipButton from './FlipButton.js'; 
+import ExampleTile from './ExampleTile.js';
+import RotateButton from './RotateButton.js';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import FlipButton from './FlipButton.js';
+import { Button } from '@mui/material';
+import CheckIcon from '@mui/icons-material/Check';
+import MoreTimeIcon from '@mui/icons-material/MoreTime';
+import Tooltip from '@mui/material/Tooltip';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+
+
+// Mui imports
 
 // const transpose = matrix => {
 //     for (let row = 0; row < matrix.length; row++) {
@@ -142,122 +151,131 @@ class Shape extends React.Component{
     }
 
     render(){
+        // Convert integer story points into icon array for rendering
+        let storyPointIcons = []
+        for (let i = 0; i < this.props.shape.storyPoints; ++i) {
+            storyPointIcons.push(<MoreTimeIcon></MoreTimeIcon>);
+        }
+        // Compute a tooltip for the time the shape will add 
+        let storyPointTitle = "This shape will add " + this.props.shape.storyPoints + "units of time to the current season"
         return(
-            <div> 
+            <div className = "flex col max spaced">
                 <div className = "contractsContainerTitle">{this.props.shape.availableTextures.length === 1 && this.props.shape.availableTextures[0] === 7 ? "Defect Shape: " : "Sprint Shape: "} {this.props.shape.name}</div>
-                <div className = "contractBoxSprints">
-                        <div className = "smallText">Story Points</div>
-                        <div className = "contractBoxSprintContainer">{this.props.shape.storyPoints }</div>
-                    </div> 
-                <div className = "shapeOptionsContainer"></div>
-                <div className = "contractBoxName">{!this.state.textureChosen ? "Select Texture For Shape on Right" : 
-                                                    !this.state.shapeChosen ? "Select Configuration" : 
-                                                     this.state.shapeChosen && this.state.textureChosen ? "Select Rotation:" : ""}
-                                                    {(this.props.shape.availableTextures.length === 1 && this.props.shape.availableTextures[0] === 7) || this.props.shape.name === "Final Correction"? 
-                                                    " (QA Lead)" : " (PEM)"}
-                </div>
-                <div className = "shapeOptions"> 
-                {
-                    this.state.textureChosen === false ?
-                    <div className = "textureContainer">
-                            <div className = "shapeContainer small spaced"> 
-                                {this.props.shape.availableTextures.map(texture =>(
-                                        <div className = "tileTextureContainer"><ExampleTile type = {texture} clickFunction = {this.selectTexture}/></div>
-                                    ))
-                                }
-                            </div>
-                            <div className = "shapeRotateContainer small">
-                                <div className = "rotateCircleInner">
-                            <div className = "shapeContainer small"> 
-                            {this.state.chosenShape.map(row => (
-                                row.map(tile => (
-                                    tile === 0 ? <ExampleTile/> :
-                                    <ExampleTile type = {"neutral"}/> 
-                                ))
+                <div className = "flex row max spaced wrap">
+                    <div className="flexContainer flex max">
+                        <div className = "contractBoxName">{!this.state.textureChosen ? "Select Texture For Shape on Right" : 
+                                                            !this.state.shapeChosen ? "Select Configuration" : 
+                                                            this.state.shapeChosen && this.state.textureChosen ? "Select Rotation:" : ""}
+                        </div>
+                        <div className = "shapeOptionsContainer">
+                            <div className = "shapeOptions">
+                            {
+                                this.state.textureChosen === false ?
+                                <div className = "textureContainer">
+                                        <div className = "shapeContainer small spaced"> 
+                                            {this.props.shape.availableTextures.map(texture =>(
+                                                    <div className = "tileTextureContainer"><ExampleTile type = {texture} clickFunction = {this.selectTexture}/></div>
+                                                ))
+                                            }
+                                        </div>
+                                        <div className = "shapeRotateContainer small">
+                                            <div className = "rotateCircleInner">
+                                        <div className = "shapeContainer small"> 
+                                        {this.state.chosenShape.map(row => (
+                                            row.map(tile => (
+                                                tile === 0 ? <ExampleTile/> :
+                                                <ExampleTile type = {"neutral"}/> 
+                                            ))
+                                        ))}
+                                        </div></div></div>  
+                                </div> 
+                                : 
+                                this.state.shapeChosen && this.state.textureChosen ?
+                                <div className = {`shapeRotateContainer small ${this.state.rotation === 90 ? " ninetyDeg" :  this.state.rotation === 180 ? " eightyDeg" :
+                                this.state.rotation === 270 ? " seventyDeg" : ""} ${this.state.flip ? "flip" : "gfds"}`}>
+                                    <div className = "rotateCircleInner">
+                                        <div className = "shapeContainer small"> 
+                                        {this.state.chosenShape.map(row => (
+                                            row.map(tile => (
+                                                tile === 0 ? <ExampleTile/> : 
+                                                <ExampleTile type = {this.state.texture == null ? "neutral" : this.state.texture}
+                                                border={this.props.shape.name==="Final Correction" ? true : false}/> 
+                                            ))
+                                        ))}
+                                        </div> 
+                                    </div> 
+                                </div> 
+                                :
+                                this.props.shape.grid.map((shapeOption, idx) => (
+                                <div className = {`shapeRotateContainer option small ${this.state.rotation === 90 ? " ninetyDeg" : this.state.rotation === 180 ? " eightyDeg" :
+                                this.state.rotation === 270 ? " seventyDeg" : ""}`}
+                                    onClick = {(event) => {
+                                        this.setState({
+                                            points: this.props.shape.gridRewards[idx], 
+                                            shapeChosen: true, 
+                                            chosenShape: shapeOption
+                                        })
+                                    }}>
+                                    <div className = "rotateCircleInner">
+                                        <div className = "shapeContainer small"> 
+                                            {shapeOption.map(row =>(
+                                                row.map(tile =>(
+                                                    tile === 0 ? <ExampleTile/> :
+                                                    <ExampleTile type = {
+                                                        this.state.texture == null ? "neutral" : this.state.texture}/>
+                                                ))
+                                            ))}
+                                        </div>
+                                    </div> 
+                                    {this.props.shape.gridRewards[idx] === 1 ?
+                                        <div className = "pointsContainer">+ {this.props.shape.gridRewards[idx]}</div> : null}
+                                </div> 
                             ))}
-                            </div></div></div>  
-                    </div> 
-                    : 
-                    this.state.shapeChosen && this.state.textureChosen ? 
-                    <div className = {`shapeRotateContainer small ${this.state.rotation === 90 ? " ninetyDeg" :  this.state.rotation === 180 ? " eightyDeg" :
-                    this.state.rotation === 270 ? " seventyDeg" : ""} ${this.state.flip ? "flip" : "gfds"}`}>
-                        <div className = "rotateCircleInner">
-                            <div className = "shapeContainer small"> 
-                            {this.state.chosenShape.map(row => (
-                                row.map(tile => (
-                                    tile === 0 ? <ExampleTile/> : 
-                                    <ExampleTile type = {this.state.texture == null ? "neutral" : this.state.texture}
-                                    border={this.props.shape.name==="Final Correction" ? true : false}/> 
-                                ))
-                            ))}
-                            </div> 
-                        </div> 
-                    </div> 
-                    :
-                    this.props.shape.grid.map((shapeOption, idx) => (
-                    <div className = {`shapeRotateContainer option small ${this.state.rotation === 90 ? " ninetyDeg" : this.state.rotation === 180 ? " eightyDeg" :
-                     this.state.rotation === 270 ? " seventyDeg" : ""}`}
-                         onClick = {(event) => {
-                             this.setState({
-                                 points: this.props.shape.gridRewards[idx], 
-                                 shapeChosen: true, 
-                                 chosenShape: shapeOption
-                             })
-                         }}>
-                        <div className = "rotateCircleInner">
-                            <div className = "shapeContainer small"> 
-                                {shapeOption.map(row =>(
-                                    row.map(tile =>(
-                                        tile === 0 ? <ExampleTile/> :
-                                        <ExampleTile type = {
-                                            this.state.texture == null ? "neutral" : this.state.texture}/>
-                                    ))
-                                ))}
                             </div>
-                        </div> 
-                        {this.props.shape.gridRewards[idx] === 1 ?
-                            <div className = "pointsContainer">+ {this.props.shape.gridRewards[idx]} Contract {this.props.shape.gridRewards[idx] > 1 ? "Points" : "Point"}</div> : null}
-                    </div> 
-                ))}
+                        </div>
+                    </div>
+                    <div className="flexContainer flex spaced">
+                        <Tooltip title={storyPointTitle}>
+                            <div className = "flex col max spaced">
+                                <div className = "flex row centered">
+                                    <div className = "smallText">Time Added</div>
+                                    <div className = "flex row max">{storyPointIcons}</div>
+                                </div>
+                                {
+                                this.state.shapeChosen === true && this.state.textureChosen === true ?
+                                    <div className = "shapeChangeButtonContainer">
+                                        <RotateButton rotateState = {this.state.rotation}
+                                                    clickFunction = {this.rotateButtonCallback}/>
+                                        <FlipButton flipState = {this.state.flip}
+                                                    clickFunction = {this.flipButtonCallback}/>
+                                    </div>
+                                : <></>
+                            }
+                            </div>
+                        </Tooltip>
+                    </div>
                 </div>
-                {
-                    this.state.shapeChosen === true &&
-                    this.state.textureChosen === true ?
-                        <>
-                        <RotateButton rotateState = {this.state.rotation} 
-                                      clickFunction = {this.rotateButtonCallback}/>
-                        <FlipButton flipState = {this.state.flip}
-                                    clickFunction = {this.flipButtonCallback}/>
-                        </> 
-                    : null
-                }
                 <div className = "shapeButtonGrid">
                     {this.state.textureChosen === true &&
-                     this.props.shape.availableTextures.length > 1 ?
-                           <div className = "shapeButton"
-                           onClick = {()=>{
-                               this.backToTexture(); 
-                           }}>
-                          Back to Texture
-                      </div>  
+                    this.props.shape.availableTextures.length > 1 ?
+                        <Button variant="outlined" onClick = {() => {this.backToTexture()}}>
+                            <ArrowBackIcon/>
+                            Back to Texture
+                        </Button>
                     :
                     this.state.shapeChosen === true &&
                     this.props.shape.grid.length > 1 ?
-                        <div className = "shapeButton"
-                             onClick = {()=>{
-                                 this.backToConfiguration(); 
-                             }}>
-                            Back to Configuration
-                        </div> 
+                        <Button variant='outlined' onClick = {() => {this.backToConfiguration()}}>
+                            <ArrowBackIcon/>
+                            Back to Shape
+                        </Button>
                         : null}
                     {this.state.textureChosen === true &&
-                     this.state.shapeChosen === true  ?
-                        <div className = "shapeButton"
-                             onClick = {()=>{
-                                 this.selectShape(); 
-                             }}>
-                            Ready to Place Shape (PM)
-                        </div>
+                    this.state.shapeChosen === true  ?
+                        <Button variant = 'outlined' onClick = {() => {this.selectShape();}}>
+                            <CheckIcon/>
+                            Ready to Place Shape
+                        </Button>
                         : null}
                 </div>
             </div>

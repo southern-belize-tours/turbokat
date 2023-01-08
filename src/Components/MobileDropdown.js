@@ -13,7 +13,6 @@ class MobileDropdown extends React.Component {
     }
 
     render() {
-        console.log(this.props.options); 
         return (
                 <div className="hamburgerContainer">
                     <div className={this.state.toggled ? "hamburger toggled" : "hamburger"}

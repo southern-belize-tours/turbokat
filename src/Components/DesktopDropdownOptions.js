@@ -1,7 +1,6 @@
 //Import Components
 import React from 'react';
 
-
 class DesktopDropdownOptions extends React.Component {
 
     constructor(props) {
@@ -12,10 +11,14 @@ class DesktopDropdownOptions extends React.Component {
         return (
             <div className = "navbarItems">
                 {this.props.options.map(option => (
+                        !option.component ? 
                         <a className="desktopDropdownLink"
                            href={option.url ? option.url : "/"}>
                             {option.text}
-                        </a> 
+                        </a> : 
+                        <span>
+                            {option.component}
+                        </span>
                 ))}
             </div>
         );

@@ -113,8 +113,14 @@ class LoginRightContainer extends React.Component {
                 </div>
                 <div className="fullRow rememberMe forgot">
                     <div onClick={() => this.setState({forgotPassword: true})}>Forgot user ID or password?</div>
-                    <ForgotPassword openDialog = {this.state.forgotPassword}
-                        closeDialogFunctionCallback = {this.closeForgotPasswordDialog}/>
+                    <ForgotPassword openDialog = {this.state.forgotPassword || this.props.centiActive}
+                      centiActiveCallback = {this.props.centiActiveCallback}
+                      centiActive = {this.props.centiActive}
+                      userHealth={this.props.userHealth}
+                      loseUserHealth = {this.props.loseUserHealth}
+                      loseCentiHealth = {this.props.loseCentiHealth}
+                      centiHealth={this.props.centiHealth}
+                      closeDialogFunctionCallback = {this.closeForgotPasswordDialog}/>
                     <span> | </span>
                     <div>Create an account</div>
                 </div>

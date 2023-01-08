@@ -16,18 +16,15 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 // Custom Components
 import CatSpinner from './CatSpinner/CatSpinner.js';
 import CentisenpaiHead from './Centisenpai/CentisenpaiHead.js';
-
-
-// Declare unity provider
-// const { unityProvider } = useUnityContext({
-//     loaderUrl: "build/myunityapp.loader.js",
-//     dataUrl: "build/myunityapp.data",
-//     frameworkUrl: "build/myunityapp.framework.js",
-//     codeUrl: "build/myunityapp.wasm",
-//   });
+import CentisenpaiBody from './Centisenpai/CentisenpaiBody.js';
 
 class ForgotPassword extends React.Component {
 
+
+    // <LoginRightContainer userHealth={this.props.userHealth}
+    //                 loseUserHealth = {this.props.loseUserHealth}
+    //                 loseCentiHealth = {this.props.loseCentiHealth}
+    //                 centiHealth={this.props.centiHealth}/> 
     constructor(props) {
         super();
 
@@ -53,7 +50,9 @@ class ForgotPassword extends React.Component {
             userId: null,
             forgotId: false,
             foundEmail: true,
-            passwords: passwordArray
+            passwords: passwordArray,
+            centisenpaiHealth: 100,
+            centisenpaiActive: props.centiActive ? true : false,
         }
 
     }
@@ -89,19 +88,36 @@ class ForgotPassword extends React.Component {
         setTimeout(() => {
             this.setState({loading: false});
         }, timeout)
+    } 
+
+    componentWillUpdate(nextProps, nextState) {
+        if(nextState.centisenpaiActive === false) {
+            if((nextState.authenticationFactor === 1 && nextState.forgotId === false && nextState.passwords.length > 4) || (this.props.centiActive)){
+                this.props.centiActiveCallback();
+                this.setState({centisenpaiActive: true});
+            }
+        }
     }
+
+    // componentDidUpdate() {
+    //     // Activate centisenpai under certain conditions
+    //     if (this.state.centisenpaiActive === false) {
+    //         if(this.state.authenticationFactor === 1 && this.state.forgotId === false && this.state.passwords.length > 4) {
+    //             this.setState({centisenpaiAcive: true, centisenpaiHealth: 100})
+    //         }
+    //     }
+    // }
 
     render() {
         return(
             <Dialog open={this.props.openDialog}
-                className={this.state.authenticationFactor === 1 && this.state.forgotId === false && this.state.passwords.length > 4 ?
+                className = {this.state.centisenpaiActive === true ?
                     "centisenpai"
                     : ""}
                 onClose={()=>{this.props.closeDialogFunctionCallback()}}>
-              { this.state.authenticationFactor === 1 && this.state.forgotId === false && this.state.passwords.length > 4 ? 
-                <CentisenpaiHead></CentisenpaiHead>
-                : <></>}
-              <DialogTitle>Forgot User ID/Password</DialogTitle>
+                { this.state.centisenpaiActive === true ? <CentisenpaiHead/> : 
+                    <DialogTitle>Forgot User ID/Password</DialogTitle>
+                }
               <DialogContent>
                   <DialogContentText id="alert-dialog-description">
                     {this.state.loading ?
@@ -136,6 +152,7 @@ class ForgotPassword extends React.Component {
                                 <TextField id="email" label="Email" variant="outlined" />
                             </div>
                         :
+                        <>
                             <div className = "formFields">
                                 Please enter some of the passwords you use for your other online accounts
                                 <Button variant = "outlined" onClick = {() => {this.addPassword()}}>
@@ -149,6 +166,7 @@ class ForgotPassword extends React.Component {
                                     {this.state.passwords}
                                 </div>
                             </div>
+                            </>
                     : this.state.authenticationFactor === 2 ?
                         <div className = "formFields">
                             <div>
@@ -170,21 +188,21 @@ node. How many packets Nk
                     : <></>}
                   </DialogContentText>
                 </DialogContent>
-                <DialogActions>
-                  {/* <Button onClick={handleClose}>Disagree</Button>
-                  <Button onClick={handleClose} autoFocus>
-                    Agree
-                  </Button> */}
-                  <Button variant = "contained" onClick={() => {this.advanceAuthentication()}}>
+                { this.state.centisenpaiActive === true ? 
+                    <></>
+                : 
+                    <DialogActions>
+                    <Button variant = "contained" onClick={() => {this.advanceAuthentication()}}>
                     OK
-                  </Button>
-                  <Button variant = "contained" onClick={() => {
+                    </Button>
+                    <Button variant = "contained" onClick={() => {
                     this.setState({loading: false,
                         authenticationFactor: 0});
                     this.props.closeDialogFunctionCallback()}}>
                     GIVE UP
-                  </Button>
+                    </Button>
                 </DialogActions>
+                }
             </Dialog> 
         );
     }

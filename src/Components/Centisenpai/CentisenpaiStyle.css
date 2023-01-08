@@ -2,6 +2,70 @@
     --centisenpaiGray: #7f93ab;
     --centisenpaiBodyColor: #293c8b;
     --centisenpaiClawColor: #9dacc1;
+    --centisenpaiAntennaColor: #0c1734;
+    --centisenpaiChitinColor: #486181;
+}
+
+.healthWidgetContainer {
+    background: #f7f6d7;
+    padding: 5px 10px;
+    position: absolute;
+    top: -265px;
+    width: 400px;
+    width: 100%;
+    display: flex;
+    border: solid #152b07 4px;
+    border-radius: 10px;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    z-index: 4;
+    font-family: 'Pokemon Solid', sans-serif;
+    flex-direction: column;
+}
+
+.hp {
+    color: #eb895a;
+}
+
+.healthContainer {
+    flex: 1 1 auto;
+    border-radius: 7px;
+    border: solid #f7f6d7 3px;
+}
+
+.health {
+    background: #7aeea7;
+    height: 100%;
+    transition: all .3s;
+}
+
+.pokemonNameContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.healthWidget {
+    width: 60%;
+    height: 20px;
+    border-radius: 10px;
+    padding: 4px;
+    display: flex;
+    background: #152b07;
+    /* background: #7aeea7; */
+}
+
+.centisenpai .MuiPaper-root, .centisenpai .formFields .formFields {
+    background: var(--centisenpaiChitinColor);
+}
+
+.centisenpai .MuiPaper-root .formLine::after{
+    display: block;
+    position: absolute;
+    content: '';
+    height: 4rem;
+    width: 4rem;
+    background: green;
 }
 
 .centisenpaiHead {
@@ -20,6 +84,7 @@
 .centisenpaiFaceContainer {
     height: 7rem;
     width: 5rem;
+    width: 90px;
     border-radius: 4rem;
     margin-top: 1rem;
     background-color: var(--centisenpaiGray);
@@ -36,6 +101,24 @@
     border-radius: 5rem;
     position: relative;
 }
+
+.centisenpaiFaceDot{
+    height: 7px;
+    width: 7px;
+    border-radius: 5px;
+    background-color: black;
+    top: 9px;
+    position: absolute;
+}
+
+.centisenpaiFaceDot.left{
+    left: 20px;
+}
+
+.centisenpaiFaceDot.right{
+    right: 20px;
+}
+
 
 .centisenpaiEye {
     height: 1rem;
@@ -192,7 +275,7 @@
 }
 
 .antennaSegment {
-    background-color: var(--centisenpaiBodyColor);
+    background-color: var(--centisenpaiAntennaColor);
     width: 2px;
     position: absolute;
     width: 10px;

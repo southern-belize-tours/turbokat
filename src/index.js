@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Pokemon font for centisenpai
+import '/home/feeks/sw_dev/turbokat/turbokat/src/fonts/slkscre.ttf'
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

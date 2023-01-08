@@ -2,8 +2,9 @@
     --gridGap: 15px; 
     --navbarPadding: 20px; 
     --clrBackground: #ffffff;
-    --clrPrimary: #0097e6; 
-    --clrSecondary: #f90909; 
+    --clrPrimary: #0097e6;
+    --clrSecondary: #f90909;
+    --clrTertiary: #008481;
     --navbarFontSize: 1.3rem; 
     --homeBodyMargin: 8rem;
     --defaultPadding: 1.5rem; 
@@ -17,6 +18,85 @@
     --defaultFontSize: 1.05rem; 
     --largeFontSize: 1.4rem; 
     --smallFontSize: .8rem; 
+}
+
+.width-150 {
+    max-width: 150px;
+}
+
+.flex {
+    display: flex !important;
+}
+
+.flex.row {
+    flex-direction: row;
+}
+
+.flex.col {
+    flex-direction: column;
+}
+
+.flex.max {
+    flex: 1 1 auto;
+}
+
+.flex.centered {
+    align-items: center;
+    justify-content: center;
+}
+
+.flex.spaced {
+    gap: var(--defaultPadding);
+}
+
+.flex.wrap {
+    flex-wrap: wrap;
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    gap: var(--defaultPadding);
+}
+
+.clrPrimary {
+    color: var(--clrPrimary);
+}
+
+.clrSecondary {
+    color: var(--clrSecondary);
+}
+
+.clrTertiary {
+    color: var(--clrTertiary);
+}
+
+@font-face {
+    font-family: "Pokemon Solid";
+    src: local("Pokemon Solid"),
+     url("/home/feeks/sw_dev/turbokat/turbokat/src/fonts/slkscre.ttf") format("truetype");
+    font-weight: bold;
+}
+
+.MuiDialog-root.centisenpai .MuiBackdrop-root {
+    background: none !important;
+}
+
+.clrSpring {
+    color: #009e73;
+}
+
+.clrSummer {
+    color: #f0e442;
+}
+
+.clrFall {
+    color: #d55e00;
+}
+
+.clrWinter {
+    color: #0072b2
 }
 
 .outsideSign {
@@ -154,6 +234,7 @@ h1{
 
 .otherNavbarContainer .signInBtnContainer {
     justify-content: end;
+    flex: 0 0 auto;
 }
 
 .navbarContainer{

@@ -4,6 +4,10 @@ import './Cartographer.css';
 
 // Mui Components
 import { Button } from '@mui/material';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import RuleIcon from '@mui/icons-material/Rule';
+import UpdateIcon from '@mui/icons-material/Update';
+import InterestsIcon from '@mui/icons-material/Interests';
 
 // Custom Components
 import ContractorInstructions from './ContractorInstructions.js'; 
@@ -14,6 +18,7 @@ import Shape from './Shape.js';
 import Tile from './Tile.js';
 import shapes from './Utilities/shapes.js';
 import availableContracts from './Utilities/availableContracts.js';
+import CartographerToolbar from './CartographerToolbar.js';
 
 const gridSize = 9; 
 const numContractorTiles = 4;
@@ -162,6 +167,14 @@ class Cartographer extends React.Component{
         this.generateTiles(numContractorTiles, 9); 
         //this.generateTiles(numContractorTiles, 10); 
         this.generateContracts(); 
+        this.toolbarClickFunction = this.toolbarClickFunction.bind(this);
+
+        this.toolbarIcons = [
+            {key: "1", label: "Place Shape", component: <InterestsIcon></InterestsIcon>},
+            {key: "2", label: "Season Timeline", component: <UpdateIcon></UpdateIcon>},
+            {key: "3", label: "View Edicts", component: <RuleIcon></RuleIcon>},
+            {key: "4", label: "View Instructions", component: <HelpOutlineIcon></HelpOutlineIcon>},
+        ]
 
         let tempArr = [...this.state.tiles];
         for(let i=0;i<tempArr.length;++i){
@@ -178,7 +191,12 @@ class Cartographer extends React.Component{
         this.bonusPoints = [0]; 
         this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
-        this.p = []; 
+        this.p = [];
+    }
+
+    // Consider making an enum or something for the different keys
+    toolbarClickFunction(key) {
+        this.setState({currentWidget: key})
     }
 
     processSprintSeconds(){
@@ -285,87 +303,91 @@ class Cartographer extends React.Component{
             clearInterval(this.timer); 
         }
     }
-    
-    countDown() {
-        if (this.state.sprint > 3) { 
-            clearInterval(this.timer);
-            this.setState({
-                time: this.secondsToTime(0),
-                seconds: 0
-            })
-            return; 
-        } 
-      // Remove one second, set state so a re-render happens.
-      let seconds = this.state.seconds - 1;
-      if (seconds === 0) {
-        (this.shapesMissed[this.shapesMissed.length-1]++)
-          if(this.state.currShape.availableTextures.includes(7)){
-              this.state.chosenShape = this.state.currShape.grid[0];
-              this.state.chosenTexture = 7;  
-              this.state.selectingShape = true;
-              let tX = Math.floor(Math.random()*gridSize); 
-              let tY = Math.floor(Math.random()*gridSize); 
-              let idc = true;//this.computeTileCollisions(tX, tY); 
-              while(idc === true)
-              {
-                if(this.tileHoverFunction(null, tX, tY))
-                {
-                    idc = false; 
-                    break; 
-                }
-                else{
-                    tX = Math.floor(Math.random()*gridSize); 
-                    tY = Math.floor(Math.random()*gridSize); 
-                }
-              }
-              this.tileClickFunction(tX, tY); 
-              return; 
-          }
-          let temp = this.chooseShape(); 
-          if(this.state.sprint + this.state.storyPoints + this.state.currShape.storyPoints > 6)
-          {
-            let s = this.state.sprint+1; 
-            this.shapesMissed.push(0); 
-            this.bonusPoints.push(0); 
-            this.p.push(this.countPoints()); 
-            this.setState({currShape: shapes[temp], 
-                budgetOverrun: false, 
-                selectingShape: false, 
-                storyPoints: 0, 
-                sprint: s, 
-                processingSprint: true,
-                qaAction: false, 
-                sprintReview: true, 
-                points: this.p[this.p.length-1].reduce((a,b)=>a+b)+ this.state.points})
-            //setTimeout(()=>{this.setState({processingSprint: false})}, 10000)
-            this.stopTimer(); 
-          }
-          else{
-            let tempSeconds=this.processSprintSeconds(); 
-            this.setState({currShape: shapes[temp],
-                qaAction: this.state.processingSprint === true ? true: false,
-                budgetOverrun: false,
-                selectingShape: false, 
-                storyPoints: this.state.storyPoints + this.state.currShape.storyPoints,
-                time: this.secondsToTime(tempSeconds),
-                seconds: tempSeconds}); 
-          }
-          /*this.setState({
-              time: this.secondsToTime(10),
-              seconds: 10
-          });
-          this.startTimer(); */ 
-      }
-      else{
-        this.setState({
-            time: this.secondsToTime(seconds),
-            seconds: seconds,
-          });
-      }
-      
-      // Check if we're at zero.
 
+    countDown() {
+        
     }
+    
+    // countDown() {
+    //     if (this.state.sprint > 3) { 
+    //         clearInterval(this.timer);
+    //         this.setState({
+    //             time: this.secondsToTime(0),
+    //             seconds: 0
+    //         })
+    //         return; 
+    //     } 
+    //   // Remove one second, set state so a re-render happens.
+    //   let seconds = this.state.seconds - 1;
+    //   if (seconds === 0) {
+    //     (this.shapesMissed[this.shapesMissed.length-1]++)
+    //       if(this.state.currShape.availableTextures.includes(7)){
+    //           this.state.chosenShape = this.state.currShape.grid[0];
+    //           this.state.chosenTexture = 7;  
+    //           this.state.selectingShape = true;
+    //           let tX = Math.floor(Math.random()*gridSize); 
+    //           let tY = Math.floor(Math.random()*gridSize); 
+    //           let idc = true;//this.computeTileCollisions(tX, tY); 
+    //           while(idc === true)
+    //           {
+    //             if(this.tileHoverFunction(null, tX, tY))
+    //             {
+    //                 idc = false; 
+    //                 break; 
+    //             }
+    //             else{
+    //                 tX = Math.floor(Math.random()*gridSize); 
+    //                 tY = Math.floor(Math.random()*gridSize); 
+    //             }
+    //           }
+    //           this.tileClickFunction(tX, tY); 
+    //           return; 
+    //       }
+    //       let temp = this.chooseShape(); 
+    //       if(this.state.sprint + this.state.storyPoints + this.state.currShape.storyPoints > 6)
+    //       {
+    //         let s = this.state.sprint+1; 
+    //         this.shapesMissed.push(0); 
+    //         this.bonusPoints.push(0); 
+    //         this.p.push(this.countPoints()); 
+    //         this.setState({currShape: shapes[temp], 
+    //             budgetOverrun: false, 
+    //             selectingShape: false, 
+    //             storyPoints: 0, 
+    //             sprint: s, 
+    //             processingSprint: true,
+    //             qaAction: false, 
+    //             sprintReview: true, 
+    //             points: this.p[this.p.length-1].reduce((a,b)=>a+b)+ this.state.points})
+    //         //setTimeout(()=>{this.setState({processingSprint: false})}, 10000)
+    //         this.stopTimer(); 
+    //       }
+    //       else{
+    //         let tempSeconds=this.processSprintSeconds(); 
+    //         this.setState({currShape: shapes[temp],
+    //             qaAction: this.state.processingSprint === true ? true: false,
+    //             budgetOverrun: false,
+    //             selectingShape: false, 
+    //             storyPoints: this.state.storyPoints + this.state.currShape.storyPoints,
+    //             time: this.secondsToTime(tempSeconds),
+    //             seconds: tempSeconds}); 
+    //       }
+    //       /*this.setState({
+    //           time: this.secondsToTime(10),
+    //           seconds: 10
+    //       });
+    //       this.startTimer(); */ 
+    //   }
+    //   else{
+    //     this.setState({
+    //         time: this.secondsToTime(seconds),
+    //         seconds: seconds,
+    //       });
+    //   }
+      
+    //   // Check if we're at zero.
+
+    // }
 
     /* Generates a random shape to display 
      *
@@ -616,7 +638,7 @@ class Cartographer extends React.Component{
             sprintComponents.push(component); 
         }
         let arr = []; 
-        this.state.tiles.foreach(row => {row.foreach(tile =>
+        this.state.tiles.map(row => {row.map(tile =>
             { 
             let temp = <Tile onHover = {tile.onHover}
                   key = {parseInt(tile.xIndex)+","+parseInt(tile.yIndex)}
@@ -800,6 +822,7 @@ class Cartographer extends React.Component{
                 </div> 
                 <div className = "dataContainer">
                     <Button variant="outlined" onClick = {() => this.setState({instructionsToggled: true})}>View Instructions</Button>
+                    <CartographerToolbar icons={this.toolbarIcons} clickFunction={this.toolbarClickFunction}></CartographerToolbar>
                     <div className = "contractsContainer">
                     { this.state.currShape && !this.state.selectingShape ?
                         <div className = "shapeBox">

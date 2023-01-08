@@ -11,6 +11,12 @@ import AcUnitIcon from '@mui/icons-material/AcUnit';
 import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import AirIcon from '@mui/icons-material/Air';
+import RuleIcon from '@mui/icons-material/Rule';
+import UpdateIcon from '@mui/icons-material/Update';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import MapIcon from '@mui/icons-material/Map';
+import InterestsIcon from '@mui/icons-material/Interests';
+import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 
 autoPlay(SwipeableViews);
 
@@ -31,23 +37,29 @@ const instructionReelContent = [
     <div className = "instructionGridTitle">Win By Earning the Most Points</div> 
     <div>
             <div className = "definitionTitle">
-                Fulfil the Queen's Decree
+                <h3 className = "definitionHeader">
+                    Fulfil the Queen's Decree <RuleIcon className = "clrPrimary"/>
+                </h3>
                 <div className = "definition">
                     Earn points by placing landscape tiles on the grid in such a way that fulfills the Queen's Decrees.
                     There will be four different Decrees to earn points on.
                 </div>
             </div>
             <div className = "definitionTitle">
-                Decrees Change Each Season
+                <h3 className = "definitionHeader">
+                    Decrees Change Each Season <UpdateIcon className = "clrSecondary"/>
+                </h3>
                 <div className = "definition">
                     The Decrees change each season.
                     You can plan for the present and the future Decrees
                 </div>
             </div> 
             <div className = "definitionTitle">
-                The Queen awards points at the end of each Season
+                <h3 className = "definitionHeader">
+                    Points awarded at Season's End <AttachMoneyIcon className = "clrTertiary"/>
+                </h3>
                 <div className = "definition">
-                    Points are awarded at the end of each season for the season's edicts
+                    Once the season has completed, then points are counted.
                 </div>
             </div>
     </div>
@@ -56,14 +68,16 @@ const instructionReelContent = [
     <div className = "instructionGridTitle">Timing</div> 
     <div>
             <div className = "definitionTitle">
-                4 Seasons
+                <h3 className = "definitionHeader">
+                    4 Seasons <UpdateIcon className = "clrSecondary"/>
+                </h3>
                 <div className = "definition">
                     There are 4 seasons, each with different decrees
                     <div>
-                        <LocalFloristIcon/>
-                        <WbSunnyIcon/>
-                        <AirIcon/>
-                        <AcUnitIcon/>
+                        <LocalFloristIcon className="clrSpring"/>
+                        <WbSunnyIcon className="clrSummer"/>
+                        <AirIcon className="clrFall"/>
+                        <AcUnitIcon className="clrWinter"/>
                     </div>
                 </div>
             </div>    
@@ -80,13 +94,13 @@ const instructionReelContent = [
                         <div className = "seasonActionsContainerHeading">
                             Number of Actions
                         </div>
-                        <div><LocalFloristIcon/> Spring</div>
+                        <div><LocalFloristIcon className="clrSpring"/> Spring</div>
                         <div className = "numActions">7</div>
-                        <div><WbSunnyIcon/> Summer</div>
+                        <div><WbSunnyIcon className="clrSummer"/> Summer</div>
                         <div className = "numActions">7</div>
-                        <div><AirIcon/> Fall</div>
+                        <div><AirIcon className="clrFall"/> Fall</div>
                         <div className = "numActions">6</div>
-                        <div><AcUnitIcon/> Winter</div>
+                        <div><AcUnitIcon className="clrWinter"/> Winter</div>
                         <div className = "numActions">5</div>
                     </div>
                 </div>
@@ -94,86 +108,97 @@ const instructionReelContent = [
     </div>
 </div>,
 <div className = "instructionBullet">
-                        <div className = "instructionGridTitle">The Map Starts With</div> 
-                        <div>
-                            <div className = "definitionTitle">
-                                <div className = "exampleTileLabelContainer">
-                                    <div className = "blankExampleTile inline"></div>
-                                    <span>Uncharted Land</span>
-                                </div>
-                                <div className = "definition">
-                                    Strategically place your tiles over these spaces to fulfil requirements
-                                </div>
-                            </div> 
-                        </div>
-                        <div>
-                            <div className = "definitionTitle">
-                                <div className = "exampleTileLabelContainer">
-                                    <div className = "blankExampleTile contractorTile inline"></div>
-                                    <span>Mountains</span>
-                                </div>
-                                <div className = "definition">
-                                    There are mountains that are already mapped, which you cannot map tiles over.
-                                    Some of the queens decrees may involve mapping certain tiles adjacent to mountains.
-                                </div>
-                            </div>
-                        </div>
-                    </div>,
-                    <div className = "instructionBullet">
-                        <div className = "instructionGridTitle">Place Features to Earn Points</div>
-                        <div className = "definitionTitle">
-                            Landscapes come in different shapes
-                            <div className = "definition">
-                                Some allow you to choose between different shapes.
-                                These shapes can be selected to be placed on any unoccuppied tile in any way such that it fits on the grid.
-                            </div>
-                        </div>
-                        <div className = "definitionTitle">
-                            Landscapes come in different types
-                            <div className = "definition">
-                                Some allow you to choose between different types
-                            </div>
-                            <div>
-                            <div className = "blankExampleTile dataAnalyticsTile inline" style={{margin: "0 .5rem"}}></div>
-                            Data Analytics:
-                        </div>
-                        <div>
-                            <div className = "blankExampleTile ccServerTile inline" style={{margin: "0 .5rem"}}></div>
-                            Cloud Computing Server:
-                        </div>
-                        <div>
-                            <div className = "blankExampleTile ioSystemTile inline" style={{margin: "0 .5rem"}}></div>
-                            IO System
-                        </div>
-                        <div>
-                            <div className = "blankExampleTile powerSupply inline" style={{margin: "0 .5rem"}}></div>
-                            Power Supply
-                        </div>
-                        </div>
-                    </div>,
-                    <div className = "instructionBullet">
-                        <div className = "instructionGridTitle">
-                            Plan for Defects
-                        </div> 
-                        <div className = "definitionTitle">
-                            <div className = "blankExampleTile defect inline" style={{margin: "0 .5rem"}}></div>
-                                Defect 
-                                <div className = "definition">
-                                At random, your team may encounter a shape containing defects which your QA lead must place. 
-                            </div> 
-                        </div> 
-                        <div style = {{marginTop: "1rem"}}> 
-                            At the end of each sprint when requirements are being evaluated, each non-occuppied tile 
-                            <div className = "fancyWord"> 
-                                adjacent 
-                                <div className = "definition">
-                                    <div>Adjacent is defined as immediately horizontally or vertically neighboring.</div> 
-                                    <div>Diagonal tiles are not considered adjacent. </div> 
-                                </div> 
-                            </div>
-                            to a defect will result in losing 3 contract points for not mitigating these defects. 
-                        </div> 
-                    </div>
+    <div className = "instructionGridTitle">
+        The Map Starts With <MapIcon className="clrPrimary"></MapIcon>
+    </div>
+    <div>
+        <div className = "definitionTitle">
+            <div className = "exampleTileLabelContainer">
+                <div className = "blankExampleTile inline"></div>
+                <span>Uncharted Land</span>
+            </div>
+            <div className = "definition">
+                Strategically place your tiles over these spaces to fulfil requirements
+            </div>
+        </div> 
+    </div>
+    <div>
+        <div className = "definitionTitle">
+            <div className = "exampleTileLabelContainer">
+                <div className = "blankExampleTile contractorTile inline"></div>
+                <span>Mountains</span>
+            </div>
+            <div className = "definition">
+                There are mountains that are already mapped, which you cannot map tiles over.
+                Some of the queens decrees may involve mapping certain tiles adjacent to mountains.
+            </div>
+        </div>
+    </div>
+</div>,
+<div className = "instructionBullet">
+    <div className = "instructionGridTitle">
+        Place Tiles to Earn Points <AttachMoneyIcon className = "clrPrimary"></AttachMoneyIcon>
+    </div>
+    <div className = "definitionTitle">
+        <h3 className = "definitionHeader">
+            Tiles have different shapes <InterestsIcon className = "clrPrimary"></InterestsIcon>
+        </h3>
+        <div className = "definition">
+            Some allow you to choose between different shapes.
+            These shapes can be selected to be placed on any unoccuppied tile in any way such that it fits on the grid.
+        </div>
+    </div>
+    <div className = "definitionTitle">
+        <h3 className = "definitionHeader">
+            Tiles have different colors <FormatColorFillIcon className = "clrSecondary"></FormatColorFillIcon>
+        </h3>
+        <div className = "definition">
+            Some allow you to choose between different types
+        </div>
+        <div>
+        <div className = "blankExampleTile dataAnalyticsTile inline" style={{margin: "0 .5rem"}}></div>
+        Data Analytics:
+    </div>
+    <div>
+        <div className = "blankExampleTile ccServerTile inline" style={{margin: "0 .5rem"}}></div>
+        Cloud Computing Server:
+    </div>
+    <div>
+        <div className = "blankExampleTile ioSystemTile inline" style={{margin: "0 .5rem"}}></div>
+        IO System
+    </div>
+    <div>
+        <div className = "blankExampleTile powerSupply inline" style={{margin: "0 .5rem"}}></div>
+        Power Supply
+    </div>
+    </div>
+</div>,
+<div className = "instructionBullet">
+    <div className = "instructionGridTitle">
+        Prepare for Monsters
+    </div> 
+    <div className = "definitionTitle">
+        
+        <div className = "exampleTileLabelContainer">
+            <div className = "blankExampleTile defect inline"></div>
+            <span>Monster</span>
+        </div>
+        <div className = "definition">
+            At random, your team may be raided by Monsters, and must place a shape consisting of monster tiles.
+        </div>
+    </div> 
+    <div style = {{marginTop: "1rem"}}> 
+        At the end of each sprint when requirements are being evaluated, each non-occuppied tile 
+        <div className = "fancyWord"> 
+            adjacent 
+            <div className = "definition">
+                <div>Adjacent is defined as immediately horizontally or vertically neighboring.</div> 
+                <div>Diagonal tiles are not considered adjacent. </div> 
+            </div> 
+        </div>
+        to a monster tile will result in losing 3 contract points for not mitigating these defects. 
+    </div> 
+</div>
 ];
 
 const maxSteps = instructionReelContent.length;
@@ -192,7 +217,7 @@ class ContractorInstructions extends React.Component{
 
         return(
             <Dialog open={this.props.dialogOpen}>
-                <DialogTitle>Cartographer Instructions</DialogTitle>
+                <DialogTitle>Instructions</DialogTitle>
                 <DialogContent>
                 <SwipeableViews
                     index={this.state.instructionIndex}

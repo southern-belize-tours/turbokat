@@ -1,5 +1,5 @@
 //Used for router 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
 
 import BreakfastDiningIcon from '@mui/icons-material/BreakfastDining';
 
@@ -20,6 +20,8 @@ import Samosa from "./Components/sandbox/Samosa.js"
 import Cartographer from './Components/Cartographer/Cartographer.js';
 
 import './App.css';
+import React from "react";
+import NavbarDropdownMenu from "./Components/NavbarDropdownMenu.js";
 
 function importAll(r) {
     let ret = [];
@@ -44,11 +46,12 @@ function generatePunchline() {
 const options = [
     { text: "File your own taxes", url: "/" },
     { text: "View my Rabbit's Insta", url: "https://www.instagram.com/parsley.hasselhopper/"},
-    { text: "File an expert's taxes", url: "/"  },
+    { text: "File an expert's taxes", url: "/"},
     { text: "Look at my Rabbit", url: "/fansOnly"},
     { text: "Play a Game", url: "/cartographer"},
     { text: "Latest News", url: "/latestNews"},
-    { text: "Donate Choccy Chips", url: "https://www.paypal.com/donate/?hosted_button_id=V3GYH73CW9HN6"}
+    { text: "Donate Choccy Chips", url: "https://www.paypal.com/donate/?hosted_button_id=V3GYH73CW9HN6"},
+    { text: "testing", component: <NavbarDropdownMenu menuItems = {[{text: "foo"}, {text: "bar"}]} title = "Turbokat Services"/>}
 ];
 
 function usesCookies() {
@@ -110,46 +113,92 @@ const footerTitle = "Join the billions who file their taxes";
 
 const link = "https://www.instagram.com/parsley.hasselhopper/"; 
 
-function App() {
-    return (
-        <div> 
-            <NavbarArea /> 
-            <OtherNavbarArea options={options}/> 
-            <MobileNavbarArea options={options}
-                              link={link}/> 
-            <Router>
-                <Switch>
-                    <Route path="/"
-                        exact component={() => <Home gridCaption={gridCaption}
-                                                     gridPunchline={gridPunchline}
-                                                     featuresCaption={featuresCaption}
-                                                     turbokatFeatures={turbokatFeatures}
-                                                     taxOptions={taxOptions}
-                                                     turbokatPunchline={turbokatPunchline}/>}
-                    /> 
-                    <Route path="/fansOnly"
-                        exact component={() => <FansOnly />}
-                    /> 
-                    <Route path="/latestNews"
-                        exact component = {()=> <News />}
-                    /> 
-                    <Route path="/events/house-warming-party"
-                        exact component={() => <Housewarming />}
-                    />
-                    <Route path="/secret_button"
-                           exact component={()=> <SecretButton />}
-                    />
-                    <Route path="/sandbox"
-                           exact component = { () => <Sandbox /> }
-                    />
-                    <Route path="/cartographer"
-                        exact component = {()=> <Cartographer />}
-                    />
-                </Switch>
-            </Router> 
-            <Footer footerTitle={footerTitle}/> 
-        </div>
-  );
+class App extends React.Component {
+
+    constructor(props) {
+        super();
+
+        this.state = {
+            userHealth: 36,
+            centiHealth: 100,
+            centiActive: false,
+        }
+
+        this.loseUserHealth = this.loseUserHealth.bind(this);
+        this.loseCentiHealth = this.loseCentiHealth.bind(this);
+        this.centiActiveCallback = this.centiActiveCallback.bind(this);
+    }
+
+    centiActiveCallback() {
+        console.log("centi active")
+        this.setState({centiActive: true});
+    }
+
+    loseUserHealth(val) {
+        let newHealth = this.state.userHealth - val;
+        this.setState({
+            userHealth: newHealth
+        });
+    }
+
+    loseCentiHealth(val) {
+        let newHealth = this.state.userHealth - val;
+        this.setState({
+            userHealth: newHealth
+        });
+    }
+
+    render() {
+        return (
+            <div> 
+                <NavbarArea /> 
+                <OtherNavbarArea options={options}/> 
+                <MobileNavbarArea options={options}
+                                  link={link}/> 
+                <Router>
+                    <Switch>
+                        <Route path="/"
+                            exact component={() => <Home gridCaption={gridCaption}
+                                                         gridPunchline={gridPunchline}
+                                                         featuresCaption={featuresCaption}
+                                                         turbokatFeatures={turbokatFeatures}
+                                                         taxOptions={taxOptions}
+                                                         userHealth = {this.state.userHealth}
+                                                         centiHealth = {this.state.centiHealth}
+                                                         centiActive = {this.state.centiActive}
+                                                         centiActiveCallback = {this.centiActiveCallback}
+                                                         loseUserHealth = {this.loseUserHealth}
+                                                         loseCentiHealth = {this.loseCentiHealth}
+                                                         turbokatPunchline={turbokatPunchline}/>}
+                        /> 
+                        <Route path="/fansOnly"
+                            exact component={() => <FansOnly />}
+                        /> 
+                        <Route path="/latestNews"
+                            exact component = {()=> <News />}
+                        /> 
+                        <Route path="/events/house-warming-party"
+                            exact component={() => <Housewarming />}
+                        />
+                        <Route path="/secret_button"
+                               exact component={()=> <SecretButton />}
+                        />
+                        <Route path="/sandbox"
+                               exact component = { () => <Sandbox /> }
+                        />
+                        <Route path="/cartographer"
+                            exact component = {()=> <Cartographer />}
+                        />
+                    </Switch>
+                </Router>
+                <Footer footerTitle={footerTitle}/> 
+                {this.state.centiActive ? 
+                    <div className = "battleWidget"> Battle Widget</div>
+                : <></>}
+            </div>
+      );
+    }
+    
 }
 
 export default App;

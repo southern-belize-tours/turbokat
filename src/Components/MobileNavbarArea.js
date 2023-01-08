@@ -25,7 +25,6 @@ class MobileNavbarArea extends React.Component {
     }
 
     render() {
-        console.log(this.props.options); 
         return (
             <nav className="mobileNavbarContainer">
                 <MobileIconContainer img={catLogo}

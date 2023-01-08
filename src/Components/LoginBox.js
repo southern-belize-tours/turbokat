@@ -15,7 +15,12 @@ class LoginBox extends React.Component {
             <div className="loginBox">
                 <LoginLeftContainer featuresCaption={this.props.featuresCaption}
                     turbokatFeatures={this.props.turbokatFeatures} /> 
-                <LoginRightContainer/> 
+                <LoginRightContainer userHealth={this.props.userHealth}
+                    centiActiveCallback = {this.props.centiActiveCallback}
+                    centiActive = {this.props.centiActive}
+                    loseUserHealth = {this.props.loseUserHealth}
+                    loseCentiHealth = {this.props.loseCentiHealth}
+                    centiHealth={this.props.centiHealth}/> 
             </div>
         );
     }

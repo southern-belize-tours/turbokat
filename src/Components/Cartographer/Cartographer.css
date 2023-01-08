@@ -4,6 +4,18 @@
     align-items: center;
 }
 
+.shapeOptionsContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.shapeChangeButtonContainer {
+    display: flex;
+    align-items: center;
+    gap: var(--defaultPadding);
+    flex-wrap: wrap;
+}
+
 .exampleTileLabelContainer span {
     font-weight: bold;
 }
@@ -14,7 +26,7 @@
 }
 
 .seasonActionsContainer div {
-    padding: var(--defaultPadding);
+    padding: calc(.5 * var(--defaultPadding));
     align-items: center;
     display: flex;
     gap: var(--defaultPadding);
@@ -145,7 +157,9 @@
 }
 
 .dataContainer{
-    margin: 0px var(--defaultMargin); 
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--defaultPadding);
 }
 
 .startButton{
@@ -169,14 +183,9 @@
 }
 
 .contractsContainer{
-    border-color: black; 
-    transition: all .3s ease-in-out; 
-    display: inline-block;
-    display: grid;
-    grid-template-columns: 49% 49%;
-    justify-content: space-between;
-    grid-row-gap: var(--defaultPadding); 
-    margin: var(--defaultPadding) 0; 
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--defaultPadding);
 }
 
 .contractsContainerTitle{
@@ -193,6 +202,15 @@
     padding: var(--defaultPadding) 0; 
     background-color: white; 
     position: relative; 
+
+    display: flex;
+    flex: 1 1 auto;
+    padding: var(--defaultPadding);
+    position: relative;
+    background-color: rgb(245,248,250);
+    border: 1px solid var(--rh__neutral-bg3);
+    border-radius: var(--rh__size-palette__borderRadius);
+    box-sizing: border-box;
 }
 
 .contractBoxName{
@@ -253,16 +271,15 @@
     gap: var(--defaultPadding);
 }
 
-.shapeBox{
-    padding: var(--defaultPadding) 0;
-    border-style: solid;
-    border-color: var(--clrPrimary);
-    display: inline-block;
-    background-color: white; 
-    width: 100%; 
-    border-width: 0px;
-    border-top-width: 3px; 
-    position: relative; 
+.shapeBox {
+    display: flex;
+    flex: 1 1 auto;
+    padding: var(--defaultPadding);
+    position: relative;
+    background-color: rgb(245,248,250);
+    border: 1px solid var(--rh__neutral-bg3);
+    border-radius: var(--rh__size-palette__borderRadius);
+    box-sizing: border-box;
 }
 
 .sprintTile.orange{
@@ -313,8 +330,8 @@
     transform: scale(1.1); 
 }
 
-.shapeContainer.ninetyDeg{
-    transform:rotate(90deg); 
+*.ninetyDeg{
+    transform:rotate(90deg);
 }
 
 .rotateButtonPositioner, .flipButtonPositioner{
@@ -327,22 +344,22 @@
 .rotateButtonContainer{
     height: 4rem;
     width: 4rem;
-    position: absolute;
-    border-color: var(--clrSecondary);
+    /* position: absolute; */
+    /* border-color: var(--clrSecondary); */
     border-style: solid;
     overflow: hidden;
     border-radius: 2.5rem;
-    padding: 5px; 
-    border-width: 2px; 
+    padding: 5px;
+    border-width: 2px;
     left: -1.5rem;
     top: -1.2rem;
-    transition: all .3s ease-in-out; 
+    transition: all .3s ease-in-out;
 }
 
 .flipButtonPositioner .rotateButtonContainer{
     height: 4rem;
     width: 4rem;
-    position: absolute;
+    /* position: absolute; */
     border-color: var(--clrSecondary);
     border-style: solid;
     overflow: hidden;
@@ -354,19 +371,22 @@
     transition: all .3s ease-in-out; 
 }
 
-.shapeRotateContainer.ninetyDeg > .rotateCircleInner,
-.rotateButtonContainer.ninetyDeg > .rotateCircleInner{
-    transform:rotate(90deg); 
+.definitionHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--defaultPadding);
 }
 
-.shapeRotateContainer.eightyDeg > .rotateCircleInner , 
-.rotateButtonContainer.eightyDeg > .rotateCircleInner{
+*.ninetyDeg {
+    transform:rotate(90deg);
+}
+
+*.eightyDeg {
     transform:rotate(180deg);
 }
 
-.shapeRotateContainer.seventyDeg > .rotateCircleInner , 
-.rotateButtonContainer.seventyDeg > .rotateCircleInner{
-    transform: rotate(270deg); 
+*.seventyDeg {
+    transform: rotate(270deg);
 }
 
 .rotateCircleInner{
@@ -464,12 +484,8 @@
 }
 
 .shapeRotateContainer.small{
-    width: calc(var(--exampleTileWidth) * 4); 
-    height: calc((var(--exampleTileWidth) + 8) * 4); 
-    display:inline-block; 
-    margin: 0 calc(1.6 * var(--defaultMargin));
+    display: flex;
     transition: all .3s ease-in-out; 
-    position:relative; 
 }
 
 .shapeRotateContainer.option.small{
@@ -590,17 +606,25 @@
     transform: rotate(-135deg); 
 }
 
-.shapeBox .contractsContainerTitle{
-    margin-bottom : var(--defaultPadding); 
-}
-
 .shapeOptions{
-    display: inline-block; 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--defaultPadding);
 }
 
 .shapeBox .contractBoxName{
-    margin-bottom: var(--defaultPadding); 
     font-size: calc(.9 * var(--largeFontSize)); 
+}
+
+.cartographerToolbarIcon {
+    transition: all .3s;
+    cursor: pointer;
+    color: var(--clrPrimary);
+}
+
+.cartographerToolbarIcon:hover {
+    transform: scale(1.5);
 }
 
 .shapeButton{
@@ -622,18 +646,18 @@
 }
 
 .pointsContainer{
-    position: absolute; 
-    bottom: 1rem;
-    left: -3rem;
-    width: 45%;  
-    height: 45%;
     font-weight: bold; 
     border-color: green; 
     border-style: solid;
     border-width: 2px; 
     border-radius: 55%;  
     padding: calc(.5*var(--defaultPadding)); 
-    font-size: var(--smallFontSize)
+    font-size: var(--smallFontSize);
+    height: 25px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 *.inline{
@@ -723,6 +747,15 @@
     gap: var(--defaultPadding);
 }
 
+.manipulateShapeButton {
+    flex: 1 1 auto;
+    gap: var(--defaultPadding);
+}
+
+.rotateButton {
+    transition: all .3s !important;
+}
+
 .instructionGrid{
     display: grid; 
     grid-template-columns: 33% 33% 33%; 
@@ -742,8 +775,15 @@
 
 .instructionGridTitle{
     font-size: calc(var(--defaultFontSize)*1.1);
-    font-weight: bold; 
-    margin: var(--defaultPadding) 0; 
+    font-weight: bold;
+    display: flex;
+    gap: var(--defaultPadding);
+    align-items: center;
+    margin: var(--defaultPadding) 0;
+}
+
+.shapeBox .MuiButton-root {
+    font-size: .7rem;
 }
 
 .spanThree{
@@ -762,12 +802,6 @@
     width: 9%;
     padding: var(--defaultPadding) 5rem;
     text-align: center;
-}
-
-.contractBoxSprints{
-    position: absolute;
-    top: var(--defaultPadding);
-    right: var(--defaultPadding); 
 }
 
 .contractBoxSprintContainer{
@@ -890,8 +924,9 @@
 }
 
 .shapeButtonGrid{
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
+    gap: var(--defaultPadding);
+    justify-content: space-evenly;
 }
 
 .instructionReel{
@@ -1017,7 +1052,6 @@
 
 @media(max-width: 2000px){
     .shapeBox .contractBoxName {
-        margin-bottom: calc(2*var(--defaultPadding));
         font-size: calc(.85 * var(--largeFontSize));
     }
 
@@ -1040,7 +1074,6 @@
     }
 
     .shapeBox .contractsContainerTitle {
-        width: 80%;
         font-size: calc(.8*var(--largeFontSize));
         text-align: center; 
     }
@@ -1075,22 +1108,47 @@
     }
 }
 
+@media(max-width: 768px) {
+
+    :root {
+        --exampleTileWidth: 1.5rem;
+    }
+
+    .definitionTitle .definition {
+        font-size: 1em;
+    }
+
+    .seasonActionsContainer div {
+        padding: .2rem;
+    }
+
+    .cartographerContainer {
+        padding: 0px;
+        padding-top: var(--defaultPadding);
+    }
+
+}
+
 @media(max-width: 425px){
-    /* :root{
+
+    :root{
         --tileWidth: 2.5rem; 
         --defaultPadding: .5rem; 
         --largeFontSize: .9rem;
         --defaultFontSize: .8rem; 
         --defaultMargin: 1rem; 
-    } */
-
-    .cartographerGrid{
-        height: calc(9.6 * var(--tileWidth));
-        width: calc(9.6 * var(--tileWidth)); 
     }
 
     .blankTile, .blankExampleTile{
         border-width: 1px; 
+    }
+
+    .rotateButtonContainer {
+        left: 1.5rem;
+    }
+
+    .flipButtonPositioner .rotateButtonContainer {
+        left: 5rem;
     }
 
     .startButton{
@@ -1103,6 +1161,6 @@
     }
 
     .shapeBox, .contractsContainer{
-        margin: var(--defaultMargin) 0; 
+        margin: 0px; 
     }
 }

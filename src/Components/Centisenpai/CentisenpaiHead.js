@@ -1,5 +1,8 @@
 import React from "react";
 
+// Custom components
+import CentisenpaiHealthWidget from './CentisenpaiHealthWidget.js';
+
 // Styles
 import './CentisenpaiStyle.css';
 
@@ -7,7 +10,6 @@ class CentisenpaiHead extends React.Component {
     constructor(props) {
         super();
         this.state = {
-
         };
 
         this.setState({antennaLeft: this.generateLeftAntennas(), antennaRight: this.generateRightAntennas()});
@@ -72,12 +74,16 @@ class CentisenpaiHead extends React.Component {
             this.setState({antennaLeft: this.generateLeftAntennas(), antennaRight: this.generateRightAntennas()});
         }
         return (
+            <>
+            <CentisenpaiHealthWidget health = {this.props.health}/>
             <div className = "centisenpaiHead">
                 <div className = "centisenpaiClaw left"></div>
                 <div className = "centisenpaiClaw right"></div>
                 <div className = "centisenpaiFaceContainer">
                     {this.state.antennaLeft}
                     {this.state.antennaRight}
+                    <div className = "centisenpaiFaceDot left"></div>
+                    <div className = "centisenpaiFaceDot right"></div>
                     <div className = "centisenpaiFace">
                         <div className = "centisenpaiEye left"></div>
                         <div className = "centisenpaiEye right"></div>
@@ -89,6 +95,7 @@ class CentisenpaiHead extends React.Component {
                     </div>
                 </div>
             </div>
+            </>
         );
     }
 } export default CentisenpaiHead;

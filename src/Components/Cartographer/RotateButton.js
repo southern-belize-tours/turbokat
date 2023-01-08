@@ -1,6 +1,10 @@
 
 import React from 'react';
 
+import Rotate90DegreesCwIcon from '@mui/icons-material/Rotate90DegreesCw';
+import { Button } from '@mui/material';
+
+
 class RotateButton extends React.Component{
 
     constructor(props){
@@ -8,9 +12,33 @@ class RotateButton extends React.Component{
     }
 
     render(){
+        let fullClassName = "rotateButton ";
+        switch(this.props.rotateState) {
+            case (90):
+                fullClassName = fullClassName + "ninetyDeg";
+                break;
+            case (180):
+                fullClassName = fullClassName + 'eightyDeg';
+                break;
+            case(270):
+                fullClassName = fullClassName + 'seventyDeg';
+                break;
+            default:
+                break;
+        }
+        console.log(fullClassName);
         return(
-            <div className = "rotateButtonPositioner">
-            <div className = {this.props.rotateState === 90 ?
+            <Button className = "manipulateShapeButton" size="large" variant = "outlined" onClick = {() => {
+                    this.props.clickFunction();
+                }}>
+                <Rotate90DegreesCwIcon className = {fullClassName}
+                /> Rotate 90 Degrees
+            </Button>
+        );
+    }
+}export default RotateButton; 
+
+            {/* <div className = {this.props.rotateState === 90 ?
                     "rotateButtonContainer ninetyDeg"
                 : this.props.rotateState === 180 ? 
                     "rotateButtonContainer eightyDeg" 
@@ -26,8 +54,4 @@ class RotateButton extends React.Component{
                     </div>
                 </div> 
                 <div className = "rotateDegrees">90</div>
-            </div> 
-            </div> 
-        );
-    }
-}export default RotateButton; 
+            </div>  */}

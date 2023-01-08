@@ -9,6 +9,7 @@ class Home extends React.Component {
 
     constructor(props) {
         super();
+
     }
 
     render() {
@@ -17,8 +18,14 @@ class Home extends React.Component {
                 <PrettyGrid gridCaption={this.props.gridCaption}
                             gridPunchline={this.props.gridPunchline}/> 
                 <LoginBox turbokatFeatures={this.props.turbokatFeatures}
+                          userHealth={this.props.userHealth}
+                          centiActive = {this.props.centiActive}
+                          loseUserHealth = {this.props.loseUserHealth}
+                          loseCentiHealth = {this.props.loseCentiHealth}
+                          centiActiveCallback = {this.props.centiActiveCallback}
+                          centiHealth={this.props.centiHealth}
                           featuresCaption={this.props.featuresCaption}/> 
-                <FilingOptions taxOptions={this.props.taxOptions}/> 
+                <FilingOptions taxOptions={this.props.taxOptions}/>
             </div>
             );
     }
