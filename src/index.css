@@ -72,13 +72,6 @@
     color: var(--clrTertiary);
 }
 
-@font-face {
-    font-family: "Pokemon Solid";
-    src: local("Pokemon Solid"),
-     url("/home/feeks/sw_dev/turbokat/turbokat/src/fonts/slkscre.ttf") format("truetype");
-    font-weight: bold;
-}
-
 .MuiDialog-root.centisenpai .MuiBackdrop-root {
     background: none !important;
 }

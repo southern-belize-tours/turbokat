@@ -1,11 +1,12 @@
-//Used for router 
-import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
+//Used for router
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import BreakfastDiningIcon from '@mui/icons-material/BreakfastDining';
 
 //Import Components
 import Footer from './Components/Footer.js'; 
 import Home from './Components/Home.js'; 
+import BadMenu from './Components/BadMenu/BadMenu.js';
 import FansOnly from './Components/FansOnly.js'; 
 import NavbarArea from './Components/NavbarArea.js'; 
 import OtherNavbarArea from './Components/OtherNavbarArea.js'; 
@@ -18,6 +19,7 @@ import Dosido from "./Components/sandbox/Dosido.js";
 import ThinMint from "./Components/sandbox/ThinMint.js";
 import Samosa from "./Components/sandbox/Samosa.js"
 import Cartographer from './Components/Cartographer/Cartographer.js';
+import Hawaii from "./Components/Hawaii/Hawaii.js";
 
 import './App.css';
 import React from "react";
@@ -44,14 +46,14 @@ function generatePunchline() {
 }
 
 const options = [
-    { text: "File your own taxes", url: "/" },
-    { text: "View my Rabbit's Insta", url: "https://www.instagram.com/parsley.hasselhopper/"},
-    { text: "File an expert's taxes", url: "/"},
-    { text: "Look at my Rabbit", url: "/fansOnly"},
-    { text: "Play a Game", url: "/cartographer"},
-    { text: "Latest News", url: "/latestNews"},
-    { text: "Donate Choccy Chips", url: "https://www.paypal.com/donate/?hosted_button_id=V3GYH73CW9HN6"},
-    { text: "testing", component: <NavbarDropdownMenu menuItems = {[{text: "foo"}, {text: "bar"}]} title = "Turbokat Services"/>}
+    { rabbitLie: true, text: "File your own taxes", url: "https://www.instagram.com/parsley.hasselhopper/" },
+    { rabbitLie: false, text: "View my Rabbit's Insta", url: "https://www.instagram.com/parsley.hasselhopper/"},
+    { rabbitLie: true, text: "File an expert's taxes", url: "https://www.instagram.com/parsley.hasselhopper/"},
+    { rabbitLie: false, text: "Look at my Rabbit", url: "/fansOnly"},
+    // { text: "Play a Game", url: "/cartographer"},
+    { rabbitLie: false, text: "Latest News", url: "/latestNews"},
+    { rabbitLie: false, text: "Donate Choccy Chips", url: "https://www.paypal.com/donate/?hosted_button_id=V3GYH73CW9HN6"},
+    // { text: "testing", component: <NavbarDropdownMenu menuItems = {[{text: "foo"}, {text: "bar"}]} title = "Turbokat Services"/>}
 ];
 
 function usesCookies() {
@@ -188,6 +190,12 @@ class App extends React.Component {
                         />
                         <Route path="/cartographer"
                             exact component = {()=> <Cartographer />}
+                        />
+                        <Route path="/BadMenu"
+                            exact component={() => <BadMenu />}
+                        />
+                        <Route path="/hawaii"
+                            exact component={()=> <Hawaii />}
                         />
                     </Switch>
                 </Router>
