@@ -5,8 +5,8 @@ import { Dialog, DialogTitle, DialogActions, DialogContent, Button } from '@mui/
 import MobileStepper from '@mui/material/MobileStepper';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
+// import SwipeableViews from 'react-swipeable-views';
+// import { autoPlay } from 'react-swipeable-views-utils';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
@@ -18,7 +18,7 @@ import MapIcon from '@mui/icons-material/Map';
 import InterestsIcon from '@mui/icons-material/Interests';
 import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 
-autoPlay(SwipeableViews);
+// autoPlay(SwipeableViews);
 
 /* Instructions TODO list: 
  * 1) Potentially talk about getting points for contractor black boxes. 
@@ -219,11 +219,11 @@ class ContractorInstructions extends React.Component{
             <Dialog open={this.props.dialogOpen}>
                 <DialogTitle>Instructions</DialogTitle>
                 <DialogContent>
-                <SwipeableViews
+                {/* <SwipeableViews
                     index={this.state.instructionIndex}
                     onChangeIndex={(idx) => {this.setState({instructionIndex: idx})}}
                     enableMouseEvents
-                >
+                > */}
         {instructionReelContent.map((step, index) => (
             step
         //   <div key={step.label}>
@@ -243,7 +243,7 @@ class ContractorInstructions extends React.Component{
         //     ) : null}
         //   </div>
         ))}
-      </SwipeableViews>
+      {/* </SwipeableViews> */}
       <MobileStepper
         steps={maxSteps}
         position="static"

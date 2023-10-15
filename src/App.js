@@ -24,6 +24,7 @@ import Hawaii from "./Components/Hawaii/Hawaii.js";
 import './App.css';
 import React from "react";
 import NavbarDropdownMenu from "./Components/NavbarDropdownMenu.js";
+import Pumpkin from './Components/pumpkin/pumpkin.js';
 
 function importAll(r) {
     let ret = [];
@@ -53,6 +54,7 @@ const options = [
     // { text: "Play a Game", url: "/cartographer"},
     { rabbitLie: false, text: "Latest News", url: "/latestNews"},
     { rabbitLie: false, text: "Donate Choccy Chips", url: "https://www.paypal.com/donate/?hosted_button_id=V3GYH73CW9HN6"},
+    { rabbitLie: false, text: "Halloween Party", url: "/Pumpkin"},
     // { text: "testing", component: <NavbarDropdownMenu menuItems = {[{text: "foo"}, {text: "bar"}]} title = "Turbokat Services"/>}
 ];
 
@@ -197,6 +199,7 @@ class App extends React.Component {
                         <Route path="/hawaii"
                             exact component={()=> <Hawaii />}
                         />
+                        <Route path = "/Pumpkin" exact component={() => <Pumpkin></Pumpkin>}></Route>
                     </Switch>
                 </Router>
                 <Footer footerTitle={footerTitle}/> 
