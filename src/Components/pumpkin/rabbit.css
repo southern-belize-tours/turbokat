@@ -1,0 +1,56 @@
+.rabbitContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 2rem;
+    width: 2rem;
+}
+
+.rabbitLeftEar, .rabbitRightEar, .rabbitHead, .rabbitTail, .rabbitBody {
+    position: absolute;
+    background-color: orange;
+}
+
+.rabbitLeftEar, .rabbitRightEar {
+    height: 15px;
+    top: 0px;
+    width: 5px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.rabbitLeftEar {
+    transform: rotate(-30deg);
+    left: 13px;
+}
+
+.rabbitRightEar {
+    transform: rotate(-15deg);
+    right: 5px;
+}
+
+.rabbitHead {
+    height: 9px;
+    width: 13px;
+    border-radius: 50%;
+    transform: rotate(15deg);
+    right: 3px;
+}
+
+.rabbitBody {
+    height: 15px;
+    width: 21px;
+    border-radius: 50%;
+    transform: rotate(-31deg);
+    top: 17px;
+    left: 2px;
+}
+
+.rabbitTail {
+    height: 5px;
+    width: 5px;
+    bottom: 1px;
+    left: 0px;
+    border-radius: 50%;
+}
