@@ -5,11 +5,14 @@
     position: relative;
     height: 2rem;
     width: 2rem;
+    /* height: 32px; */
+    /* width: 32px; */
+    flex: 0 0 auto;
 }
 
 .rabbitLeftEar, .rabbitRightEar, .rabbitHead, .rabbitTail, .rabbitBody {
     position: absolute;
-    background-color: orange;
+    background-color: #ae04ff;
 }
 
 .rabbitLeftEar, .rabbitRightEar {

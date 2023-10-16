@@ -21,6 +21,8 @@ import Samosa from "./Components/sandbox/Samosa.js"
 import Cartographer from './Components/Cartographer/Cartographer.js';
 import Hawaii from "./Components/Hawaii/Hawaii.js";
 
+import { withRouter } from 'react-router';
+
 import './App.css';
 import React from "react";
 import NavbarDropdownMenu from "./Components/NavbarDropdownMenu.js";
@@ -126,11 +128,17 @@ class App extends React.Component {
             userHealth: 36,
             centiHealth: 100,
             centiActive: false,
+            spookyActive: false,
         }
 
         this.loseUserHealth = this.loseUserHealth.bind(this);
         this.loseCentiHealth = this.loseCentiHealth.bind(this);
         this.centiActiveCallback = this.centiActiveCallback.bind(this);
+        this.spookyCallback = this.spookyCallback.bind(this);
+    }
+
+    spookyCallback() {
+        this.setState({spookyActive: true});
     }
 
     centiActiveCallback() {
@@ -156,6 +164,7 @@ class App extends React.Component {
         return (
             <div> 
                 <NavbarArea /> 
+                {/* {this.state.spookyActive && <h1>Spooky</h1>} */}
                 <OtherNavbarArea options={options}/> 
                 <MobileNavbarArea options={options}
                                   link={link}/> 
@@ -199,7 +208,7 @@ class App extends React.Component {
                         <Route path="/hawaii"
                             exact component={()=> <Hawaii />}
                         />
-                        <Route path = "/Pumpkin" exact component={() => <Pumpkin></Pumpkin>}></Route>
+                        <Route path = "/Pumpkin" exact component={() => <Pumpkin callback = {this.spookyCallback}></Pumpkin>}></Route>
                     </Switch>
                 </Router>
                 <Footer footerTitle={footerTitle}/> 

@@ -5,6 +5,8 @@ import React from 'react';
 
 import catLogo from './../Images/General/turbokat_icon.png' 
 
+import { withRouter } from 'react-router';
+
 const navbarText = "A third stimulus cat is coming.";
 const navbarLinkText = "See if you're eligiable"; 
 const navbarLink = "https://instagram.com/parsley.hasslehopper/"; 
@@ -13,6 +15,10 @@ class NavbarArea extends React.Component {
 
     constructor(props) {
         super();
+
+        // this.state = {
+        //     currentRoute: props.router.route,
+        // }
     }
 
     render() {
@@ -29,4 +35,5 @@ class NavbarArea extends React.Component {
     }
 }
 
+// export default withRouter(NavbarArea);
 export default NavbarArea;

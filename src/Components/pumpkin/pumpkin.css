@@ -10,10 +10,13 @@ h1, h2, h3, h4, h5 {
 
 .halloweenTitle {
     color: #ff7002;
-    font-size: 2em;
+    font-weight: bolder;
+    font-size: 1.4em;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0px;
+    margin: 0px;
 }
 
 .infoContainer {
@@ -21,6 +24,8 @@ h1, h2, h3, h4, h5 {
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .bonesContainer {
@@ -28,6 +33,7 @@ h1, h2, h3, h4, h5 {
     flex-direction: row;
     gap: 3rem;
     padding: 1rem;
+    overflow: hidden;
 }
 
 .infoBullet {
@@ -38,8 +44,8 @@ h1, h2, h3, h4, h5 {
 }
 
 .infoIndent {
-    padding: 1rem;
-    padding-left: 5rem;
+    /* padding: 1rem; */
+    padding-left: 1rem;
 }
 
 .halloweenIcon {

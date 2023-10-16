@@ -11,10 +11,25 @@ import { PersonAddAlt1 } from '@mui/icons-material';
 import HelpOutline from '@mui/icons-material/HelpOutline';
 import { Event } from '@mui/icons-material';
 import { Button } from '@mui/material';
+
+import { useEffect } from 'react';
 // import Font
 
-function pumpkin (props) {
+function Pumpkin (props) {
     let bones = [0,0,0,0,0,0,0,0,0,0,0,0,0,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+
+    // This effect runs once when the component is initialized
+    useEffect(() => {
+        // Initialization code here
+        // console.log('Component initialized');
+        props.callback();
+        
+        // You can also return a cleanup function if necessary
+        return () => {
+        // Cleanup code here (optional)
+        // console.log('Component unmounted');
+        };
+    }, []); // The empty dependency array means this effect runs once
 
     return (
         <div className="spookyContainer">
@@ -81,4 +96,4 @@ function pumpkin (props) {
             </div>
         </div>
     );
-} export default pumpkin;
+} export default Pumpkin;
