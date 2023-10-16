@@ -21,7 +21,7 @@ class DesktopDropdownOptions extends React.Component {
      */
     fakeLinkFunction(e, lie) {
         // links that shouldn't have their text change don't do anything
-        if (!lie) {
+        if (!lie || this.props.spooky) {
             return;
         }
         // set width to whatever previous width was so elements aren't moving around a bunch
@@ -53,6 +53,7 @@ class DesktopDropdownOptions extends React.Component {
                 {this.props.options.map(option => (
                         !option.component ? 
                         <a className="desktopDropdownLink"
+                           style={{color: `${this.props.spooky ? "white" : ""}`}}
                            onMouseEnter = {(e) => {this.fakeLinkFunction(e, option.rabbitLie);}}
                            onMouseLeave = {(e) => {this.setNormalText(e, option.text)}}
                            href={option.url ? option.url : "/"}>

@@ -50,7 +50,7 @@ class MobileDropdown extends React.Component {
                         <div className="mid"></div>
                         <div className="right"></div> 
                     </div>
-                    <div className={this.state.toggled ? "mobileDropdown show" : "mobileDropdown"}>
+                    <div className={`mobileDropdown ${this.state.toggled && "show"} ${this.props.spooky && "spooky"}`}>
                     {this.props.options.map(option => (
                         <a className="desktopDropdownLink"
                             onClick = {(e)=>{this.showRabbit(e, option.rabbitLie, option.url)}}

@@ -25,19 +25,15 @@ function Pumpkin (props) {
         props.callback();
         
         // You can also return a cleanup function if necessary
-        return () => {
-        // Cleanup code here (optional)
-        // console.log('Component unmounted');
-        };
     }, []); // The empty dependency array means this effect runs once
 
     return (
         <div className="spookyContainer">
-            <div className = "bonesContainer">
+            {/* <div className = "bonesContainer">
                 {bones.map( idx =>
                     <Bone></Bone>
                 )}
-            </div>
+            </div> */}
             {/* <Bone></Bone> */}
             <h2 className="halloweenTitle">You are invited to a Spooky Pumpkin Carving Party</h2>
             <div className = "infoContainer">
@@ -50,10 +46,10 @@ function Pumpkin (props) {
                     40 Glatttaalstrasse, 8052, Zurich. 9th floor, appartment on the right
                 </div>
                 <div className="infoIndent">
-                    We live in the tall building with the "Bowling" sign on it. The entrance is to the left/west of the Pizzeria. If the buzz doesn't let you in, shoot us a message.
+                    <Bone></Bone> We live in the tall building with the "Bowling" sign on it. The entrance is to the left/west of the Pizzeria. If the buzz doesn't let you in, shoot us a message.
                 </div>
                 <div className="infoIndent">
-                        From PwC Office take the 75 Bus from Bollingerweg going Northwest towards Seebach, and get off at Ausserdorf Strasse.
+                    <Bone></Bone> From PwC Office take the 75 Bus from Bollingerweg going Northwest towards Seebach, and get off at Ausserdorf Strasse.
                 </div>
                 {/* <div className="infoIndent"> */}
                 {/* </div> */}

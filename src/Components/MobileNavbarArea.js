@@ -26,13 +26,13 @@ class MobileNavbarArea extends React.Component {
 
     render() {
         return (
-            <nav className="mobileNavbarContainer">
+            <nav className={`mobileNavbarContainer ${this.props.spooky && "spooky"}`}>
                 <MobileIconContainer img={catLogo}
                                      link={this.props.link}
                                      height={height}
                                      width={width}/> 
-                <MobileDropdown options={this.props.options} /> 
-                <MobileSignIn captchaFunction={this.captchaCallback}/> 
+                <MobileDropdown options={this.props.options} spooky={this.props.spooky}/> 
+                <MobileSignIn captchaFunction={this.captchaCallback} spooky={this.props.spooky}/> 
                 <CursedCaptcha toggled={this.state.captchaToggle} captchaFunction={this.captchaCallback}/> 
             </nav> 
         );

@@ -45,7 +45,12 @@ h1, h2, h3, h4, h5 {
 
 .infoIndent {
     /* padding: 1rem; */
-    padding-left: 1rem;
+    padding-left: 2rem;
+    font-size: .9rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
 }
 
 .halloweenIcon {

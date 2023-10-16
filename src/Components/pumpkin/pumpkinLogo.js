@@ -1,9 +1,12 @@
 import './pumpkinLogo.css';
 
-function pumpkinLogo(props) {
+function PumpkinLogo(props) {
+    const dynamicStyles = {
+        '--pumpkin-color': `${props && props.color ? props.color : "#ae04ff"}`, // Define a custom CSS variable
+      };
 
     return(
-        <div className="pumpkinBody">
+        <div className="pumpkinBody" style={dynamicStyles}>
             <div className ="pumpkinLeftEye"></div>
             <div className = "pumpkinRightEye"></div>
             <div className = "pumpkinNose"></div>
@@ -13,4 +16,4 @@ function pumpkinLogo(props) {
             <div className="pumpkinBottomTooth"></div>
         </div>
     );
-} export default pumpkinLogo;
+} export default PumpkinLogo;

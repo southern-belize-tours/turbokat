@@ -163,11 +163,12 @@ class App extends React.Component {
     render() {
         return (
             <div> 
-                <NavbarArea /> 
+                <NavbarArea spooky={this.state.spookyActive} /> 
                 {/* {this.state.spookyActive && <h1>Spooky</h1>} */}
-                <OtherNavbarArea options={options}/> 
+                <OtherNavbarArea options={options} spooky={this.state.spookyActive}/> 
                 <MobileNavbarArea options={options}
-                                  link={link}/> 
+                    spooky={this.state.spookyActive}
+                    link={link}/> 
                 <Router>
                     <Switch>
                         <Route path="/"
@@ -208,10 +209,10 @@ class App extends React.Component {
                         <Route path="/hawaii"
                             exact component={()=> <Hawaii />}
                         />
-                        <Route path = "/Pumpkin" exact component={() => <Pumpkin callback = {this.spookyCallback}></Pumpkin>}></Route>
+                        <Route path = "/Pumpkin" exact component={() => <Pumpkin callback = {this.state.spookyActive ? () => {} : this.spookyCallback}></Pumpkin>}></Route>
                     </Switch>
                 </Router>
-                <Footer footerTitle={footerTitle}/> 
+                <Footer footerTitle={footerTitle} spooky={this.state.spookyActive}/> 
                 {this.state.centiActive ? 
                     <div className = "battleWidget"> Battle Widget</div>
                 : <></>}

@@ -20,6 +20,11 @@
     --smallFontSize: .8rem; 
 }
 
+.spookySignIn{
+    color: #ff7002 !important;
+    border-color: #ff7002 !important;
+}
+
 .width-150 {
     max-width: 150px;
 }
@@ -241,6 +246,11 @@ h1{
     gap: var(--defaultPadding);
 }
 
+.navbarContainer.spooky {
+    background-color: #ff7002;
+    font-weight: bolder;
+}
+
 .navbarItems {
     display: flex;
     height: 100%;
@@ -254,6 +264,8 @@ h1{
 }
 
 .navbarTextContainer {
+    display: flex;
+    gap: var(--defaultPadding);
     text-align: left;
     flex: 1 1 auto;
 }
@@ -294,6 +306,10 @@ h1{
     transition: all .3s;
 }
 
+.otherNavbarContainer.spooky div a:after {
+    border-color: #ae04ff;
+}
+
 .otherNavbarContainer div a:hover:after{
     width: 100%;
     left: 0;
@@ -313,6 +329,11 @@ h1{
     text-align: center;
     display: flex;
     align-items: center;
+}
+
+.signInBtn.spooky {
+    color: #ff7002;
+    border-color: #ff7002;
 }
 
 .signInBtn:hover{
@@ -563,6 +584,12 @@ p{
     border-bottom-color: #c1c5c8;
 }
 
+.ratingContainer {
+    display: flex;
+    gap: var(--defaultPadding);
+    align-items: center;
+}
+
 .footer {
     min-height: 380px;
     padding: 48px 0;
@@ -578,6 +605,13 @@ p{
     color: #393a3d;
     font-weight: 400;
     font-family: avenir,helvetica,sans-serif;
+}
+
+.footer.spooky {
+    /* background: linear-gradient( 265deg, #ff7002, #ae04ff 117%); */
+    background: linear-gradient( 265deg, #0ef705, #ae04ff 65%);
+
+    /* #0ef705 */
 }
 
 .ratingContent {
@@ -718,6 +752,12 @@ p{
     width: 100%;
     left: 0px;
     height:100%;
+}
+
+.mobileDropdown.show.spooky * {
+    background-color: #320447;
+    color: white;
+    font-weight: bold;
 }
 
 .mobileDropdown.show * {
@@ -967,7 +1007,33 @@ p{
     display: inline-block; 
 }
 
+.mobileNavbarContainer.spooky {
+    background-color: black;
+    color: white;
+    border-width: 0px;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.mobileNavbarContainer.spooky .left, .mobileNavbarContainer.spooky .right, .mobileNavbarContainer.spooky .mid {
+    background-color: white;
+}
+
 @media(max-width: 768px){
+
+    .navbarTextContainer {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .navbarContainer {
+        /* font-size: var(--smallFontSize); */
+        font-size: 1rem;
+        padding: 16px;
+    }
 
     .MuiDialogTitle-root, .MuiDialogContent-root {
         padding-left: var(--defaultPadding) !important;
@@ -1025,6 +1091,9 @@ p{
     .signInBtn{
         margin: 0px;
         padding: var(--defaultPadding);
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     .lineupContentBox{

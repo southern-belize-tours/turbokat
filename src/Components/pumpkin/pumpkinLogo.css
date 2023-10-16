@@ -1,5 +1,5 @@
 .pumpkinBody {
-    background-color: #ae04ff;
+    background-color: var(--pumpkin-color);
     border-radius: 50%;
     height: 2rem;
     width: 2rem;
@@ -57,14 +57,15 @@
     top: -20px;
     left: -3px;
     left: -12px;
-    background: #ae04ff;
+    /* background: #ae04ff; */
+    background: var(--pumpkin-color);
     border-bottom-left-radius: 22px;
     border-bottom-right-radius: 22px;
 }
 
 .pumpkinTopLeftTooth, .pumpkinTopRightTooth, .pumpkinBottomTooth {
     position: absolute;
-    background: #ae04ff;
+    background: var(--pumpkin-color);
     height: 5px;
     width: 5px;
 }
