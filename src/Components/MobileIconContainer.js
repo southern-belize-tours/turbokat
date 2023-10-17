@@ -1,6 +1,7 @@
 //Import Components
 import React from 'react';
 
+import Cat from './pumpkin/cat';
 
 class MobileIconContainer extends React.Component {
 
@@ -12,10 +13,11 @@ class MobileIconContainer extends React.Component {
         return (
             <a className="MobileIconContainer"
                href={this.props.link}>
-                <img src={this.props.img}
+                <Cat spooky={this.props.spooky} size = {50}></Cat>
+                {/* <img src={this.props.img}
                      alt="Turbokat Tax Cat Logo"
                      height={this.props.height}
-                     width={this.props.width} /> 
+                     width={this.props.width} />  */}
             </a>
         );
     }

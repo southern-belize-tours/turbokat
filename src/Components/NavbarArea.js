@@ -27,8 +27,9 @@ class NavbarArea extends React.Component {
         return (
             <nav className={`navbarContainer ${this.props.spooky && "spooky"}`}>
                 <NavbarIconContainer img={catLogo}
-                                     width="40px"
-                                     height="40px"/> 
+                    spooky = {this.props.spooky}
+                    width="40"
+                    height="40"/> 
                 <NavbarTextContainer text={this.props.spooky ? spookyNavbarText : navbarText}
                                      navbarLinkText={this.props.spooky ? spookyNavbarLinkText : navbarLinkText}
                                      link={navbarLink} /> 

@@ -30,6 +30,7 @@ class MobileNavbarArea extends React.Component {
                 <MobileIconContainer img={catLogo}
                                      link={this.props.link}
                                      height={height}
+                                     spooky={this.props.spooky}
                                      width={width}/> 
                 <MobileDropdown options={this.props.options} spooky={this.props.spooky}/> 
                 <MobileSignIn captchaFunction={this.captchaCallback} spooky={this.props.spooky}/> 

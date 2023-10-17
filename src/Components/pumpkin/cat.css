@@ -1,0 +1,121 @@
+.catContainer {
+    background: var(--cat-color-background);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.catEars {
+    position: absolute;
+    top: -4%;
+    height: 15%;
+    width: 14%;
+    border: solid var(--cat-color) 0px;
+    border-bottom-width: var(--cat-border-width);
+    border-radius: 50%;
+}
+
+.catLeftSide, .catRightSide {
+    border: solid var(--cat-color) 0px;
+    height: 82%;
+    width: 20%;
+    /* border-bottom-width: 2px; */
+    border-bottom-width: var(--cat-border-width);
+}
+
+.catLeftSide {
+    border-left-width: var(--cat-border-width);
+    transform: rotate(18deg);
+    border-bottom-left-radius: 60%;
+    border-top-left-radius: 16%;
+}
+
+.catRightSide {
+    border-right-width: var(--cat-border-width);
+    transform: rotate(-18deg);
+    border-bottom-right-radius: 60%;
+    border-top-right-radius: 16%;
+}
+
+.catCenterArm {
+    height: 42%;
+    width: var(--cat-border-width);
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    background: var(--cat-color);
+    position: absolute;
+    top: 50%;
+}
+
+.catLeftArm, .catRightArm {
+    position: absolute;
+    height: 43%;
+    width: var(--cat-border-width);
+    background: var(--cat-color);
+    top: 50%;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+
+.catLeftArm {
+    left: 36%;
+    transform: rotate(-17deg);
+}
+
+.catRightArm {
+    right: 36%;
+    transform: rotate(17deg);
+}
+
+.catLeftHand, .catRightHand {
+    position: absolute;
+    height: 15%;
+    width: 10%;
+    border-radius: 50%;
+    border: solid var(--cat-color) 0px;
+    border-bottom-width: var(--cat-border-width);
+    top: 77%;
+}
+
+.catLeftHand {
+    left: 41%;
+}
+
+.catRightHand {
+    right: 41%;
+}
+
+.catTail {
+    position: absolute;
+    right: 12%;
+    top: 36%;
+    height: 31%;
+    width: 5%;
+    background: var(--cat-color);
+    transform: rotate(45deg);
+}
+
+.catSpookyLeftEye, .catSpookyRightEye, .catSpookyNose {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-left: var(--cat-border-width) solid transparent;
+    border-right: var(--cat-border-width) solid transparent;
+    border-bottom: calc(2 * var(--cat-border-width)) solid var(--cat-color);
+}
+
+.catSpookyLeftEye {
+    top: 18%;
+    left: 41%;
+}
+
+.catSpookyRightEye {
+    top: 18%;
+    right: 41%;
+}
+
+.catSpookyNose {
+    top: 23%;
+}

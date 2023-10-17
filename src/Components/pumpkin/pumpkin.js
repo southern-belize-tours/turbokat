@@ -2,6 +2,7 @@ import './pumpkin.css';
 import Bone from './bone';
 import PumpkinLogo from './pumpkinLogo';
 import RabbitLogo from './rabbit';
+import CatLogo from './cat';
 
 import LocationOn from '@mui/icons-material/LocationOn';
 import { Checkroom } from '@mui/icons-material';
@@ -36,6 +37,21 @@ function Pumpkin (props) {
             </div> */}
             {/* <Bone></Bone> */}
             <h2 className="halloweenTitle">You are invited to a Spooky Pumpkin Carving Party</h2>
+            {/* <CatLogo size={500}
+                backgroundColor = {"#ff7002"}
+                color = {"yellow"}
+                spooky={true}>
+            </CatLogo> */}
+            {/* <CatLogo size={200}
+                backgroundColor = {"#ff7002"}
+                color = {"yellow"}
+                spooky={true}>
+            </CatLogo> */}
+            {/* <CatLogo size={100}
+                backgroundColor = {"#ff7002"}
+                color = {"yellow"}
+                spooky={true}>
+            </CatLogo> */}
             <div className = "infoContainer">
                 <div className="infoBullet">
                     <Event className="halloweenIcon"></Event>

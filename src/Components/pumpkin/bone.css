@@ -38,8 +38,5 @@
 }
 
 .rightBone::before, .rightBone::after {
-    right: -4
-    
-    
-    px;
+    right: -4px
 }

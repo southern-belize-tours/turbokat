@@ -30,8 +30,9 @@ class OtherNavbarArea extends React.Component {
             <nav className={`otherNavbarContainer ${this.props.spooky && "spooky"}`}
                 style={{background: `${this.props.spooky ? "black": ""}`, color: `${this.props.spooky ? "white": ""}`, borderBottom: `none`}}>
                 <NavbarIconContainer img={catLogo}
-                                     height="60px"
-                                     width="60px" /> 
+                    spooky = {this.props.spooky}
+                    height="60px"
+                    width="60px" /> 
                 <DesktopDropdownOptions options={this.props.options} spooky={this.props.spooky}/>
                 <div className = "signInBtnContainer">
                     <SignInBtn captchaFunction={this.captchaCallback} spooky={this.props.spooky}/>

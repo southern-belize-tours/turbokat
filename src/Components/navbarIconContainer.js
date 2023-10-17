@@ -1,6 +1,7 @@
 //Import Components
 import React from 'react';
 
+import Cat from './pumpkin/cat';
 
 class NavbarIconContainer extends React.Component {
 
@@ -12,10 +13,12 @@ class NavbarIconContainer extends React.Component {
         return (
             <a className="navbarIconContainer"
                  href="/">
-                <img src={this.props.img}
+                {/* <img src={this.props.img}
                     alt="Turbokat Tax Cat Logo"
                     height={this.props.height}
-                    width={this.props.width}/> 
+                    width={this.props.width}/>  */}
+                <Cat size = {50}
+                    spooky = {this.props.spooky}></Cat>
             </a>
         );
     }
