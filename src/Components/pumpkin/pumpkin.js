@@ -13,23 +13,58 @@ import HelpOutline from '@mui/icons-material/HelpOutline';
 import { Event } from '@mui/icons-material';
 import { Button } from '@mui/material';
 
-import { useEffect } from 'react';
-// import Font
+import React, { useState, useRef, useEffect } from 'react';
+
 
 function Pumpkin (props) {
-    let bones = [0,0,0,0,0,0,0,0,0,0,0,0,0,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    const [pumpkins, setPumpkins] = useState([]);
+    const [pumpkinWait, setPumpkinWait] = useState(false);
+    // Used for pumpkin bounding boxes
+    const spookyContainerRef = useRef(null);
 
     // This effect runs once when the component is initialized
     useEffect(() => {
-        // Initialization code here
-        // console.log('Component initialized');
         props.callback();
-        
-        // You can also return a cleanup function if necessary
+        // Spawn some pumpkins to make it festive
+        spawnPumpkins();
     }, []); // The empty dependency array means this effect runs once
 
+    const killPumpkins = (startIndex, pumpkinsToKill) => {
+        console.log("Killing pumpkins");
+        let newPumpkins = pumpkins;
+        newPumpkins.splice(startIndex, pumpkinsToKill);
+        // for (let i = 0; i < pumpkinsToKill; ++i) {
+        //     newPumpkins.
+        //     newPumpkins.pop();
+        // }
+        setPumpkins([...newPumpkins]);
+    }
+
+    /**
+     * Spawns 1-6 moving pumpkins when the pumpkin button is clicked
+     */
+    const spawnPumpkins = () => {
+        if (!pumpkinWait) {
+            setPumpkinWait(true);
+            console.log("spawning pumpkins");
+            let numNewPumpkins = Math.floor(Math.random() * 3) + 3;
+            // let numNewPumpkins = 1;
+            let newPumpkins = [];
+            for (let i = 0; i < numNewPumpkins; ++i) {
+                let newPumpkin = <PumpkinLogo parentRef={spookyContainerRef} velocity={true} color={"#ff7002"}></PumpkinLogo>;
+                newPumpkins.push(newPumpkin);
+            }
+            console.log("Setting pumpkins...");
+            let currIndex = pumpkins.length - 1;
+            setPumpkins([...pumpkins, newPumpkins]);
+            // newPumpkins.pop();
+            setTimeout(() => {killPumpkins(currIndex, newPumpkins.length)}, 5000);
+            setTimeout(() => {setPumpkinWait(false)}, 300);
+        }
+    }
+
     return (
-        <div className="spookyContainer">
+        <div className="spookyContainer" id="spookyContainer" ref={spookyContainerRef}>
             {/* <div className = "bonesContainer">
                 {bones.map( idx =>
                     <Bone></Bone>
@@ -52,6 +87,7 @@ function Pumpkin (props) {
                 color = {"yellow"}
                 spooky={true}>
             </CatLogo> */}
+            {pumpkins}
             <div className = "infoContainer">
                 <div className="infoBullet">
                     <Event className="halloweenIcon"></Event>
@@ -67,6 +103,9 @@ function Pumpkin (props) {
                 <div className="infoIndent">
                     <Bone></Bone> From PwC Office take the 75 Bus from Bollingerweg going Northwest towards Seebach, and get off at Ausserdorf Strasse.
                 </div>
+                <div className="infoIndent">
+                    <Bone></Bone> From Oerlikon Bahnhof take the 14 S-Bahn and get off at Seebach, then walk 7 minutes west-northwest.
+                </div>
                 {/* <div className="infoIndent"> */}
                 {/* </div> */}
                 <div className="infoBullet">
@@ -77,12 +116,13 @@ function Pumpkin (props) {
                     Not sure what costume to wear? Get some inspiration from our costume name generator!
                     <Button>Generate</Button>
                 </div> */}
-                <div className="infoBullet">
+                <div className="infoBullet" onClick = {spawnPumpkins}>
                     {/* <Restaurant className="halloweenIcon"></Restaurant> */}
                     {/* <FontAwesomeIcon icon="fa-solid fa-pumpkin" /> */}
                     {/* <i class="fa fa-pumpkin"></i> */}
                     {/* <!-- <i class="fa fa-github blue" matTooltip="https://github.com/ianfeekes https://github.com/southern-belize-tours" matTooltipClass="tooltip"></i> --> */}
-                    <PumpkinLogo></PumpkinLogo>
+                    <PumpkinLogo onClick = {() => {console.log("clicked"); spawnPumpkins()}}>
+                    </PumpkinLogo>
                     Pumpkins will be provided, and chosen first-come-first serve.
                 </div>
                 <div className="infoBullet">
@@ -91,7 +131,7 @@ function Pumpkin (props) {
                 </div>
                 <div className="infoBullet">
                     <Restaurant className="halloweenIcon"></Restaurant>
-                    Food will be provided. We are thinking about doing a pasta bar (TBD).
+                    Food will be provided. We will have a pasta bar.
                 </div>
                 <div className="infoBullet">
                     <PersonAddAlt1 className="halloweenIcon"></PersonAddAlt1>

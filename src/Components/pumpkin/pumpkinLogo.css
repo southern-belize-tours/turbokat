@@ -9,7 +9,20 @@
     justify-content: center;
     overflow: hidden;
     flex: 0 0 auto;
+    transition: all .3s;
 }
+
+.pumpkinContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    flex: 0 0 auto;
+    position: relative;
+    height: 2rem;
+    width: 2rem;
+}
+
 
 .pumpkinLeftEye, .pumpkinRightEye, .pumpkinNose {
     top: 6px;
