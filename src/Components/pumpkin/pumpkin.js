@@ -30,13 +30,8 @@ function Pumpkin (props) {
     }, []); // The empty dependency array means this effect runs once
 
     const killPumpkins = (startIndex, pumpkinsToKill) => {
-        console.log("Killing pumpkins");
         let newPumpkins = pumpkins;
         newPumpkins.splice(startIndex, pumpkinsToKill);
-        // for (let i = 0; i < pumpkinsToKill; ++i) {
-        //     newPumpkins.
-        //     newPumpkins.pop();
-        // }
         setPumpkins([...newPumpkins]);
     }
 
@@ -46,15 +41,12 @@ function Pumpkin (props) {
     const spawnPumpkins = () => {
         if (!pumpkinWait) {
             setPumpkinWait(true);
-            console.log("spawning pumpkins");
             let numNewPumpkins = Math.floor(Math.random() * 3) + 3;
-            // let numNewPumpkins = 1;
             let newPumpkins = [];
             for (let i = 0; i < numNewPumpkins; ++i) {
                 let newPumpkin = <PumpkinLogo parentRef={spookyContainerRef} velocity={true} color={"#ff7002"}></PumpkinLogo>;
                 newPumpkins.push(newPumpkin);
             }
-            console.log("Setting pumpkins...");
             let currIndex = pumpkins.length - 1;
             setPumpkins([...pumpkins, newPumpkins]);
             // newPumpkins.pop();
@@ -121,7 +113,7 @@ function Pumpkin (props) {
                     {/* <FontAwesomeIcon icon="fa-solid fa-pumpkin" /> */}
                     {/* <i class="fa fa-pumpkin"></i> */}
                     {/* <!-- <i class="fa fa-github blue" matTooltip="https://github.com/ianfeekes https://github.com/southern-belize-tours" matTooltipClass="tooltip"></i> --> */}
-                    <PumpkinLogo onClick = {() => {console.log("clicked"); spawnPumpkins()}}>
+                    <PumpkinLogo onClick = {() => {spawnPumpkins()}}>
                     </PumpkinLogo>
                     Pumpkins will be provided, and chosen first-come-first serve.
                 </div>

@@ -10,6 +10,7 @@ const gravity = 3;
 function PumpkinLogo(props) {
   // Used for component bounding box
   const pumpkinRef = useRef(null);
+  let new_y_location = 0;
 
   // State variable for styles of pumpkin
   const [styles, setStyles] = useState({
@@ -25,6 +26,7 @@ function PumpkinLogo(props) {
      * "Tick" function to update the state variables controlling the pumpkin's position
      */
     const doGravity = () => {
+      let collision = false;
       // We actually add the gravity to make it 'go down' as a css attribute
       let new_y_velocity = yVelo + gravity;
 
@@ -37,30 +39,30 @@ function PumpkinLogo(props) {
       if (pumpkinRef && pumpkinRef.current) {
         childElement = pumpkinRef.current;
       }
-      // console.log(parentElement, childElement);
       if (parentElement && childElement) {
-        // console.log(parentElement);
         const parentRect = parentElement.getBoundingClientRect();
         const childRect = childElement.getBoundingClientRect();
   
         // Check if the child is outside of the parent element
         if (
-          childRect.bottom >= parentRect.bottom
+          childRect.bottom + new_y_velocity >= parentRect.bottom
           // childRect.right < parentRect.left ||
           // childRect.left > parentRect.right ||
           // childRect.bottom < parentRect.top ||
           // childRect.top > parentRect.bottom
         ) {
-          // set_y_velocity(new_y_velocity/-3);
-          new_y_velocity = 0;
-          console.log("collision" + new_y_velocity);
-          // new_y_velocity = new_y_velocity * -1;
-          // setIsOutside(true);
+          collision = true;
+          new_y_location = parentRect.bottom - 170;
+          new_y_velocity = Math.abs(new_y_velocity * .5) * -1;
+          set_y_velocity(new_y_velocity);
+        } else {
         }
       }
-
       set_y_velocity(new_y_velocity);
-      let new_y_location = y + new_y_velocity;
+      if (collision == false) {
+        new_y_location = y + new_y_velocity;
+      } else {
+      }
       let new_x_location = x + xVelo;
       setY(new_y_location);
       setX(new_x_location);
@@ -69,8 +71,6 @@ function PumpkinLogo(props) {
         position: `${props && props.velocity ? "absolute" : "relative"}`,
         transform: `translate(${new_x_location}px, ${new_y_location}px)`,
       })
-      // console.log(new_x_location + ", " + new_y_location);
-      // set_y_velocity((prevY) => prevY - 9);
     }
 
     /**
