@@ -346,11 +346,22 @@ h1{
 }
 
 .homeBody{
-    margin: 0px var(--homeBodyMargin);
+    padding: var(--defaultPadding) var(--homeBodyMargin);
+    /* margin: 0px var(--homeBodyMargin); */
     display: flex;
-    padding: var(--defaultPadding) 0;
+    /* padding: var(--defaultPadding) 0; */
     flex-direction: column;
     gap: var(--defaultPadding);
+}
+
+.homeBody.spooky {
+    background: black;
+    color: white;
+    font-weight: bold;
+}
+
+.homeBody.spooky h1 {
+    color: #ff7002;
 }
 
 .prettyGrid{

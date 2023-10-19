@@ -137,7 +137,20 @@ class App extends React.Component {
         this.spookyCallback = this.spookyCallback.bind(this);
     }
 
-    spookyCallback() {
+    /**
+     * If the month is october, make it spooky themed by default
+     */
+    componentDidMount() {
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth();
+        if (currentMonth === 9) {
+            this.setState({spookyActive: true});
+        }
+
+    }
+
+
+        spookyCallback() {
         this.setState({spookyActive: true});
     }
 
@@ -173,17 +186,18 @@ class App extends React.Component {
                     <Switch>
                         <Route path="/"
                             exact component={() => <Home gridCaption={gridCaption}
-                                                         gridPunchline={gridPunchline}
-                                                         featuresCaption={featuresCaption}
-                                                         turbokatFeatures={turbokatFeatures}
-                                                         taxOptions={taxOptions}
-                                                         userHealth = {this.state.userHealth}
-                                                         centiHealth = {this.state.centiHealth}
-                                                         centiActive = {this.state.centiActive}
-                                                         centiActiveCallback = {this.centiActiveCallback}
-                                                         loseUserHealth = {this.loseUserHealth}
-                                                         loseCentiHealth = {this.loseCentiHealth}
-                                                         turbokatPunchline={turbokatPunchline}/>}
+                                spooky = {this.state.spookyActive}
+                                gridPunchline={gridPunchline}
+                                featuresCaption={featuresCaption}
+                                turbokatFeatures={turbokatFeatures}
+                                taxOptions={taxOptions}
+                                userHealth = {this.state.userHealth}
+                                centiHealth = {this.state.centiHealth}
+                                centiActive = {this.state.centiActive}
+                                centiActiveCallback = {this.centiActiveCallback}
+                                loseUserHealth = {this.loseUserHealth}
+                                loseCentiHealth = {this.loseCentiHealth}
+                                turbokatPunchline={turbokatPunchline}/>}
                         /> 
                         <Route path="/fansOnly"
                             exact component={() => <FansOnly />}
