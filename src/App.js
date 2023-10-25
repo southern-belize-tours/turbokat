@@ -27,6 +27,7 @@ import './App.css';
 import React from "react";
 import NavbarDropdownMenu from "./Components/NavbarDropdownMenu.js";
 import Pumpkin from './Components/pumpkin/pumpkin.js';
+import PumpkinThankYou from './Components/pumpkin/pumpkinThankYou.js';
 
 function importAll(r) {
     let ret = [];
@@ -224,6 +225,7 @@ class App extends React.Component {
                             exact component={()=> <Hawaii />}
                         />
                         <Route path = "/Pumpkin" exact component={() => <Pumpkin callback = {this.state.spookyActive ? () => {} : this.spookyCallback}></Pumpkin>}></Route>
+                        <Route path="/Pumpkin/Results" exact component = {() => <PumpkinThankYou></PumpkinThankYou>}></Route>
                     </Switch>
                 </Router>
                 <Footer footerTitle={footerTitle} spooky={this.state.spookyActive}/> 

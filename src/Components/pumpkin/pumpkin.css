@@ -5,6 +5,34 @@
     padding: 1rem;
 }
 
+.mainPumpkinImage {
+    max-width: 100%;
+}
+
+.competitionContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.competitionTitle {
+    text-align: center;
+}
+
+.competitionContainer div {
+    /* flex: 1 1 40%; */
+}
+
+.competitionContainer img {
+    /* flex: 1 1 40%; */
+    /* max-width: 40%; */
+    width: 500px;
+}
+
 h1, h2, h3, h4, h5 {
 }
 

@@ -63,6 +63,7 @@ function Pumpkin (props) {
                 )}
             </div> */}
             {/* <Bone></Bone> */}
+            <h1 href = "/Pumpkin/Results" className ="halloweenTitle"><a href="/Pumpkin/Results">Thank you for coming to the Spooky Pumpkin Carving Party</a></h1>
             <h2 className="halloweenTitle">You are invited to a Spooky Pumpkin Carving Party</h2>
             {/* <CatLogo size={500}
                 backgroundColor = {"#ff7002"}
