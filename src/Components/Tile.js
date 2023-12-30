@@ -17,7 +17,7 @@ class Tile extends React.Component {
                 <h3 className="tileTitle">
                     {this.props.title}
                 </h3> 
-                <div className="startForFree">
+                <div className={`startForFree ${this.props.chrimbus ? "chrimbus" : ""}`}>
                     Start for Free 
                 </div> 
                 <PhoneWidget imgSrc = {this.props.imgSrc}

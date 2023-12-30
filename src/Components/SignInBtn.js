@@ -22,7 +22,7 @@ class SignInBtn extends React.Component {
         return (
             <Tooltip title = {this.state.tooltip}>
                 <Button variant = "outlined"
-                    className={`${this.props.spooky ? "spookySignIn" : ""}`}
+                    className={`${this.props.spooky ? "spookySignIn" : ""} ${this.props.chrimbus ? "chrimbusSignIn": ""}`}
                     onClick={() => {
                         // Puts the sign in or out
                         let newSignedIn = !this.state.signedIn;

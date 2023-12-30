@@ -27,7 +27,7 @@ class LoginLeftContainer extends React.Component {
                           ))}
                     </div>                 
                 </div>
-                <div className="loginContainerTextRow">
+                <div className={`loginContainerTextRow ${this.props.chrimbus ? "chrimbus" : ""}`}>
                     {this.props.featuresCaption}
                 </div> 
             </div> 

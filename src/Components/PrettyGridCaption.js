@@ -11,7 +11,7 @@ class PrettyGridCaption extends React.Component {
 
     render() {
         return (
-            <h1 className="prettyGridCaption">
+            <h1 className={`prettyGridCaption ${this.props.chrimbus && "chrimbus"}`}>
                 {this.props.gridCaption}
             </h1>
         );

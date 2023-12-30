@@ -11,7 +11,7 @@ class PrettyGridPunchline extends React.Component {
 
     render() {
         return (
-            <div className="prettyGridPunchline">
+            <div className={`prettyGridPunchline ${this.props.chrimbus ? "chrimbus" : ""}`}>
                 {this.props.gridPunchline}
             </div>
         );

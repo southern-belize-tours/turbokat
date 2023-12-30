@@ -2,6 +2,7 @@
 import React from 'react';   
 import PumpkinLogo from './pumpkin/pumpkinLogo';
 import Bone from './pumpkin/bone';
+import Snowflake from './Snowflake';
 
 const spookyFooterTitle = "Join the billions of Bone Boys";
 
@@ -42,24 +43,26 @@ class Footer extends React.Component {
 
     render() {
         return (
-            <nav className={`footer ${this.props.spooky && "spooky"}`}>
+            <nav className={`footer ${this.props.spooky ? "spooky" : ""} ${this.props.chrimbus ? "chrimbus" : ""}`}>
                 <div className="ratingContent">
                     {this.props.spooky ? spookyFooterTitle: this.props.footerTitle}
                 </div> 
                 <div className="ratingMessage">
-                    {this.props.spooky ? "Undead" : "Customers"} rate Turbokat a {this.currStars ? this.currStars : 0} out of {this.maxStars ? this.maxStars : 0} {this.props.spooky ? "bones" : "stars"}
+                    {this.props.spooky ? "Undead" : "Customers"} rate Turbokat a {this.currStars ? this.currStars : 0} out of {this.maxStars ? this.maxStars : 0} {this.props.spooky ? "bones" : this.props.chrimbus ? "snowflakes" : "stars"}
                 </div> 
                 <div className="ratingContainer">
                     {/* {this.state.starList}  */}
                     {this.state && this.state.starList ? this.state.starList.map((star, idx) => 
                         idx < this.currStars ?
-                            this.props.spooky ? <Bone></Bone>
-                            : <div className="star good"></div>
+                            this.props.spooky ? <Bone key={`bone-full-${idx}`}></Bone>
+                            : this.props.chrimbus ? <Snowflake key={`snowflake-full-${idx}`} mobile={false} filled={true}></Snowflake>
+                            : <div key={`star-full-${idx}`} className="star good"></div>
                         :
                         this.props.spooky ? 
-                            <PumpkinLogo color={"#ff7002"}></PumpkinLogo>
+                            <PumpkinLogo key={`pumpkin-empty-${idx}`} color={"#ff7002"}></PumpkinLogo>
+                        : this.props.chrimbus ? <Snowflake key={`snowflake-empty-${idx}`} mobile={false}></Snowflake>
                         :
-                            <div className="star bad"></div>
+                            <div key={`star-empty-${idx}`} className="star bad"></div>
                     ) : <></>}
                 </div>
             </nav>

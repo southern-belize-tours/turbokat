@@ -1,0 +1,184 @@
+.fancyPhotoContainer {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--fancy-photo-gap);
+}
+
+.fancyPhotoContainer.transitioned {
+    /* background: purple !important; */
+}
+
+.fancyPhotoTopBorder {
+    /* background: green; */
+    height: 10%;
+    width: 100%;
+    display: flex;
+    gap: var(--fancy-photo-gap);
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.fancyPhotoTopBorderRight {
+    /* flex: 1 1 63%; */
+    flex: 0 0 0;
+    background-color: var(--fancy-photo-color-secondary);
+    transition: all .3s;
+    transition-delay: .3s;
+}
+
+.fancyPhotoContainer.transitioned .fancyPhotoTopBorderRight {
+    flex: 0 0 63%;
+}
+
+.fancyPhotoTopBorderLeft {
+    transition: all .3s;
+    background-color: var(--fancy-photo-color);
+    flex: 0 0 0;
+}
+
+.fancyPhotoContainer.transitioned .fancyPhotoTopBorderLeft {
+    flex: 0 0 37%;
+    /* transition: all .3s; */
+}
+
+.fancyPhotoBottomBorder {
+    height: 5%;
+    width: 100%;
+    display: flex;
+    gap: var(--fancy-photo-gap);
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.fancyPhotoBottomBorderRight {
+    background-color: var(--fancy-photo-color);
+    flex: 0 0 0%;
+    transition: all .3s;
+}
+
+.fancyPhotoContainer.transitioned .fancyPhotoBottomBorderRight {
+    flex: 0 0 67%;
+}
+
+.fancyPhotoPictureArea {
+    display: flex;
+    flex-direction: row;
+    /* background: blue; */
+    flex: 1 1 auto;
+    gap: var(--fancy-photo-gap);
+}
+
+.fancyPhotoPictureAreaLeftBlock {
+    flex: 1 1 65%;
+    /* background: blue*/
+    display:flex;
+    flex-direction: column;
+    gap: var(--fancy-photo-gap);
+}
+
+.fancyPhotoPictureAreaLeftBlock div:nth-child(1) {
+    flex: 1 1 50%;
+    display: flex;
+    gap: var(--fancy-photo-gap);
+    /* background: gray; */
+}
+
+.fancyPhotoPictureAreaLeftBlock div:nth-child(1) > div:nth-child(1) {
+    flex: 1 1 40%;
+    background: coral;
+}
+
+.fancyPhotoPictureAreaLeftBlock div:nth-child(2) {
+    flex: 1 1 50%;
+    display: flex;
+    gap: var(--fancy-photo-gap);
+    /* background: orange; */
+}
+
+.fancyPhotoPictureAreaLeftBlock div:nth-child(2) > div:nth-child(2){
+    flex: 1 1 50%;
+    background: turquoise;
+}
+
+.fancyPhotoSquare {
+    position: absolute;
+    height: 71%;
+    width: 86%;
+    border: solid var(--fancy-photo-color-background);
+    border-width: calc(var(--fancy-photo-gap)/1);
+    top: -300%;
+    left: -300%;    
+    border-top-width: calc(var(--fancy-photo-gap)*2);
+    transition: all .3s;
+    transition-delay: .6s;
+}
+
+.fancyPhotoContainer.transitioned .fancyPhotoSquare {
+    top: 6%;
+    left: 9%;
+}
+
+.fancyPhotoPictureAreaRightBlock {
+    flex: 1 1 35%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--fancy-photo-gap);
+}
+
+.fancyPhotoPictureAreaRightBlock div:nth-child(1) {
+    flex: 1 1 45%;
+}
+
+.fancyPhotoPictureAreaRightBlock div:nth-child(2) {
+    flex: 1 1 55%;
+    display: flex;
+    gap: var(--fancy-photo-gap);
+}
+
+.fancyPhotoPictureAreaRightBlock div:nth-child(2) > div:nth-child(1){
+    flex: 1 1 100%;
+}
+
+.fancyPhotoPictureAreaRightBlock div:nth-child(2) > div:nth-child(2){
+    flex: 1 1 25%;
+    display:flex;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.fancyPhotoPictureAreaRightBlock div:nth-child(2) > div:nth-child(2) > div:nth-child(1){
+    flex: 0 0 0%;
+    transition: all .3s;
+    background: var(--fancy-photo-color);
+}
+
+.fancyPhotoContainer.transitioned .fancyPhotoPictureAreaRightBlock div:nth-child(2) > div:nth-child(2) > div:nth-child(1) {
+    flex: 0 0 73%;
+}
+
+.fancyPhotoPictureAreaRightBlock div:nth-child(2) > div:nth-child(2) > div:nth-child(2){
+    flex: 0 0 0%;
+    background: var(--fancy-photo-color-secondary);
+    transition: all .3s;
+    transition-delay: .3s;
+}
+
+.fancyPhotoContainer.transitioned .fancyPhotoPictureAreaRightBlock div:nth-child(2) > div:nth-child(2) > div:nth-child(2) {
+    flex: 0 0 22%;
+}
+
+.fancyImage {
+    background-size: cover !important;
+    /* opacity: 0; */
+    visibility: hidden;
+    transition: all .3s;
+    transition-delay: .9s;
+}
+
+.fancyPhotoContainer.transitioned .fancyImage {
+    /* opacity: 1; */
+    visibility: visible;;
+}

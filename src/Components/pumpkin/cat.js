@@ -14,6 +14,8 @@ function Cat (props) {
         bgColor = props.backgroundColor;
     } else if (props && props.spooky && (!props.backgroundColor)) {
         bgColor = "#ff7002";
+    } else if (props && props.chrimbus && (!props.backgroundColor)) {
+        bgColor = "var(--chrimbus-red)";
     }
 
     // Compute filling color - defaults to withTheme, prioritize props, else default for spooky is yellow
@@ -35,6 +37,7 @@ function Cat (props) {
     return (
         <div className="catContainer"
             style={dynamicStyles}>
+                {props.chrimbus && <div className="ornamentTop"></div>}
             <div className="catEars"></div>
             <div className="catLeftSide"></div>
             <div className="catRightSide"></div>

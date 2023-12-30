@@ -27,15 +27,18 @@ class OtherNavbarArea extends React.Component {
 
     render() {
         return (
-            <nav className={`otherNavbarContainer ${this.props.spooky && "spooky"}`}
+            <nav className={`otherNavbarContainer ${this.props.spooky ? "spooky" : ""} ${this.props.chrimbus ? "chrimbus" : ""}`}
                 style={{background: `${this.props.spooky ? "black": ""}`, color: `${this.props.spooky ? "white": ""}`, borderBottom: `none`}}>
                 <NavbarIconContainer img={catLogo}
                     spooky = {this.props.spooky}
+                    chrimbus = {this.props.chrimbus}
                     height="60px"
                     width="60px" /> 
                 <DesktopDropdownOptions options={this.props.options} spooky={this.props.spooky}/>
                 <div className = "signInBtnContainer">
-                    <SignInBtn captchaFunction={this.captchaCallback} spooky={this.props.spooky}/>
+                    <SignInBtn captchaFunction={this.captchaCallback}
+                        chrimbus={this.props.chrimbus}
+                        spooky={this.props.spooky}/>
                 </div>
                 <CursedCaptcha captchaFunction = {this.captchaCallback}
                     toggled={this.state.captchaToggle}/>

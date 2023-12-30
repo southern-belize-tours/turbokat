@@ -42,7 +42,7 @@ class MobileDropdown extends React.Component {
     render() {
         return (
                 <div className="hamburgerContainer">
-                    <div className={this.state.toggled ? "hamburger toggled" : "hamburger"}
+                    <div className={`hamburger ${this.state.toggled ? "toggled" : ""} ${this.props.chrimbus ? "chrimbus" : ""}`}
                          onClick={() => {
                              this.setState({toggled: !this.state.toggled})
                          }}>
@@ -50,7 +50,7 @@ class MobileDropdown extends React.Component {
                         <div className="mid"></div>
                         <div className="right"></div> 
                     </div>
-                    <div className={`mobileDropdown ${this.state.toggled && "show"} ${this.props.spooky && "spooky"}`}>
+                    <div className={`mobileDropdown ${this.state.toggled && "show"} ${this.props.spooky ? "spooky" : ""} ${this.props.chrimbus ? "chrimbus" : ""}`}>
                     {this.props.options.map(option => (
                         <a className="desktopDropdownLink"
                             onClick = {(e)=>{this.showRabbit(e, option.rabbitLie, option.url)}}

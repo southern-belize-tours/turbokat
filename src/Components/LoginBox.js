@@ -12,10 +12,12 @@ class LoginBox extends React.Component {
 
     render() {
         return (
-            <div className="loginBox">
+            <div className={`loginBox ${this.props.chrimbus ? "chrimbus" : ""}`}>
                 <LoginLeftContainer featuresCaption={this.props.featuresCaption}
+                    chrimbus = {this.props.chrimbus}
                     turbokatFeatures={this.props.turbokatFeatures} /> 
                 <LoginRightContainer userHealth={this.props.userHealth}
+                    chrimbus = {this.props.chrimbus}
                     centiActiveCallback = {this.props.centiActiveCallback}
                     centiActive = {this.props.centiActive}
                     loseUserHealth = {this.props.loseUserHealth}

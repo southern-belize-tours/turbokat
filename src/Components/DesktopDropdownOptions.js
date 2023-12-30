@@ -53,6 +53,7 @@ class DesktopDropdownOptions extends React.Component {
                 {this.props.options.map(option => (
                         !option.component ? 
                         <a className="desktopDropdownLink"
+                           key={`desktop-dropdown-option-${option.text}`}
                            style={{color: `${this.props.spooky ? "white" : ""}`}}
                            onMouseEnter = {(e) => {this.fakeLinkFunction(e, option.rabbitLie);}}
                            onMouseLeave = {(e) => {this.setNormalText(e, option.text)}}

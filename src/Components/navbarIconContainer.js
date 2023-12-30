@@ -18,6 +18,7 @@ class NavbarIconContainer extends React.Component {
                     height={this.props.height}
                     width={this.props.width}/>  */}
                 <Cat size = {50}
+                    chrimbus = {this.props.chrimbus}
                     spooky = {this.props.spooky}></Cat>
             </a>
         );

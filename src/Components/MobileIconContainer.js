@@ -13,7 +13,9 @@ class MobileIconContainer extends React.Component {
         return (
             <a className="MobileIconContainer"
                href={this.props.link}>
-                <Cat spooky={this.props.spooky} size = {50}></Cat>
+                <Cat spooky={this.props.spooky} 
+                    chrimbus={this.props.chrimbus}
+                    size = {50}></Cat>
                 {/* <img src={this.props.img}
                      alt="Turbokat Tax Cat Logo"
                      height={this.props.height}

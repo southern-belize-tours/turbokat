@@ -16,10 +16,11 @@ class FilingOptions extends React.Component {
                 {
                     this.props.taxOptions.map(option => (
                         <Tile title={option.optionText}
-                              prompt={option.prompt}
-                              color = {option.tileColor}
-                              imgSrc = {option.image.default}
-                              imgAlt = {option.optionText}/>
+                            chrimbus = {this.props.chrimbus}
+                            prompt={option.prompt}
+                            color = {option.tileColor}
+                            imgSrc = {option.image}
+                            imgAlt = {option.optionText}/>
                     ))
                 }
             </div>

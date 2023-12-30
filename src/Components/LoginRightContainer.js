@@ -46,7 +46,7 @@ class LoginRightContainer extends React.Component {
                 <div className="signInBtnContainer">
                     <Button variant="contained"
                         color="primary"
-                        className = "flex max"
+                        className = {`flex max ${this.props.chrimbus ? "chrimbus-sign-in" : ""}`}
                         onClick={()=>{this.setState({dialogOpen: true})}}>
                         Sign In
                     </Button>
@@ -67,8 +67,8 @@ class LoginRightContainer extends React.Component {
                             </DialogActions>
                         </Dialog>
                 </div>
-                <div className="fullRow disclaimer">
-                    By clicking Sign In, you agree to our Terms and have read and acknowledge our Global Privacy Statement.
+                <div className={`fullRow disclaimer ${this.props.chrimbus ? "chrimbus" : ""}`}>
+                    By clicking Sign In, you agree to our Terms and have read and acknowledged our Global Privacy Statement.
                 </div>
                 <div className="fullRow">
                     <input type="checkbox"

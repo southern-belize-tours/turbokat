@@ -20,6 +20,8 @@ import ThinMint from "./Components/sandbox/ThinMint.js";
 import Samosa from "./Components/sandbox/Samosa.js"
 import Cartographer from './Components/Cartographer/Cartographer.js';
 import Hawaii from "./Components/Hawaii/Hawaii.js";
+import ThreadArt from './Components/ThreadArt/ThreadArt.js'
+import Snowflake from './Components/Snowflake.js';
 
 import { withRouter } from 'react-router';
 
@@ -59,6 +61,7 @@ const options = [
     { rabbitLie: false, text: "Donate Choccy Chips", url: "https://www.paypal.com/donate/?hosted_button_id=V3GYH73CW9HN6"},
     { rabbitLie: false, text: "Halloween Party", url: "/Pumpkin"},
     // { text: "testing", component: <NavbarDropdownMenu menuItems = {[{text: "foo"}, {text: "bar"}]} title = "Turbokat Services"/>}
+    { rabbitLie: false, text: "Thread Art", url: "ThreadArt"}
 ];
 
 function usesCookies() {
@@ -130,12 +133,26 @@ class App extends React.Component {
             centiHealth: 100,
             centiActive: false,
             spookyActive: false,
+            chrimbusActive: false,
+            taxOptions: [...taxOptions],
+            snowflakes: []
         }
 
         this.loseUserHealth = this.loseUserHealth.bind(this);
         this.loseCentiHealth = this.loseCentiHealth.bind(this);
         this.centiActiveCallback = this.centiActiveCallback.bind(this);
         this.spookyCallback = this.spookyCallback.bind(this);
+    }
+
+    spawnSnowflakes() {
+        const numFlakes = Math.floor(Math.random() * 3) + 1;
+        let snowflakes = [];
+        // let xPos = (Math.random() * window.)
+        for (let i = 0; i < numFlakes; ++i) {
+            let x = Math.floor(Math.random() * window.innerWidth);
+            snowflakes.push(<Snowflake mobile = {true} xPos = {x}></Snowflake>);
+        }
+        this.setState({snowflakes: [...snowflakes]})
     }
 
     /**
@@ -146,6 +163,12 @@ class App extends React.Component {
         const currentMonth = currentDate.getMonth();
         if (currentMonth === 9) {
             this.setState({spookyActive: true});
+        } else if (currentMonth === 11) {
+            this.setState({chrimbusActive: true});
+            let newTaxOptions = [...this.state.taxOptions]
+            newTaxOptions[0].tileColor = {background: "linear-gradient(265deg, rgb(0, 143, 70), rgb(5, 100, 47) 117%)"};
+            newTaxOptions[1].tileColor = {background: "#f0db4d"};
+            this.spawnSnowflakes();
         }
 
     }
@@ -176,17 +199,22 @@ class App extends React.Component {
 
     render() {
         return (
-            <div> 
-                <NavbarArea spooky={this.state.spookyActive} /> 
-                {/* {this.state.spookyActive && <h1>Spooky</h1>} */}
-                <OtherNavbarArea options={options} spooky={this.state.spookyActive}/> 
+            <div>
+                {this.state.snowflakes}
+                <NavbarArea chrimbus={this.state.chrimbusActive} 
+                    spooky={this.state.spookyActive} /> 
+                <OtherNavbarArea options={options}
+                    chrimbus={this.state.chrimbusActive}
+                    spooky={this.state.spookyActive}/> 
                 <MobileNavbarArea options={options}
+                    chrimbus = {this.state.chrimbusActive}
                     spooky={this.state.spookyActive}
                     link={link}/> 
                 <Router>
                     <Switch>
                         <Route path="/"
                             exact component={() => <Home gridCaption={gridCaption}
+                                chrimbus = {this.state.chrimbusActive}
                                 spooky = {this.state.spookyActive}
                                 gridPunchline={gridPunchline}
                                 featuresCaption={featuresCaption}
@@ -226,9 +254,12 @@ class App extends React.Component {
                         />
                         <Route path = "/Pumpkin" exact component={() => <Pumpkin callback = {this.state.spookyActive ? () => {} : this.spookyCallback}></Pumpkin>}></Route>
                         <Route path="/Pumpkin/Results" exact component = {() => <PumpkinThankYou></PumpkinThankYou>}></Route>
+                        <Route path = "/ThreadArt" exact component = {() => <ThreadArt></ThreadArt>}></Route>
                     </Switch>
                 </Router>
-                <Footer footerTitle={footerTitle} spooky={this.state.spookyActive}/> 
+                <Footer footerTitle={footerTitle}
+                    chrimbus = {this.state.chrimbusActive}
+                    spooky={this.state.spookyActive}/> 
                 {this.state.centiActive ? 
                     <div className = "battleWidget"> Battle Widget</div>
                 : <></>}
