@@ -34,7 +34,9 @@ class OtherNavbarArea extends React.Component {
                     chrimbus = {this.props.chrimbus}
                     height="60px"
                     width="60px" /> 
-                <DesktopDropdownOptions options={this.props.options} spooky={this.props.spooky}/>
+                <DesktopDropdownOptions options={this.props.options}
+                    chrimbus={this.props.chrimbus}
+                    spooky={this.props.spooky}/>
                 <div className = "signInBtnContainer">
                     <SignInBtn captchaFunction={this.captchaCallback}
                         chrimbus={this.props.chrimbus}

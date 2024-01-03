@@ -64,6 +64,21 @@ let captchas = [
             { correct: false  },
             { correct: false  }
         ]
+    },
+    {
+        name: "Lightweight",
+        images: importAll(require.context('../Images/CursedCaptcha/Lightweight', false, /\.(jpg)$/)),
+        solution: [
+            {correct: true },
+            {correct: false },
+            {correct: true },
+            {correct: true },
+            {correct: false },
+            {correct: true },
+            {correct: false },
+            {correct: false },
+            {correct: false },
+        ]
     }
 ];
 

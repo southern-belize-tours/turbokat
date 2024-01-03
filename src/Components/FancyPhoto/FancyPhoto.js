@@ -8,6 +8,7 @@ import chrimbusImage2 from '../../Images/FancyGrid/20231124_211028.jpg';
 import chrimbusImage3 from '../../Images/FancyGrid/gold_tree.jpg';
 import chrimbusImage4 from '../../Images/FancyGrid/check_square.jpg';
 import chrimbusImage5 from '../../Images/FancyGrid/pink_disco.jpg';
+import chrimbusImage6 from '../../Images/FancyGrid/big_big_chrimbus_tree.jpeg'
 
 
 function FancyPhoto (props) {
@@ -33,7 +34,7 @@ function FancyPhoto (props) {
     }
 
     // Compute filling color - defaults to withTheme, prioritize props, else default for spooky is yellow
-    let color = "red";
+    let color = "#d2302d";
     if (props && props.color) {
         color = props.color;
     } else if (props && props.spooky && (!props.color)) {
@@ -43,7 +44,7 @@ function FancyPhoto (props) {
     }
 
     // Compute accent color
-    let colorSecondary = "blue";
+    let colorSecondary = "#0097e6";
     if (props && props.colorSecondary) {
         colorSecondary = props.colorSecondary;
     } else if (props && props.spooky && (!props.colorSecondary)) {
@@ -68,7 +69,7 @@ function FancyPhoto (props) {
     useEffect((props) => {
         setTimeout(() => {setTransitioned(true)}, 500);
         if (!props || !props.images) {
-            setImages([chrimbusImage1, chrimbusImage2, chrimbusImage3, chrimbusImage4, chrimbusImage5, bunnyImage]);
+            setImages([chrimbusImage1, chrimbusImage2, chrimbusImage3, chrimbusImage4, chrimbusImage5, chrimbusImage6]);
         } else if (props && props.chrimbus) {
 
         }
@@ -91,7 +92,7 @@ function FancyPhoto (props) {
                     </div>
                     <div>
                         <div className="fancyImage" style={{background: `url(${images[2]}) no-repeat`, backgroundSize: "cover", backgroundPosition: 'center'}}></div>
-                        <div className="fancyImage" style={{background: `url(${images[3]}) no-repeat`, backgroundSize: "cover", backgroundPosition: 'center'}}></div>
+                        <div className="fancyImage" style={{background: `url(${images[5]}) no-repeat`, backgroundSize: "cover", backgroundPosition: 'center'}}></div>
                     </div>
                 </div>
                 <div className = "fancyPhotoPictureAreaRightBlock">

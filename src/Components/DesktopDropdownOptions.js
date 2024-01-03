@@ -27,6 +27,7 @@ class DesktopDropdownOptions extends React.Component {
         // set width to whatever previous width was so elements aren't moving around a bunch
         const width = e.target.clientWidth;
         e.target.style.width = `${width}px`;
+        e.target.style.maxWidth = `${width}px`
         e.target.style.textAlign = `center`;
         e.target.style.display = `flex`;
         e.target.style.justifyContent = `center`;
@@ -51,14 +52,23 @@ class DesktopDropdownOptions extends React.Component {
         return (
             <div className = "navbarItems">
                 {this.props.options.map(option => (
-                        !option.component ? 
+                        !option.component ?
                         <a className="desktopDropdownLink"
                            key={`desktop-dropdown-option-${option.text}`}
                            style={{color: `${this.props.spooky ? "white" : ""}`}}
-                           onMouseEnter = {(e) => {this.fakeLinkFunction(e, option.rabbitLie);}}
-                           onMouseLeave = {(e) => {this.setNormalText(e, option.text)}}
-                           href={option.url ? option.url : "/"}>
+                           onMouseEnter = {(e) => {if(!option.items) this.fakeLinkFunction(e, option.rabbitLie);}}
+                           onMouseLeave = {(e) => {if(!option.items)this.setNormalText(e, option.text)}}
+                           href={option.url ? option.url : option.items && option.items.length ? "" : "/"}>
                             {option.text}
+                            {option.items && <div className={`desktopDropdownItems ${this.props.chrimbus ? "chrimbus" : ""}`}>
+                                {option.items.map(item => (
+                                    <a className={`desktopDropdownHoverItem ${this.props.chrimbus ? "chrimbus" : ""}`}
+                                        key={`desktop-nested-item-${item.url}`}
+                                        href={item.url}>
+                                        {item.text}
+                                    </a>
+                                ))}
+                            </div>}
                         </a> : 
                         <span>
                             {option.component}

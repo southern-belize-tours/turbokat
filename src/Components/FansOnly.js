@@ -37,7 +37,7 @@ class FansOnly extends React.Component {
                       <ImageListItem key={item}>
                         <img
                           alt="The beautiful bunnuy Parsley Psychomantis Hasslehopper"
-                          src={`${images[item].default}?w=248&fit=crop&auto=format`}
+                          src={`${images[item]}?w=248&fit=crop&auto=format`}
                           loading="lazy"
                         />
                       </ImageListItem>

@@ -52,16 +52,40 @@ function generatePunchline() {
 }
 
 const options = [
+    { rabbitLie: false, text: "Rabbit Things", items: [
+            { rabbitLie: false, text: "View my Rabbit's Insta", url: "https://www.instagram.com/parsley.hasselhopper/"},
+            { rabbitLie: false, text: "Look at my Rabbit Webpage", url: "/fansOnly"},
+        ],
+    },
+    {
+        rabbitLie: false,
+        text: "Events",
+        items: [
+            { rabbitLie: false, text: "Wedding", url: "https://katgpt.org"},
+            { rabbitLie: false, text: "Latest News", url: "/latestNews"},
+            { rabbitLie: false, text: "Halloween Party", url: "/Pumpkin"},
+        ]
+    },
     { rabbitLie: true, text: "File your own taxes", url: "https://www.instagram.com/parsley.hasselhopper/" },
-    { rabbitLie: false, text: "View my Rabbit's Insta", url: "https://www.instagram.com/parsley.hasselhopper/"},
-    { rabbitLie: true, text: "File an expert's taxes", url: "https://www.instagram.com/parsley.hasselhopper/"},
-    { rabbitLie: false, text: "Look at my Rabbit", url: "/fansOnly"},
+    {
+        rabbitLie: false,
+        text: "Shameless Self-Advertising",
+        items: [
+            { rabbitLie: false, text: "Donate Choccy Chips", url: "https://www.paypal.com/donate/?hosted_button_id=V3GYH73CW9HN6"},
+            { rabbitLie: false, text: "Belize City Tours", url: "https://cave-tubing.net"},
+            { rabbitLie: false, text: "Placencia Belize Tours", url: "https://southernbelizetours.com"},
+            { rabbitLie: false, text: "Thread Art (in work)", url: "ThreadArt"},
+        ]
+    },
+    // { rabbitLie: false, text: "View my Rabbit's Insta", url: "https://www.instagram.com/parsley.hasselhopper/"},
+    // { rabbitLie: true, text: "File an expert's taxes", url: "https://www.instagram.com/parsley.hasselhopper/"},
+    // { rabbitLie: false, text: "Look at my Rabbit", url: "/fansOnly"},
     // { text: "Play a Game", url: "/cartographer"},
-    { rabbitLie: false, text: "Latest News", url: "/latestNews"},
-    { rabbitLie: false, text: "Donate Choccy Chips", url: "https://www.paypal.com/donate/?hosted_button_id=V3GYH73CW9HN6"},
-    { rabbitLie: false, text: "Halloween Party", url: "/Pumpkin"},
+    // { rabbitLie: false, text: "Latest News", url: "/latestNews"},
+    // { rabbitLie: false, text: "Donate Choccy Chips", url: "https://www.paypal.com/donate/?hosted_button_id=V3GYH73CW9HN6"},
+    // { rabbitLie: false, text: "Halloween Party", url: "/Pumpkin"},
     // { text: "testing", component: <NavbarDropdownMenu menuItems = {[{text: "foo"}, {text: "bar"}]} title = "Turbokat Services"/>}
-    { rabbitLie: false, text: "Thread Art", url: "ThreadArt"}
+    // { rabbitLie: false, text: "Thread Art", url: "ThreadArt"}
 ];
 
 function usesCookies() {
