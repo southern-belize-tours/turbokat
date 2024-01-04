@@ -6,6 +6,10 @@ import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
+import lionheadImage from '../Images/Fans_Only/highlight_reel/lionhead_art.png'
+import grapefruitImage from '../Images/Fans_Only/highlight_reel/grapefruit.png'
+
+
 function importAll(r) {
     let ret = [];
     let i = 0;
@@ -31,6 +35,10 @@ class FansOnly extends React.Component {
                 <h1 className="prettyGridCaption">
                     Parsley Hasslehopper Fan Page
                 </h1>
+                <div className="fansContainer">
+                  <img src={lionheadImage}></img>
+                  <img src={grapefruitImage}></img>
+                </div>
                 <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }}>
                   <ImageList variant="masonry" cols={3} gap={8}>
                     {this.images.map((item) => (

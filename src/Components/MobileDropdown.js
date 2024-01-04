@@ -1,5 +1,6 @@
 //Import Components
 import React from 'react';
+import MobileSubDropdown from './MobileSubDropdown';
 
 import rabbitSrc from '../Images/rabbit_standing_icon.png'
 
@@ -52,11 +53,21 @@ class MobileDropdown extends React.Component {
                     </div>
                     <div className={`mobileDropdown ${this.state.toggled && "show"} ${this.props.spooky ? "spooky" : ""} ${this.props.chrimbus ? "chrimbus" : ""}`}>
                     {this.props.options.map(option => (
-                        <a className="desktopDropdownLink"
-                            onClick = {(e)=>{this.showRabbit(e, option.rabbitLie, option.url)}}
-                            href={option.url ? option.url : "/"}>
-                            {option.text}
-                        </a>
+                        option.items ?
+                            <MobileSubDropdown option = {option}></MobileSubDropdown>
+                        :
+                            <a className="desktopDropdownLink singleton"
+                                onClick = {(e) => {this.showRabbit(e, option.rabbitLie, option.url)}}
+                                href={option.url ? option.url : "/"}>
+                                {option.text}
+                            </a>
+                        // <a className="desktopDropdownLink"
+                        //     onClick = {(e)=>{this.showRabbit(e, option.rabbitLie, option.url)}}
+                        //     href={option.url ? option.url : "/"}>
+                        //     {option.text} {
+                        //         option.items && <MobileSubDropdown option = {option}></MobileSubDropdown>
+                        //     }
+                        // </a>
                     ))}
                     </div> 
                 </div> 

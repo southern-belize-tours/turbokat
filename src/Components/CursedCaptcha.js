@@ -7,9 +7,9 @@ import CatSpinner from './CatSpinner/CatSpinner.js';
 
 import Button from '@mui/material/Button';
 
-
 //Import Components
 import React from 'react';
+import { Cancel, Check, Replay } from '@mui/icons-material';
 
 function importAll(r) {
     let ret = [];
@@ -162,7 +162,7 @@ class CursedCaptcha extends React.Component {
     }
 
 
-    changeCaptcha() {
+    changeCaptcha(success=false) {
         // Increment the number of attempts
         let currNumTries = this.state.numTries + 1;
         this.setState({numTries: currNumTries})
@@ -190,7 +190,11 @@ class CursedCaptcha extends React.Component {
         }
 
         // Update the current captcha index and array of solved captchas
-        this.setState({ solved: [...this.state.solved, x], captchaIndex: captchaIndex });
+        if (success) {
+            this.setState({solved: [...this.state.solved, x]});
+        }
+        // this.setState({ solved: [...this.state.solved, x], captchaIndex: captchaIndex });
+        this.setState({ captchaIndex: captchaIndex });
         // Set the solution to empty
         this.clearTileMappings();
         // Initialize a new empty captcha board with the updated index
@@ -242,7 +246,7 @@ class CursedCaptcha extends React.Component {
             if (captchas[this.state.captchaIndex].solution[i].correct !== tempMappings[i]) ret = false; 
         }
         if (ret) {
-            this.changeCaptcha();
+            this.changeCaptcha(true);
         } else {
             this.clearTileMappings();
         }
@@ -313,11 +317,15 @@ class CursedCaptcha extends React.Component {
                     <Button variant="contained"
                         onClick={()=>{
                             this.props.captchaFunction(false);}}>
-                            Give Up
+                            <Cancel></Cancel> Give Up
+                    </Button>
+                    <Button variant="contained"
+                        onClick={() => {this.changeCaptcha(false);}}>
+                        <Replay></Replay> Try Another
                     </Button>
                     <Button variant="contained"
                         onClick={this.buttonCallbackFunction}>
-                            Verify
+                            <Check></Check>Verify
                     </Button>
                     </DialogActions>
                 : <></>}

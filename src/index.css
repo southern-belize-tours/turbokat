@@ -25,6 +25,12 @@
     overflow-x: hidden;
 }
 
+.mobileSubDropdownText {
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
 body {
     overflow-x: hidden;
 }
@@ -436,6 +442,7 @@ h1{
     /* border-top: 0px; */
     /* border-left: 0px; */
     max-height: none;
+    width: -webkit-fill-available;
     z-index: 4;
 }
 
@@ -485,6 +492,7 @@ h1{
 
 .mobileSignInContainer {
     display: flex;
+    align-items: center;
 }
 
 .prettyImage{
@@ -868,6 +876,7 @@ p{
     justify-content: normal;
     cursor: pointer;
     height: 100%;
+    max-height: 2rem;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -959,7 +968,8 @@ p{
     max-height: 200px;
     height: auto; 
     z-index: 1; 
-    background-color: var(--clrBackground); 
+    /* background-color: var(--clrBackground);  */
+    background-color: #fafafa;
     width:100%; 
 }
 
@@ -973,7 +983,55 @@ p{
     letter-spacing: normal;
     position: relative;
     line-height: 20px;
-    padding: 20px;
+    /* padding: 20px; */
+    display: flex;
+    padding: 10px 0px;
+}
+
+.mobileDropdown.show .desktopDropdownLink .hamburger {
+    /* background-color: black; */
+    height: -webkit-fill-available;
+}
+
+.mobileDropdown.show .hamburgerContainer {
+    padding-right: 20px;
+    width: 2rem;
+    height: 2rem;
+}
+
+.desktopDropdownLink .hamburger {
+    background: var(--clrBackground);
+}
+
+.mobileDropdown.show .left, .mobileDropdown.show .mid, .mobileDropdown.show .right {
+    background: black;
+}
+
+.desktopDropdownLink.singleton {
+    padding-left: 20px !important;
+    justify-content: flex-start;
+}
+
+.mobileSubDropdown {
+    /* height: 0px; */
+    max-height: 0px !important;
+    transition: all .3s;
+    display: flex;
+    flex-direction: column;
+    transition: all .3s;
+    overflow: hidden;
+}
+
+.mobileSubDropdownItem {
+    color: var(--defaultTextColor);
+    text-decoration: none;
+    padding: .5rem 40px;
+    font-size: 16px;
+}
+
+.mobileSubDropdown.show {
+    height: -webkit-fill-available;
+    max-height: none !important;
 }
 
 .parsleyPic img{
@@ -1229,9 +1287,7 @@ p{
     }
 
     .navbarContainer {
-        /* font-size: var(--smallFontSize); */
         font-size: 1rem;
-        padding: 16px;
     }
 
     .MuiDialogTitle-root, .MuiDialogContent-root {
@@ -1267,6 +1323,7 @@ p{
         flex: 1 1 auto;
         display: flex;
         justify-content: flex-end;
+        align-items: center;
     }
 
     .mobileNavbarContainer {
